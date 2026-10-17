@@ -1,0 +1,29 @@
+# Dependencies & Build artifacts
+node_modules/
+dist/
+build/
+coverage/
+*.zip
+*.pem
+*.crx
+
+# Operating System & Editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+
+# Environment & Secrets
+.env*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Agent scratch paths
+.agents/scratch/
+.clinerules/scratch/
+scratch/
