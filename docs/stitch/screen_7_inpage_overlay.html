@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Vault - Closed Shadow DOM In-Page Autofill</title>
+<!-- Google Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#d9e4eb",
+            "tertiary-container": "#ca8100",
+            "primary": "#ffb0cd",
+            "outline-variant": "#5a3f49",
+            "on-tertiary-container": "#3e2400",
+            "on-primary": "#640039",
+            "on-secondary-container": "#00424e",
+            "tertiary-fixed": "#ffddb8",
+            "surface-container-lowest": "#061014",
+            "secondary": "#4cd7f6",
+            "secondary-fixed": "#acedff",
+            "primary-fixed": "#ffd9e4",
+            "error-container": "#93000a",
+            "on-primary-fixed-variant": "#8c0053",
+            "on-error": "#690005",
+            "surface-bright": "#303b40",
+            "background": "#0a1519",
+            "secondary-container": "#03b5d3",
+            "on-error-container": "#ffdad6",
+            "on-surface-variant": "#e1bdc8",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-secondary-fixed": "#001f26",
+            "tertiary-fixed-dim": "#ffb95f",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-primary-container": "#130007",
+            "on-secondary": "#003640",
+            "primary-fixed-dim": "#ffb0cd",
+            "on-primary-fixed": "#3e0021",
+            "inverse-primary": "#b7006e",
+            "outline": "#a98893",
+            "surface-container-low": "#131d22",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-tint": "#ffb0cd",
+            "surface-variant": "#2c363b",
+            "on-tertiary-fixed": "#2a1700",
+            "primary-container": "#e4048a",
+            "tertiary": "#ffb95f",
+            "on-background": "#d9e4eb",
+            "surface-container": "#172126",
+            "surface": "#0a1519",
+            "inverse-on-surface": "#273237",
+            "on-surface": "#d9e4eb",
+            "surface-container-high": "#212b30",
+            "on-tertiary": "#472a00",
+            "surface-dim": "#0a1519",
+            "surface-container-highest": "#2c363b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "0.75rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-cursor {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cyan-pulse {
+      animation: cyanPulse 2.4s infinite ease-in-out;
+    }
+    @keyframes cyanPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.85));
+        transform: scale(1.04);
+      }
+    }
+    .totp-ring {
+      stroke-dasharray: 56.5;
+      stroke-dashoffset: 14;
+      animation: totpCountdown 30s linear infinite;
+    }
+    @keyframes totpCountdown {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 56.5; }
+    }
+  </style>
+</head>
+<body class="bg-[#05080A] text-on-surface antialiased min-h-screen flex flex-col items-center justify-start p-0 select-none overflow-x-hidden">
+<!-- ==================== DESKTOP BROWSER WINDOW WRAPPER ==================== -->
+<div class="w-full max-w-[1440px] min-h-screen flex flex-col bg-[#0d1117] shadow-2xl border-x border-[#30363d]/40">
+<!-- 1. AUTHENTIC BROWSER CHROME FRAME -->
+<header class="w-full bg-[#090d12] border-b border-[#21262d] flex flex-col shrink-0 select-none">
+<!-- Window Controls & Tabs Bar -->
+<div class="flex items-center h-10 px-3 gap-3">
+<!-- Mac Window Controls -->
+<div class="flex items-center gap-1.5 pr-2">
+<span class="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29] inline-block"></span>
+</div>
+<!-- Active Browser Tab: GitHub -->
+<div class="flex items-center h-8 px-3.5 gap-2.5 bg-[#161b22] border-t border-x border-[#30363d] rounded-t-md text-xs text-slate-200 max-w-[260px] relative">
+<!-- Octocat Tab Favicon -->
+<svg aria-hidden="true" class="w-4 h-4 fill-white shrink-0" version="1.1" viewbox="0 0 16 16">
+<path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+<span class="truncate font-body-sm text-body-sm font-medium">Sign in to GitHub · GitHub</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white text-xs ml-auto cursor-pointer" data-icon="close">close</span>
+</div>
+<!-- New Tab Plus Button -->
+<button aria-label="New Tab" class="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-[#21262d] rounded">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<!-- Browser Toolbar / Address Bar -->
+<div class="flex items-center h-10 px-3 gap-2 bg-[#161b22] border-t border-[#21262d]">
+<!-- Browser Navigation Buttons -->
+<div class="flex items-center gap-1 text-slate-400">
+<button aria-label="Back" class="p-1 hover:bg-[#21262d] rounded transition-colors text-slate-500 cursor-not-allowed">
+<span class="material-symbols-outlined text-base" data-icon="arrow_back">arrow_back</span>
+</button>
+<button aria-label="Forward" class="p-1 hover:bg-[#21262d] rounded transition-colors text-slate-500 cursor-not-allowed">
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button aria-label="Reload" class="p-1 hover:bg-[#21262d] rounded hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="refresh">refresh</span>
+</button>
+</div>
+<!-- Central Security URL Pill -->
+<div class="flex-1 max-w-2xl mx-auto flex items-center justify-between h-7 px-3 bg-[#0d1117] border border-[#30363d] rounded-full text-xs font-label-md text-slate-300">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-sm text-[#06B6D4]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="text-secondary font-medium">https://</span><span class="text-white font-medium">github.com</span><span class="text-slate-400">/login</span>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-400 hover:text-amber-400 cursor-pointer" data-icon="star">star</span>
+</div>
+<!-- Browser Extension Toolbar Right -->
+<div class="flex items-center gap-2.5 pl-2">
+<!-- ShellGuard Extension Icon Trigger (Active) -->
+<div class="relative group cursor-pointer p-1 rounded hover:bg-[#21262d] transition-colors" title="ShellGuard Vault - Zero-Knowledge Connected">
+<div class="w-6 h-6 rounded bg-[#171C21] border border-[#06B6D4]/60 flex items-center justify-center shadow-[0_0_8px_rgba(6,182,212,0.35)]">
+<!-- Shell carapace glyph -->
+<span class="material-symbols-outlined text-[#06B6D4] text-sm" data-icon="security" data-weight="fill" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<!-- Glowing status indicator bead -->
+<span class="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-[#06B6D4] ring-2 ring-[#0d1117]"></span>
+</div>
+<!-- Operator Avatar -->
+<div class="w-6 h-6 rounded-full bg-slate-700 border border-slate-600 flex items-center justify-center text-[10px] font-label-sm text-slate-200 cursor-pointer">
+            OP
+          </div>
+<!-- Overflow menu -->
+<button aria-label="More browser options" class="p-1 hover:bg-[#21262d] rounded text-slate-400 hover:text-slate-200">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<!-- 2. WEBPAGE CANVAS: GitHub Login Screen with Floating Autofill Overlay -->
+<main class="flex-1 flex flex-col items-center justify-start pt-12 pb-24 px-4 bg-[#0d1117] relative">
+<!-- GitHub Octocat Logo -->
+<a aria-label="GitHub Home" class="mb-6 hover:opacity-80 transition-opacity" href="#">
+<svg aria-hidden="true" class="fill-white" height="48" version="1.1" viewbox="0 0 16 16" width="48">
+<path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+</a>
+<!-- Headline -->
+<h1 class="font-headline-md text-2xl font-light text-white mb-6 tracking-tight">Sign in to GitHub</h1>
+<!-- GitHub Login Box & Overlay Anchor Container -->
+<div class="w-full max-w-[380px] relative">
+<!-- Authentic GitHub Form Card -->
+<div class="bg-[#161b22] border border-[#30363d] rounded-xl p-6 shadow-xl">
+<form class="space-y-4" onsubmit="return false;">
+<!-- Field 1: Username or Email -->
+<div class="relative">
+<label class="block font-body-sm text-sm text-slate-200 mb-1.5 font-medium" for="login_field">
+                Username or email address
+              </label>
+<!-- Focused Input Field with In-Field ShellGuard Glyph -->
+<div class="relative flex items-center">
+<input autocomplete="off" class="w-full bg-[#0d1117] border-2 border-[#06B6D4] ring-2 ring-[#06B6D4]/30 rounded-lg text-white px-3.5 py-2.5 pr-10 text-sm font-label-md focus:outline-none tracking-normal" id="login_field" name="login" type="text" value="octocat"/>
+<!-- Blinking Custom Cyan Cursor Simulation in Input -->
+<span class="absolute left-[78px] top-3 w-[2px] h-4 bg-[#06B6D4] custom-cursor pointer-events-none"></span>
+<!-- IN-FIELD GLYPH: ShellGuard Carapace Shield In-Page Injection Point -->
+<button class="absolute right-2.5 p-1 rounded-md bg-[#171C21] border border-[#06B6D4]/50 flex items-center justify-center text-[#06B6D4] cyan-pulse hover:bg-[#1E252C] transition-all" title="ShellGuard zero-knowledge credentials available" type="button">
+<span class="material-symbols-outlined text-base" data-icon="shield" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+</button>
+</div>
+</div>
+<!-- Field 2: Password with Forgot Password Link -->
+<div class="pt-1">
+<div class="flex items-center justify-between mb-1.5">
+<label class="block font-body-sm text-sm text-slate-200 font-medium" for="password">
+                  Password
+                </label>
+<a class="text-xs text-[#58a6ff] hover:underline font-body-sm" href="#">Forgot password?</a>
+</div>
+<input class="w-full bg-[#0d1117] border border-[#30363d] rounded-lg text-slate-400 px-3.5 py-2 text-sm font-label-md focus:border-[#58a6ff] focus:outline-none" id="password" name="password" readonly="" type="password" value="••••••••••••••••"/>
+</div>
+<!-- Primary Sign In Button -->
+<button class="w-full mt-2 bg-[#238636] hover:bg-[#2ea043] border border-[rgba(240,246,252,0.1)] text-white font-medium py-2 px-3 rounded-lg text-sm transition-colors text-center shadow-sm" type="submit">
+              Sign in
+            </button>
+</form>
+</div>
+<!-- ============================================================ -->
+<!-- SHELLGUARD CLOSED SHADOW DOM AUTOFILL OVERLAY (PHASE B)     -->
+<!-- Anchored 6px directly beneath the username input box         -->
+<!-- ============================================================ -->
+<div class="absolute left-0 top-[78px] w-full z-50 rounded-xl bg-[#171C21] border border-[#3D484E] shadow-[0_16px_36px_-4px_rgba(0,0,0,0.9),0_0_16px_-2px_rgba(6,182,212,0.3)] overflow-hidden transition-all duration-150 animate-fadeIn" id="shellguard-shadow-dom-overlay" style="backdrop-filter: blur(12px);">
+<!-- Top Carapace Rim: Micro Gradient Accent Line -->
+<div class="w-full h-[2px] bg-gradient-to-r from-[#06B6D4] via-[#4cd7f6] to-[#E4048A]"></div>
+<!-- Overlay Header: Brand & Zero-Knowledge Enclave Badge -->
+<div class="px-3 py-2.5 bg-[#171C21] border-b border-[#2A343D] flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#06B6D4] text-base drop-shadow-[0_0_6px_rgba(6,182,212,0.7)]" data-icon="shield" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-headline-sm text-xs font-bold text-white tracking-tight">ShellGuard</span>
+<span class="text-[11px] font-body-sm text-slate-400 font-normal ml-0.5">Autofill</span>
+</div>
+<!-- Zero-Knowledge Cryptographic Isolation Badge -->
+<div class="flex items-center gap-1 bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] px-2 py-0.5 rounded-full font-label-sm text-[10px] tracking-wider uppercase font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping inline-block"></span>
+<span>ZK Isolated</span>
+</div>
+</div>
+<!-- Matching Credentials List -->
+<div class="p-1.5 space-y-1">
+<!-- Row 1: Active / Focused Vault Credential (Corporate SSO) -->
+<div class="group relative bg-[#242C35] border border-[#06B6D4]/50 rounded-lg p-2.5 flex items-center justify-between transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+<!-- Left side: Identity Pod -->
+<div class="flex items-center gap-2.5">
+<!-- Chitin accent margin tag -->
+<div class="w-1 h-7 bg-[#06B6D4] rounded-full shrink-0"></div>
+<!-- Monogram Avatar Squircle -->
+<div class="w-8 h-8 rounded-lg bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4] font-headline-sm font-bold flex items-center justify-center text-sm shadow-[0_0_8px_rgba(6,182,212,0.2)]">
+                  G
+                </div>
+<!-- Credential Metadata -->
+<div class="flex flex-col text-left">
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-semibold text-white font-headline-sm">GitHub Corporate</span>
+<span class="material-symbols-outlined text-xs text-[#06B6D4]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="text-[11px] font-label-sm text-slate-300 font-mono tracking-tight">octocat@corp.io</span>
+</div>
+</div>
+<!-- Right Action Group: TOTP Countdown & Primary Fill Button -->
+<div class="flex items-center gap-2">
+<!-- Live TOTP Circular Countdown Ring -->
+<div class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#171C21] border border-[#06B6D4]/30" title="Zero-Knowledge TOTP Seed Valid">
+<svg class="w-3.5 h-3.5 -rotate-90 text-[#06B6D4]" viewbox="0 0 20 20">
+<circle cx="10" cy="10" fill="none" r="8" stroke="currentColor" stroke-opacity="0.2" stroke-width="2.5"></circle>
+<circle class="totp-ring" cx="10" cy="10" fill="none" r="8" stroke="currentColor" stroke-width="2.5"></circle>
+</svg>
+<span class="font-label-sm text-[10px] text-[#06B6D4] font-bold">24s</span>
+</div>
+<!-- Fill Button (Primary Cybernetic Action) -->
+<button class="bg-primary-container hover:bg-[#ff0099] text-white px-3 py-1.5 rounded-md text-xs font-headline-sm font-semibold flex items-center gap-1 border border-white/20 shadow-[0_0_12px_rgba(228,4,138,0.45)] active:scale-[0.98] transition-transform" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="key">key</span>
+<span>Fill</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Default Credential State (Personal Account) -->
+<div class="group p-2.5 flex items-center justify-between hover:bg-[#1E252C] rounded-lg transition-colors border border-transparent hover:border-[#3D484E]">
+<!-- Left side -->
+<div class="flex items-center gap-2.5">
+<!-- Neutral accent strip -->
+<div class="w-1 h-7 bg-slate-600 rounded-full shrink-0"></div>
+<!-- Neutral Avatar Squircle -->
+<div class="w-8 h-8 rounded-lg bg-[#0F1419] border border-[#3D484E] text-slate-300 font-headline-sm font-bold flex items-center justify-center text-sm">
+                  G
+                </div>
+<!-- Title & Identity -->
+<div class="flex flex-col text-left">
+<span class="text-xs font-medium text-slate-200 font-headline-sm">GitHub Personal</span>
+<span class="text-[11px] font-label-sm text-slate-400 font-mono">lucas-personal</span>
+</div>
+</div>
+<!-- Right side Fill Button -->
+<button class="bg-primary-container hover:bg-[#ff0099] text-white px-3 py-1.5 rounded-md text-xs font-headline-sm font-semibold flex items-center gap-1 border border-white/20 transition-all opacity-80 group-hover:opacity-100" type="button">
+<span>Fill</span>
+</button>
+</div>
+</div>
+<!-- Overlay Footer Actions -->
+<div class="px-3 py-2 bg-[#13181E] border-t border-[#2A343D] flex items-center justify-between text-xs font-label-md">
+<!-- Left: Generate Password Quick Tool -->
+<button class="text-secondary hover:text-white flex items-center gap-1 cursor-pointer font-medium transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="bolt">bolt</span>
+<span>Generate Password</span>
+</button>
+<!-- Right: Deep Vault Link -->
+<button class="text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors" type="button">
+<span>Open Vault</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- END OVERLAY -->
+<!-- Bottom helper container: Create account callout -->
+<div class="mt-8 p-4 border border-[#30363d] rounded-xl text-center text-sm text-slate-300">
+          New to GitHub? 
+          <a class="text-[#58a6ff] hover:underline font-medium" href="#">Create an account</a>.
+        </div>
+<!-- Secondary GitHub Footer Links -->
+<div class="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 font-body-sm">
+<a class="hover:text-[#58a6ff]" href="#">Terms</a>
+<a class="hover:text-[#58a6ff]" href="#">Privacy</a>
+<a class="hover:text-[#58a6ff]" href="#">Docs</a>
+<a class="hover:text-[#58a6ff]" href="#">Contact GitHub Support</a>
+<a class="hover:text-[#58a6ff]" href="#">Manage cookies</a>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Vault Login</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk & Hanken Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#d9e4eb",
+            "outline": "#a98893",
+            "on-secondary-fixed-variant": "#004e5c",
+            "surface-container-high": "#212b30",
+            "on-primary-fixed-variant": "#8c0053",
+            "on-primary-container": "#130007",
+            "on-surface-variant": "#e1bdc8",
+            "tertiary-fixed": "#ffddb8",
+            "error-container": "#93000a",
+            "secondary-container": "#03b5d3",
+            "primary-container": "#e4048a",
+            "on-secondary-fixed": "#001f26",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-error-container": "#ffdad6",
+            "surface-container": "#172126",
+            "background": "#0a1519",
+            "surface-container-highest": "#2c363b",
+            "on-primary-fixed": "#3e0021",
+            "surface-container-low": "#131d22",
+            "inverse-primary": "#b7006e",
+            "on-tertiary-container": "#3e2400",
+            "on-tertiary-fixed": "#2a1700",
+            "on-tertiary": "#472a00",
+            "error": "#ffb4ab",
+            "inverse-surface": "#d9e4eb",
+            "on-secondary-container": "#00424e",
+            "secondary-fixed-dim": "#4cd7f6",
+            "secondary": "#4cd7f6",
+            "primary-fixed-dim": "#ffb0cd",
+            "tertiary-container": "#ca8100",
+            "outline-variant": "#5a3f49",
+            "inverse-on-surface": "#273237",
+            "primary": "#ffb0cd",
+            "on-secondary": "#003640",
+            "on-error": "#690005",
+            "surface-dim": "#0a1519",
+            "surface-tint": "#ffb0cd",
+            "on-surface": "#d9e4eb",
+            "primary-fixed": "#ffd9e4",
+            "secondary-fixed": "#acedff",
+            "surface-variant": "#2c363b",
+            "surface-container-lowest": "#061014",
+            "surface-bright": "#303b40",
+            "surface": "#0a1519",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-primary": "#640039",
+            "tertiary": "#ffb95f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Space Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #0F1419;
+      color: #DEE3EA;
+      font-family: 'Hanken Grotesk', sans-serif;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #0F1419;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #3D484E;
+      border-radius: 2px;
+    }
+    .carapace-border {
+      border: 1px solid #3D484E;
+    }
+    .accent-top-line {
+      position: relative;
+    }
+    .accent-top-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #E4048A, #06B6D4, transparent);
+      border-radius: 1px;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 16px -2px rgba(6, 182, 212, 0.25);
+    }
+    .glow-crimson {
+      box-shadow: 0 0 20px -2px rgba(228, 4, 138, 0.35);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0F1419] flex justify-center items-start min-h-screen p-0 m-0 antialiased selection:bg-[#E4048A] selection:text-white">
+<!-- Fixed Extension Viewport Container (390px Width) -->
+<div class="w-[390px] min-h-[600px] bg-[#0F1419] flex flex-col p-space-sm custom-scroll relative overflow-x-hidden">
+<!-- Main Container Card: Deep Subsurface #171C21 with Top Border Accent -->
+<div class="w-full bg-[#171C21] carapace-border rounded-[16px] p-space-md flex flex-col gap-space-md accent-top-line relative shadow-2xl">
+<!-- 1. Top Bar: 'Back to Home' -->
+<div class="flex items-center justify-between w-full">
+<button class="flex items-center gap-1.5 text-[#879298] hover:text-[#DEE3EA] active:scale-[0.98] transition-all duration-150 group" type="button">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-md text-label-md tracking-wider">Back to Home</span>
+</button>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0F1419] border border-[#3D484E]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#06B6D4] animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-[#879298] uppercase">Zero-Knowledge</span>
+</div>
+</div>
+<!-- 2. Server Connection Segmented Input Bar -->
+<div class="flex items-center w-full bg-[#0F1419] border border-[#3D484E] rounded-lg p-1 text-label-sm font-label-sm">
+<!-- Cyan Protocol Pill -->
+<div class="flex items-center gap-1 bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4] px-2 py-0.5 rounded-[4px] font-semibold tracking-wider select-none">
+<span class="material-symbols-outlined text-[12px]" data-icon="lock" data-weight="fill">lock</span>
+<span>https://</span>
+</div>
+<!-- Host Field -->
+<input class="bg-transparent border-0 text-[#DEE3EA] font-label-sm text-label-sm px-2 py-0.5 focus:ring-0 focus:outline-none flex-grow min-w-0 tracking-tight" readonly="" type="text" value="vault.example.com"/>
+<!-- Port Segment -->
+<span class="text-[#879298] px-1.5 py-0.5 font-label-sm text-label-sm border-l border-[#3D484E]/80 select-none">:8080</span>
+</div>
+<!-- 3. Brand Header -->
+<div class="flex flex-col items-center text-center pt-1 pb-0.5">
+<!-- 64x64 Rounded Emblem with Crimson to Cyan Gradient Border -->
+<div class="relative w-16 h-16 rounded-[14px] p-[1.5px] bg-gradient-to-br from-[#E4048A] via-[#8c0053] to-[#06B6D4] mb-3 group">
+<div class="w-full h-full bg-[#0F1419] rounded-[13px] flex items-center justify-center relative overflow-hidden shadow-inner">
+<!-- Bioluminescent trench backdrop element -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#E4048A]/20 to-[#06B6D4]/10 opacity-70"></div>
+<!-- Carapace Emblem SVG / Icon -->
+<span class="material-symbols-outlined text-[34px] text-transparent bg-clip-text bg-gradient-to-b from-[#DEE3EA] via-[#06B6D4] to-[#E4048A] relative z-10" data-icon="shield" data-weight="fill">shield</span>
+</div>
+<!-- Corner telemetry dot -->
+<span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E4048A] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E4048A]"></span>
+</span>
+</div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-[#DEE3EA]">ShellGuard</span>
+<span class="font-label-sm text-label-sm text-[#06B6D4] bg-[#06B6D4]/10 border border-[#06B6D4]/30 px-1 rounded">v2.4</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-[#DEE3EA] tracking-tight leading-tight">Welcome Back</h1>
+<p class="font-body-sm text-body-sm text-[#879298] mt-0.5">Login with your ShellGuard©™ identity</p>
+</div>
+<!-- 4. Mode Toggle Tabs (Segmented Pill Bar) -->
+<div class="grid grid-cols-2 p-1 bg-[#0F1419] border border-[#3D484E] rounded-xl gap-1">
+<!-- Tab 1: Upload File (Active) -->
+<button class="flex items-center justify-center gap-2 py-2 px-3 bg-[#E4048A] text-white rounded-lg font-headline-sm text-label-md font-semibold tracking-wide shadow-md active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]" data-icon="upload_file">upload_file</span>
+<span>Upload File</span>
+</button>
+<!-- Tab 2: Paste ClawKey (Inactive) -->
+<button class="flex items-center justify-center gap-2 py-2 px-3 text-[#879298] hover:text-[#DEE3EA] hover:bg-[#172126] rounded-lg font-headline-sm text-label-md font-medium tracking-wide active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]" data-icon="vpn_key">vpn_key</span>
+<span>Paste ClawKey©™</span>
+</button>
+</div>
+<!-- 5. Identity Upload Card -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center px-0.5">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-[#879298] font-semibold">Your Identity File</label>
+<span class="font-label-sm text-label-sm text-[#06B6D4] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified_user">verified_user</span>
+            Local Decrypt
+          </span>
+</div>
+<!-- Large Dashed Dropzone -->
+<div class="relative flex flex-col items-center justify-center p-5 bg-[#0F1419] border-2 border-dashed border-[#3D484E] hover:border-[#06B6D4] hover:bg-[#0F1419]/80 rounded-xl cursor-pointer group transition-all duration-200">
+<input accept=".json" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20" type="file"/>
+<!-- Cloud Upload Icon with Cybernetic Radial Glow -->
+<div class="w-12 h-12 rounded-full bg-[#172126] border border-[#3D484E] flex items-center justify-center mb-2.5 group-hover:scale-105 group-hover:border-[#06B6D4] group-hover:text-[#06B6D4] text-[#879298] transition-all">
+<span class="material-symbols-outlined text-[26px]" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-[#DEE3EA] text-center group-hover:text-white transition-colors">
+            Click to upload your identity file
+          </p>
+<span class="font-label-sm text-label-sm text-[#879298] mt-1 bg-[#171C21] px-2 py-0.5 rounded border border-[#3D484E]/60 tracking-wider">
+            .json files only
+          </span>
+</div>
+</div>
+<!-- 6. Amber Security Warning Card -->
+<div class="bg-[rgba(245,158,11,0.08)] border border-[#F59E0B] rounded-xl p-3 flex items-start gap-3 shadow-[0_0_12px_-3px_rgba(245,158,11,0.2)]">
+<div class="p-1 rounded bg-[#F59E0B]/20 text-[#F59E0B] flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_reset">lock_reset</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<h4 class="font-headline-sm text-label-md font-bold text-[#F59E0B] tracking-tight">Can't find your identity file?</h4>
+<p class="font-body-sm text-body-sm text-[#DEE3EA]/80 leading-relaxed">
+            Your identity file is the only way to access your account. If you've lost it, you'll need to molt a new identity.
+          </p>
+</div>
+</div>
+<!-- 7. Primary Action Button -->
+<button class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#E4048A] to-[#BE185D] hover:from-[#ff159f] hover:to-[#db2777] text-white font-headline-sm text-body-md font-bold tracking-wide flex items-center justify-center gap-2 glow-crimson active:scale-[0.98] transition-all border border-white/20" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="key">key</span>
+<span>Login with Identity File</span>
+</button>
+<!-- 8. Footer -->
+<div class="flex flex-col items-center gap-3 pt-2">
+<div class="w-full h-px bg-[#3D484E]"></div>
+<div class="font-body-sm text-body-sm text-[#879298] text-center">
+<span>New to the reef? </span>
+<a class="font-semibold text-[#E4048A] hover:text-[#ff38aa] hover:underline transition-colors ml-0.5" href="#">
+            Molt a New Identity
+          </a>
+</div>
+</div>
+</div>
+<!-- Micro Metadata Telemetry Indicator -->
+<div class="flex justify-between items-center px-3 py-2 text-[10px] text-[#879298]/70 font-label-sm">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#06B6D4]"></span>
+        CIPHER: AES-256-GCM
+      </span>
+<span>ENTROPY: 256-BIT</span>
+</div>
+</div>
+</body></html>

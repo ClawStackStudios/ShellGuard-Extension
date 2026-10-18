@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Vault</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk, Hanken Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb0cd",
+            "on-secondary": "#003640",
+            "primary-fixed": "#ffd9e4",
+            "tertiary-fixed-dim": "#ffb95f",
+            "tertiary-fixed": "#ffddb8",
+            "background": "#0a1519",
+            "surface-dim": "#0a1519",
+            "primary": "#ffb0cd",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary": "#640039",
+            "inverse-on-surface": "#273237",
+            "surface-container-low": "#131d22",
+            "on-error-container": "#ffdad6",
+            "surface-tint": "#ffb0cd",
+            "secondary-fixed": "#acedff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-container": "#172126",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-primary-container": "#130007",
+            "inverse-surface": "#d9e4eb",
+            "surface": "#0a1519",
+            "on-primary-fixed": "#3e0021",
+            "surface-variant": "#2c363b",
+            "surface-container-highest": "#2c363b",
+            "on-secondary-container": "#00424e",
+            "on-primary-fixed-variant": "#8c0053",
+            "secondary": "#4cd7f6",
+            "on-surface-variant": "#e1bdc8",
+            "tertiary": "#ffb95f",
+            "surface-container-lowest": "#061014",
+            "secondary-container": "#03b5d3",
+            "on-error": "#690005",
+            "on-tertiary": "#472a00",
+            "surface-container-high": "#212b30",
+            "surface-bright": "#303b40",
+            "tertiary-container": "#ca8100",
+            "on-surface": "#d9e4eb",
+            "primary-container": "#e4048a",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-background": "#d9e4eb",
+            "error-container": "#93000a",
+            "inverse-primary": "#b7006e",
+            "on-tertiary-container": "#3e2400",
+            "on-secondary-fixed": "#001f26",
+            "error": "#ffb4ab",
+            "outline-variant": "#5a3f49",
+            "outline": "#a98893"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "label-lg": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Chitin armor plate accent stripe */
+    .chitin-accent-cyan {
+      box-shadow: inset 2px 0 0 0 #4cd7f6;
+    }
+    .chitin-accent-amber {
+      box-shadow: inset 2px 0 0 0 #ffb95f;
+    }
+    /* High density scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061014;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c363b;
+      border-radius: 2px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex items-center justify-center p-0 sm:p-4 select-none">
+<!-- Chrome Extension Popup Container (Exact 390px viewport width) -->
+<main class="w-[390px] h-[600px] bg-surface flex flex-col relative overflow-hidden border border-outline-variant shadow-2xl rounded-none sm:rounded-lg">
+<!-- 1. Pinned Top Carapace Header (Shared Component: TopAppBar with strict parameters) -->
+<header class="flex justify-between items-center w-full px-space-md py-space-sm border-t-2 border-t-primary-container bg-surface-container dark:bg-surface-container border-b border-outline-variant dark:border-outline-variant docked full-width top-0 rounded-none z-30 sticky top-0">
+<!-- Left: Logo Carapace Shield + Title + Status -->
+<div class="flex items-center gap-2">
+<!-- Carapace Bioluminescent Shield SVG -->
+<div class="w-6 h-6 flex items-center justify-center relative flex-shrink-0">
+<svg class="w-6 h-6 drop-shadow-[0_0_8px_rgba(76,215,246,0.45)]" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L4 5.5V11.5C4 16.5 7.4 21.1 12 22.5C16.6 21.1 20 16.5 20 11.5V5.5L12 2Z" fill="#131d22" stroke="#4cd7f6" stroke-linejoin="round" stroke-width="1.5"></path>
+<path d="M12 5V18.5M7 8.5C9.5 10 14.5 10 17 8.5M7 13.5C9.5 15 14.5 15 17 13.5" stroke="#e4048a" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-surface dark:text-on-surface uppercase font-bold">ShellGuard</span>
+<!-- Synced Status Pill -->
+<div class="flex items-center gap-1.5 bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-semibold">Synced</span>
+</div>
+</div>
+<!-- Right Action Group -->
+<div class="flex items-center gap-1.5">
+<!-- '+ New' Compact Action Button -->
+<button class="bg-primary-container text-on-surface font-headline-sm text-label-sm px-2.5 py-1 rounded flex items-center gap-1 shadow-sm hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-sm font-bold">add</span>
+<span>New</span>
+</button>
+<!-- Popout Window Button -->
+<button aria-label="Popout window" class="p-1.5 text-outline hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">open_in_new</span>
+</button>
+<!-- User Operator Avatar Badge -->
+<div class="w-7 h-7 rounded-full bg-gradient-to-tr from-primary-container to-secondary flex items-center justify-center p-[1px] shadow-[0_0_8px_rgba(228,4,138,0.35)]" title="User security operator avatar badge">
+<div class="w-full h-full bg-surface-container-low rounded-full flex items-center justify-center">
+<span class="font-label-sm text-[10px] font-bold text-on-surface">LU</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Viewport -->
+<div class="flex-1 overflow-y-auto pb-16">
+<!-- 2. Search Bar & Scoped Filter Matrix -->
+<section class="p-3 bg-surface border-b border-outline-variant/40">
+<!-- Recessed Search Input -->
+<div class="relative flex items-center bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 focus-within:border-secondary focus-within:ring-1 focus-within:ring-secondary/30 transition-all">
+<span class="material-symbols-outlined text-outline text-lg mr-2">search</span>
+<input class="w-full bg-transparent border-0 p-0 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:ring-0 focus:outline-none" placeholder="Search vault (48 items)..." type="text"/>
+<button class="text-secondary hover:text-secondary-fixed transition-colors p-0.5" title="Filter settings">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+</div>
+<!-- 2x2 Scoped Filter Matrix -->
+<div class="grid grid-cols-2 gap-2 mt-2.5">
+<!-- Filter 1: Pod -->
+<button class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 flex items-center justify-between text-on-surface hover:border-secondary/50 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-secondary text-sm">folder</span>
+<span class="font-label-sm text-label-sm">Pod</span>
+</div>
+<span class="material-symbols-outlined text-outline text-xs">expand_more</span>
+</button>
+<!-- Filter 2: Tag -->
+<button class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 flex items-center justify-between text-on-surface hover:border-secondary/50 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-secondary text-sm">label</span>
+<span class="font-label-sm text-label-sm">Tag</span>
+</div>
+<span class="material-symbols-outlined text-outline text-xs">expand_more</span>
+</button>
+<!-- Filter 3: Type -->
+<button class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 flex items-center justify-between text-on-surface hover:border-secondary/50 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-secondary text-sm">vpn_key</span>
+<span class="font-label-sm text-label-sm">Type</span>
+</div>
+<span class="material-symbols-outlined text-outline text-xs">expand_more</span>
+</button>
+<!-- Filter 4: Domain -->
+<button class="bg-surface-container border border-outline-variant rounded px-2.5 py-1.5 flex items-center justify-between text-on-surface hover:border-secondary/50 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-secondary text-sm">public</span>
+<span class="font-label-sm text-label-sm">Domain</span>
+</div>
+<span class="material-symbols-outlined text-outline text-xs">expand_more</span>
+</button>
+</div>
+</section>
+<!-- 3. Section 1: Autofill Suggestions -->
+<section class="px-3 pt-3 pb-1">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-sm text-[11px] uppercase tracking-wider font-semibold text-on-surface">
+            Autofill suggestions
+          </h2>
+<span class="font-label-sm text-[10px] text-secondary bg-secondary/15 border border-secondary/30 px-2 py-0.5 rounded-full font-mono font-bold">2</span>
+</div>
+<!-- Suggestion Card 1: GitHub Corporate -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-2.5 mb-2 flex items-center justify-between hover:border-secondary/60 chitin-accent-cyan transition-all group">
+<div class="flex items-center gap-2.5 min-w-0 pr-1">
+<!-- Brand Badge -->
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center flex-shrink-0 text-on-surface font-headline-sm font-bold text-xs">
+              G
+            </div>
+<div class="truncate">
+<div class="font-headline-sm text-xs font-semibold text-on-surface truncate">GitHub Corporate</div>
+<div class="font-label-sm text-[11px] text-outline truncate font-mono">octocat@corp.io</div>
+</div>
+</div>
+<!-- Inline Action Cluster -->
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<!-- Micro 2FA Countdown Ring -->
+<div class="w-6 h-6 relative flex items-center justify-center" title="TOTP valid for 24 seconds">
+<svg class="w-6 h-6 transform -rotate-90">
+<circle cx="12" cy="12" fill="none" r="10" stroke="#2c363b" stroke-width="2"></circle>
+<circle cx="12" cy="12" fill="none" r="10" stroke="#4cd7f6" stroke-dasharray="62.8" stroke-dashoffset="15.7" stroke-width="2"></circle>
+</svg>
+<span class="absolute font-label-sm text-[8px] font-bold text-secondary font-mono">24s</span>
+</div>
+<!-- 'Fill' Action Button -->
+<button class="bg-primary-container text-on-surface font-headline-sm font-bold text-xs px-2.5 py-1 rounded flex items-center gap-1 shadow-sm shadow-primary-container/30 hover:brightness-110 active:scale-95 transition-all">
+              Fill
+            </button>
+<!-- Copy Password -->
+<button aria-label="Copy password" class="bg-surface-container-lowest border border-outline-variant p-1 rounded hover:text-secondary hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+<!-- More Vert -->
+<button aria-label="Credential options" class="p-1 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Suggestion Card 2: GitHub Personal -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-2.5 mb-2 flex items-center justify-between hover:border-secondary/60 chitin-accent-cyan transition-all group">
+<div class="flex items-center gap-2.5 min-w-0 pr-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center flex-shrink-0 text-on-surface font-headline-sm font-bold text-xs">
+              G
+            </div>
+<div class="truncate">
+<div class="font-headline-sm text-xs font-semibold text-on-surface truncate">GitHub Personal</div>
+<div class="font-label-sm text-[11px] text-outline truncate font-mono">lucas-personal</div>
+</div>
+</div>
+<!-- Inline Action Cluster -->
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<!-- 'Fill' Action Button -->
+<button class="bg-primary-container text-on-surface font-headline-sm font-bold text-xs px-2.5 py-1 rounded flex items-center gap-1 shadow-sm shadow-primary-container/30 hover:brightness-110 active:scale-95 transition-all">
+              Fill
+            </button>
+<!-- Copy Password -->
+<button aria-label="Copy password" class="bg-surface-container-lowest border border-outline-variant p-1 rounded hover:text-secondary hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+<!-- More Vert -->
+<button aria-label="Credential options" class="p-1 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4. Section 2: Infrastructure & SSH -->
+<section class="px-3 pt-2">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-sm text-[11px] uppercase tracking-wider font-semibold text-on-surface">
+            Infrastructure &amp; SSH
+          </h2>
+<span class="font-label-sm text-[10px] text-outline bg-surface-variant/40 border border-outline-variant px-2 py-0.5 rounded-full font-mono">2</span>
+</div>
+<!-- Infrastructure Item 1: Proxmox Cluster -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-2.5 mb-2 flex items-center justify-between hover:border-secondary/60 chitin-accent-cyan transition-all group">
+<div class="flex items-center gap-2.5 min-w-0 pr-1">
+<div class="w-8 h-8 rounded-lg bg-secondary/15 border border-secondary/30 flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-base">terminal</span>
+</div>
+<div class="truncate">
+<div class="font-headline-sm text-xs font-semibold text-on-surface truncate">Proxmox Cluster LAN</div>
+<div class="font-label-sm text-[11px] text-outline truncate font-mono">root@192.168.1.50</div>
+</div>
+</div>
+<!-- Inline Action Cluster -->
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<button class="bg-primary-container text-on-surface font-headline-sm font-bold text-xs px-2.5 py-1 rounded flex items-center gap-1 shadow-sm shadow-primary-container/30 hover:brightness-110 active:scale-95 transition-all">
+              Fill
+            </button>
+<button aria-label="Copy credential" class="bg-surface-container-lowest border border-outline-variant p-1 rounded hover:text-secondary hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+<button aria-label="Credential options" class="p-1 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Infrastructure Item 2: AWS Root Key -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-2.5 mb-2 flex items-center justify-between hover:border-tertiary/60 chitin-accent-amber transition-all group">
+<div class="flex items-center gap-2.5 min-w-0 pr-1">
+<div class="w-8 h-8 rounded-lg bg-tertiary/15 border border-tertiary/30 flex items-center justify-center flex-shrink-0 text-tertiary">
+<span class="material-symbols-outlined text-base">key</span>
+</div>
+<div class="truncate">
+<div class="font-headline-sm text-xs font-semibold text-on-surface truncate">AWS Root Key</div>
+<div class="font-label-sm text-[11px] text-outline truncate font-mono">admin-iam@aws</div>
+</div>
+</div>
+<!-- Inline Action Cluster -->
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<button class="bg-primary-container text-on-surface font-headline-sm font-bold text-xs px-2.5 py-1 rounded flex items-center gap-1 shadow-sm shadow-primary-container/30 hover:brightness-110 active:scale-95 transition-all">
+              Fill
+            </button>
+<button aria-label="Copy key" class="bg-surface-container-lowest border border-outline-variant p-1 rounded hover:text-secondary hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+<button aria-label="Credential options" class="p-1 text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Persistent Zero-Knowledge Telemetry Hex Ribbon -->
+<div class="mx-3 mt-3 p-2 bg-surface-container-lowest border border-outline-variant/50 rounded flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-mono">AES-256-GCM | ZERO-KNOWLEDGE ACTIVE</span>
+</div>
+<span class="font-label-sm text-[9px] text-secondary font-mono">0x7F...9A2C</span>
+</div>
+</div>
+<!-- 5. Pinned Bottom Navigation Dock (Shared Component: BottomNavBar with exact mapping) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs border-t border-outline-variant dark:border-outline-variant bg-surface-container-low dark:bg-surface-container-low docked full-width bottom-0 rounded-none h-[50px]">
+<!-- Destination 1: Vault (Active item) -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary py-space-xs px-space-sm rounded-lg bg-surface-container-high dark:bg-surface-container-high relative active:scale-[0.98] transition-all duration-75">
+<span class="material-symbols-outlined text-base">lock</span>
+<span class="font-label-sm text-[10px] font-bold">Vault</span>
+<span class="w-1 h-1 rounded-full bg-secondary absolute bottom-0.5"></span>
+</button>
+<!-- Destination 2: Generator -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-space-xs px-space-sm hover:text-secondary dark:hover:text-secondary hover:bg-surface-container dark:hover:bg-surface-container rounded-lg active:scale-[0.98] transition-all duration-75">
+<span class="material-symbols-outlined text-base">key</span>
+<span class="font-label-sm text-[10px]">Generator</span>
+</button>
+<!-- Destination 3: Send -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-space-xs px-space-sm hover:text-secondary dark:hover:text-secondary hover:bg-surface-container dark:hover:bg-surface-container rounded-lg active:scale-[0.98] transition-all duration-75">
+<span class="material-symbols-outlined text-base">send</span>
+<span class="font-label-sm text-[10px]">Send</span>
+</button>
+<!-- Destination 4: Settings -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-space-xs px-space-sm hover:text-secondary dark:hover:text-secondary hover:bg-surface-container dark:hover:bg-surface-container rounded-lg active:scale-[0.98] transition-all duration-75">
+<span class="material-symbols-outlined text-base">settings</span>
+<span class="font-label-sm text-[10px]">Settings</span>
+</button>
+</nav>
+</main>
+</body></html>

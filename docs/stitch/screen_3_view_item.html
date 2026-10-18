@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard - View Login</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Space Grotesk & JetBrains Mono & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#a98893",
+            "on-error": "#690005",
+            "surface-tint": "#ffb0cd",
+            "surface-container-lowest": "#061014",
+            "on-error-container": "#ffdad6",
+            "secondary-container": "#03b5d3",
+            "on-primary-fixed-variant": "#8c0053",
+            "primary": "#ffb0cd",
+            "surface-container-low": "#131d22",
+            "on-tertiary-fixed": "#2a1700",
+            "tertiary": "#ffb95f",
+            "inverse-on-surface": "#273237",
+            "on-secondary-fixed": "#001f26",
+            "tertiary-container": "#ca8100",
+            "surface": "#0a1519",
+            "background": "#0a1519",
+            "on-surface": "#d9e4eb",
+            "surface-container-high": "#212b30",
+            "on-tertiary-container": "#3e2400",
+            "on-tertiary": "#472a00",
+            "surface-dim": "#0a1519",
+            "secondary-fixed-dim": "#4cd7f6",
+            "secondary-fixed": "#acedff",
+            "on-primary-container": "#130007",
+            "error-container": "#93000a",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-secondary": "#003640",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-secondary-container": "#00424e",
+            "surface-variant": "#2c363b",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary-fixed": "#ffd9e4",
+            "inverse-surface": "#d9e4eb",
+            "on-background": "#d9e4eb",
+            "on-primary-fixed": "#3e0021",
+            "outline-variant": "#5a3f49",
+            "inverse-primary": "#b7006e",
+            "primary-fixed-dim": "#ffb0cd",
+            "primary-container": "#e4048a",
+            "on-surface-variant": "#e1bdc8",
+            "on-primary": "#640039",
+            "surface-container-highest": "#2c363b",
+            "surface-container": "#172126",
+            "secondary": "#4cd7f6",
+            "tertiary-fixed": "#ffddb8",
+            "surface-bright": "#303b40"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "label-lg": ["JetBrains Mono"],
+            "headline-lg": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom scrollbar and micro-patterns for extension canvas */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a1519;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #212b30;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4cd7f6;
+    }
+    .totp-ring {
+      background: conic-gradient(#4cd7f6 240deg, #212b30 0deg);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface antialiased select-none flex items-center justify-center min-h-screen p-0 sm:p-4">
+<!-- Chromium Popup Chassis: Fixed 384px x 600px Viewport Frame -->
+<main class="relative w-[384px] h-[600px] bg-[#0a1519] border border-outline-variant/60 shadow-2xl overflow-hidden flex flex-col font-body-md text-body-md">
+<!-- Cryptographic Telemetry Ribbon (Top accent) -->
+<div class="h-[2px] w-full bg-gradient-to-r from-primary-container via-secondary to-tertiary"></div>
+<!-- 1. TOP APP BAR (Sticky Viewport Header) -->
+<header class="sticky top-0 z-30 bg-[#0a1519]/95 backdrop-blur-md px-3 py-2 border-b border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button aria-label="Return to Vault" class="w-7 h-7 flex items-center justify-center rounded text-on-surface-variant hover:text-secondary hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<span class="font-headline-sm text-[15px] font-bold text-on-surface tracking-tight">View Login</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-label-sm text-[10px] px-1.5 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-secondary tracking-widest uppercase">Pod 04</span>
+<button aria-label="Pop out into separate window" class="w-7 h-7 flex items-center justify-center rounded text-on-surface-variant hover:text-secondary hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</header>
+<!-- SCROLLABLE VAULT CANVAS (Body Area) -->
+<div class="flex-1 overflow-y-auto px-3 py-2.5 space-y-3 pb-16">
+<!-- 2. HERO ITEM CARD -->
+<section class="bg-surface-container rounded-xl border border-outline-variant/50 p-3 relative overflow-hidden shadow-sm">
+<!-- Chitinous left security accent -->
+<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-secondary"></div>
+<div class="flex items-start gap-3 mb-2.5">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary shrink-0 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
+<span class="material-symbols-outlined text-[22px]">dns</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<h1 class="font-headline-sm text-[15px] font-semibold text-on-surface truncate">Checkmk Server</h1>
+<span class="inline-flex items-center gap-1 font-label-sm text-[9px] uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/30 px-1.5 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                ACTIVE
+              </span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant/90 flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">folder</span>
+              Infrastructure Pod
+            </p>
+</div>
+</div>
+<!-- Prominent Autofill CTA Button -->
+<button class="w-full bg-primary-container text-on-surface font-headline-sm text-body-md font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_14px_rgba(228,4,138,0.35)] border border-white/20" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Autofill into Page</span>
+</button>
+</section>
+<!-- 3. LOGIN CREDENTIALS SECTION -->
+<section>
+<div class="flex items-center justify-between mb-1.5 px-0.5">
+<h2 class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-on-surface-variant/80">Login Credentials</h2>
+<span class="font-label-sm text-[9px] text-secondary tracking-widest uppercase">Zero-Knowledge</span>
+</div>
+<div class="bg-surface-container rounded-xl border border-outline-variant/50 divide-y divide-outline-variant/30 overflow-hidden">
+<!-- Username Pod -->
+<div class="p-2.5 flex items-center justify-between gap-2 hover:bg-surface-container-high/40 transition-colors">
+<div class="min-w-0 flex-1">
+<div class="font-label-sm text-[10px] uppercase tracking-wide text-on-surface-variant">Username</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold truncate select-all">cmkadmin</div>
+</div>
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors active:scale-90 shrink-0" title="Copy Username" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+</button>
+</div>
+<!-- Password Pod -->
+<div class="p-2.5 flex items-center justify-between gap-2 hover:bg-surface-container-high/40 transition-colors">
+<div class="min-w-0 flex-1">
+<div class="font-label-sm text-[10px] uppercase tracking-wide text-on-surface-variant">Password</div>
+<div class="font-label-md text-label-md text-on-surface tracking-widest truncate">••••••••••••••••</div>
+</div>
+<div class="flex items-center gap-0.5 shrink-0">
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors active:scale-90" title="Reveal Password" type="button">
+<span class="material-symbols-outlined text-[17px]">visibility</span>
+</button>
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors active:scale-90" title="Copy Password" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- TOTP Pod -->
+<div class="p-2.5 flex items-center justify-between gap-2 hover:bg-surface-container-high/40 transition-colors">
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[10px] uppercase tracking-wide text-on-surface-variant">Authenticator (TOTP)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<div class="font-label-lg text-headline-sm font-bold text-secondary tracking-widest font-mono select-all">839 204</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<!-- Conic Timer Pill -->
+<div class="relative w-6 h-6 rounded-full p-[2px] totp-ring flex items-center justify-center" title="Expires in 22 seconds">
+<div class="w-full h-full bg-surface-container rounded-full flex items-center justify-center">
+<span class="font-label-sm text-[8px] font-bold text-secondary">22s</span>
+</div>
+</div>
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors active:scale-90" title="Copy TOTP Code" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. AUTOFILL & NETWORK SECTION -->
+<section>
+<div class="mb-1.5 px-0.5">
+<h2 class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-on-surface-variant/80">Autofill &amp; Network</h2>
+</div>
+<div class="bg-surface-container rounded-xl border border-outline-variant/50 p-3 space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wide text-on-surface-variant">Website URI</span>
+<div class="flex items-center gap-0.5">
+<button class="w-6 h-6 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Open URI in Tab" type="button">
+<span class="material-symbols-outlined text-[15px]">launch</span>
+</button>
+<button class="w-6 h-6 rounded flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="Copy URI" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest border border-outline-variant/40">
+<p class="font-label-sm text-[12px] text-on-surface font-mono break-all leading-tight">http://192.168.1.73:5000</p>
+</div>
+<!-- Amber Warning Tag (RFC 1918 Unencrypted HTTP) -->
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#ca8100]/15 border border-[#ffb95f]/40 text-[#ffb95f] font-label-sm text-[10px] font-mono">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>HTTP LAN (RFC 1918 Private Net)</span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-body-sm text-on-surface-variant pt-1 border-t border-outline-variant/20">
+<span>Detection: Host and Port</span>
+<span class="text-secondary font-mono">EXACT_MATCH</span>
+</div>
+</div>
+</section>
+<!-- 5. SECURITY & RECORD HISTORY SECTION -->
+<section>
+<div class="mb-1.5 px-0.5">
+<h2 class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-on-surface-variant/80">Security &amp; Record History</h2>
+</div>
+<div class="bg-surface-container rounded-xl border border-outline-variant/50 p-2.5 space-y-2">
+<!-- ZK Cipher Indicator -->
+<div class="flex items-center gap-1.5 text-secondary font-label-sm text-[10.5px]">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified_user</span>
+<span class="truncate">HKDF-SHA256 &amp; AES-GCM-256 AAD Bound</span>
+</div>
+<!-- Metadata Timestamp -->
+<div class="text-[10.5px] font-body-sm text-on-surface-variant/80 leading-relaxed border-t border-outline-variant/20 pt-1.5">
+<div>Modified: <span class="font-mono text-on-surface">Oct 18, 2026, 10:41 AM</span></div>
+<div>Created: <span class="font-mono text-on-surface">Sep 2, 2025</span></div>
+</div>
+</div>
+</section>
+</div>
+<!-- 6. STICKY BOTTOM ACTION BAR -->
+<footer class="absolute bottom-0 left-0 right-0 z-30 bg-[#0a1519]/95 backdrop-blur-md border-t border-outline-variant/50 px-3 py-2 flex items-center justify-between">
+<!-- Edit Record Button -->
+<button class="bg-surface-container-high hover:bg-surface-variant border border-outline-variant/60 hover:border-secondary text-on-surface px-4 py-1.5 rounded-lg font-headline-sm text-body-sm font-semibold transition-all active:scale-95 flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">edit</span>
+<span>Edit</span>
+</button>
+<!-- Utility Actions Cluster -->
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" title="Clone Item" type="button">
+<span class="material-symbols-outlined text-[18px]">file_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error-container/30 transition-colors active:scale-95" title="Move to Trash" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_outline</span>
+</button>
+</div>
+</footer>
+</main>
+<script>
+    // Micro-interactions for interactive vault state
+    document.addEventListener('DOMContentLoaded', () => {
+      // TOTP ring ticker demonstration
+      let seconds = 22;
+      const ringText = document.querySelector('.totp-ring span');
+      const ring = document.querySelector('.totp-ring');
+      
+      setInterval(() => {
+        if (seconds > 1) {
+          seconds--;
+        } else {
+          seconds = 30;
+        }
+        if (ringText) ringText.textContent = `${seconds}s`;
+        if (ring) {
+          const deg = (seconds / 30) * 360;
+          ring.style.background = `conic-gradient(#4cd7f6 ${deg}deg, #212b30 0deg)`;
+        }
+      }, 1000);
+    });
+  </script>
+</body></html>
