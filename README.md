@@ -20,12 +20,13 @@
 
 ## 💎 Overview
 
-**ShellGuard-Extension** brings the sovereign security of your self-hosted ShellGuard vault directly into Chromium browsers (Chrome, Brave, Edge). Engineered with an untrusted browser execution model, it decouples memory-safe WebCrypto key derivation from web pages, providing instant credential autofill while guaranteeing zero plaintext exposure.
+**ShellGuard-Extension** brings the sovereign security of your self-hosted ShellGuard vault directly into Chromium browsers (Chrome, Brave, Edge). Engineered under an untrusted browser execution model, it decouples memory-safe WebCrypto key derivation from web pages, providing instant credential autofill while guaranteeing zero plaintext exposure.
 
 - **Zero Third-Party Cloud**: Connects strictly to your sovereign self-hosted ShellGuard server.
 - **Client-Decrypted Autofill**: Vault secrets are decrypted in memory using client-derived master keys (`hu-` / `lb-`). The server and host never observe plaintext.
 - **Closed Shadow DOM Overlay**: In-page autofill badges render inside closed Shadow roots (`attachShadow({ mode: 'closed' })`), completely isolated from webpage JavaScript inspection.
 - **Micro-TOTP Engine**: RFC 6238 authenticator tokens generate dynamically with live SVG countdown rings, auto-copying to clipboard during multi-step logins.
+- **Agentic Delegation**: First-class support for autonomous AI agents operating under scoped LobsterKeys (`lb-`) with structural permissions (`canRead`, `canWrite`).
 
 ---
 
@@ -33,12 +34,12 @@
 
 ShellGuard-Extension operates as the browser arm of the unified ShellGuard ecosystem:
 
-| Component | Role | Target Platform |
-| :--- | :--- | :--- |
-| **[ShellGuard Web & Server](https://github.com/ClawStackStudios/ShellGuard)** | Master encrypted secrets vault, multi-tenant DB & SuperLobster TLS transport hub | Node.js / SQLite / Web |
-| **[ShellGuard-Mobile](https://github.com/ClawStackStudios/ShellGuard-Mobile)** | Sovereign mobile password manager with Android system autofill service | Android (Jetpack Compose) |
-| **[ShellGuard-TOTP](https://github.com/ClawStackStudios/ShellGuard-TOTP)** | Offline-first standalone authenticator companion with biometric gates | Android (Jetpack Compose) |
-| **ShellGuard-Extension** (This Repo) | Zero-knowledge in-browser autofill, active tab matching & credential injection | Chromium Browsers (MV3) |
+| Component | Role | Target Platform | Repository |
+| :--- | :--- | :--- | :--- |
+| **[ShellGuard Web & Server](https://github.com/ClawStackStudios/ShellGuard)** | Master encrypted secrets vault, multi-tenant DB & SuperLobster TLS hub | Node.js / SQLite / Web | `ClawStackStudios/ShellGuard` |
+| **[ShellGuard-Mobile](https://github.com/ClawStackStudios/ShellGuard-Mobile)** | Sovereign mobile password manager with Android system autofill service | Android (Jetpack Compose) | `ClawStackStudios/ShellGuard-Mobile` |
+| **[ShellGuard-TOTP](https://github.com/ClawStackStudios/ShellGuard-TOTP)** | Offline-first standalone authenticator companion with biometric gates | Android (Jetpack Compose) | `ClawStackStudios/ShellGuard-TOTP` |
+| **ShellGuard-Extension** (This Repo) | Zero-knowledge in-browser autofill, active tab matching & credential injection | Chromium Browsers (MV3) | `ClawStackStudios/ShellGuard-Extension` |
 
 ---
 
@@ -65,6 +66,10 @@ The extension implements the **Reef Modernist ("Bioluminescent Defense")** desig
 
 ---
 
-## 📜 Governing Principles & Rules
+## 📚 Technical Documentation
 
-See [`AGENTS.md`](AGENTS.md) for full project rules, invariant security patterns, and cartography directives.
+- **System Architecture**: [`ARCHITECTURE.md`](ARCHITECTURE.md) — Three-zone security model, directory layout, and data flow.
+- **Security Policy & Threat Model**: [`SECURITY.md`](SECURITY.md) — Attack scenarios, non-extractable key quarantine, and disclosure policy.
+- **UI & Design System**: [`DESIGN.md`](DESIGN.md) — Reef Modernist styling tokens, components, and layout contracts.
+- **Project Law & Rules**: [`AGENTS.md`](AGENTS.md) — Compressed immutable rules, invariants, and navigation schema.
+- **Changelog**: [`CHANGELOG.md`](CHANGELOG.md) — Monotonic versioning and release chronicle.
