@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard - Generator History</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#2c363b",
+            "tertiary-container": "#ca8100",
+            "surface-container-lowest": "#061014",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-primary-container": "#130007",
+            "background": "#0a1519",
+            "tertiary-fixed": "#ffddb8",
+            "on-tertiary": "#472a00",
+            "on-surface": "#d9e4eb",
+            "outline-variant": "#5a3f49",
+            "surface-container": "#172126",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#0a1519",
+            "on-tertiary-container": "#3e2400",
+            "secondary-fixed": "#acedff",
+            "primary": "#ffb0cd",
+            "on-secondary-fixed": "#001f26",
+            "on-primary": "#640039",
+            "inverse-surface": "#d9e4eb",
+            "primary-fixed-dim": "#ffb0cd",
+            "tertiary": "#ffb95f",
+            "surface-bright": "#303b40",
+            "outline": "#a98893",
+            "on-secondary-fixed-variant": "#004e5c",
+            "inverse-on-surface": "#273237",
+            "surface-container-highest": "#2c363b",
+            "surface-tint": "#ffb0cd",
+            "primary-container": "#e4048a",
+            "surface-container-low": "#131d22",
+            "secondary-container": "#03b5d3",
+            "on-tertiary-fixed": "#2a1700",
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "on-surface-variant": "#e1bdc8",
+            "inverse-primary": "#b7006e",
+            "primary-fixed": "#ffd9e4",
+            "error": "#ffb4ab",
+            "on-primary-fixed": "#3e0021",
+            "surface-container-high": "#212b30",
+            "on-secondary": "#003640",
+            "surface": "#0a1519",
+            "on-secondary-container": "#00424e",
+            "on-primary-fixed-variant": "#8c0053",
+            "on-background": "#d9e4eb",
+            "secondary-fixed-dim": "#4cd7f6",
+            "secondary": "#4cd7f6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Hanken Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom scrollbar for dense extension popup */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a1519;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c363b;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #03b5d3;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface flex items-center justify-center min-h-screen p-0 m-0 antialiased selection:bg-primary-container selection:text-white">
+<!-- Chromium Extension Fixed Canvas Container (384px x 600px) -->
+<div class="relative w-[384px] h-[600px] max-w-[384px] max-h-[600px] bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col shadow-2xl">
+<!-- Cryptographic Telemetry Accent Line -->
+<div class="w-full h-[2px] bg-gradient-to-r from-primary-container via-secondary-container to-tertiary"></div>
+<!-- 1. TOP APP BAR (Sub-page Header with Back Navigation) -->
+<header class="flex items-center justify-between px-space-md py-space-sm bg-surface-container border-b border-surface-variant flex-shrink-0">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Return to Generator" class="flex items-center justify-center p-1 rounded-lg text-on-surface hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Generator History</h1>
+</div>
+<!-- Right Badge -->
+<span class="font-label-sm text-label-sm bg-secondary-container/15 text-secondary border border-secondary/30 px-space-sm py-0.5 rounded-full font-medium">
+        10 items
+      </span>
+</header>
+<!-- CONTENT SCROLL AREA -->
+<main class="flex-1 overflow-y-auto px-space-md py-space-sm space-y-space-sm">
+<!-- 2. SECURITY ADVISORY CALLOUT -->
+<section class="bg-surface-container border border-surface-variant rounded-xl p-space-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5 flex-shrink-0">lock</span>
+<p class="font-body-sm text-body-sm text-outline leading-tight">
+          Stored in volatile session memory. Cleared automatically on vault lock.
+        </p>
+</section>
+<!-- 3. HISTORY ITEMS LIST -->
+<div class="space-y-space-xs" role="list">
+<!-- Item 1: Password -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                Veft<span class="text-secondary font-bold">1</span>IUb<span class="text-secondary font-bold">7</span><span class="text-secondary font-bold">9</span>UNbp
+              </div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:58 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">PASSWORD</span>
+</div>
+</div>
+<button aria-label="Copy password" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+<!-- Item 2: Username -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                cussed-diver
+              </div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:58 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">USERNAME</span>
+</div>
+</div>
+<button aria-label="Copy username" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+<!-- Item 3: Passphrase -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                Extinct<span class="text-primary-container font-bold">-</span>Sinuous<span class="text-secondary font-bold">4</span><span class="text-primary-container font-bold">-</span>Easter
+              </div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:58 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">PASSPHRASE</span>
+</div>
+</div>
+<button aria-label="Copy passphrase" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+<!-- Item 4: Password -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                nUXY<span class="text-secondary font-bold">6</span>FyJFPnps<span class="text-secondary font-bold">6</span><span class="text-primary-container font-bold">!</span><span class="text-primary-container font-bold">#</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:56 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">PASSWORD</span>
+</div>
+</div>
+<button aria-label="Copy password" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+<!-- Item 5: Passphrase -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                Anatomist<span class="text-primary-container font-bold">-</span>Activator<span class="text-primary-container font-bold">-</span>Subpanel<span class="text-secondary font-bold">2</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:55 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">PASSPHRASE</span>
+</div>
+</div>
+<button aria-label="Copy passphrase" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+<!-- Item 6: Password -->
+<article class="bg-surface-container border border-surface-variant hover:border-outline rounded-xl p-space-sm transition-colors duration-75 group" role="listitem">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface tracking-wide truncate">
+                kP<span class="text-secondary font-bold">8</span><span class="text-primary-container font-bold">#</span>vL<span class="text-secondary font-bold">9</span><span class="text-primary-container font-bold">$</span>xQ<span class="text-secondary font-bold">2</span>mZ<span class="text-secondary font-bold">7</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Oct 18, 2026, 10:51 AM</span>
+<span class="text-surface-variant font-bold">•</span>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container-high px-1 rounded text-[9px] uppercase tracking-wider">PASSWORD</span>
+</div>
+</div>
+<button aria-label="Copy password" class="p-1.5 rounded-lg text-outline group-hover:text-secondary hover:bg-surface-container-high transition-all duration-75 active:scale-95 flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</article>
+</div>
+</main>
+<!-- 4. STICKY BOTTOM ACTION BAR (Task-focused footer: Replaces global shell) -->
+<footer class="sticky bottom-0 left-0 w-full z-20 bg-surface-container-lowest/95 backdrop-blur-md border-t border-surface-variant p-space-md flex justify-between items-center flex-shrink-0">
+<button class="flex items-center gap-1.5 bg-error-container/20 text-error hover:bg-error-container/30 border border-error/30 px-space-md py-1.5 rounded-lg font-headline-sm text-body-sm font-semibold transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+<span>Clear History</span>
+</button>
+<button class="font-body-md text-body-sm text-outline hover:text-on-surface px-space-md py-1.5 rounded-lg transition-all duration-75 active:scale-95 font-medium">
+        Close
+      </button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard - Edit Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-primary": "#640039",
+            "primary": "#ffb0cd",
+            "on-secondary": "#003640",
+            "on-error": "#690005",
+            "on-tertiary-fixed": "#2a1700",
+            "surface-dim": "#0a1519",
+            "on-tertiary-container": "#3e2400",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed-variant": "#653e00",
+            "tertiary": "#ffb95f",
+            "primary-fixed": "#ffd9e4",
+            "surface-container-lowest": "#061014",
+            "on-primary-fixed": "#3e0021",
+            "inverse-surface": "#d9e4eb",
+            "surface-variant": "#2c363b",
+            "on-surface-variant": "#e1bdc8",
+            "surface-container": "#172126",
+            "surface-container-highest": "#2c363b",
+            "on-primary-fixed-variant": "#8c0053",
+            "surface-bright": "#303b40",
+            "on-background": "#d9e4eb",
+            "error-container": "#93000a",
+            "secondary-fixed": "#acedff",
+            "tertiary-container": "#ca8100",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb0cd",
+            "outline-variant": "#5a3f49",
+            "on-secondary-fixed-variant": "#004e5c",
+            "tertiary-fixed": "#ffddb8",
+            "surface-tint": "#ffb0cd",
+            "background": "#0a1519",
+            "surface-container-low": "#131d22",
+            "inverse-primary": "#b7006e",
+            "surface-container-high": "#212b30",
+            "on-surface": "#d9e4eb",
+            "primary-container": "#e4048a",
+            "on-secondary-fixed": "#001f26",
+            "secondary-container": "#03b5d3",
+            "surface": "#0a1519",
+            "secondary": "#4cd7f6",
+            "tertiary-fixed-dim": "#ffb95f",
+            "inverse-on-surface": "#273237",
+            "outline": "#a98893",
+            "on-tertiary": "#472a00",
+            "on-secondary-container": "#00424e",
+            "on-primary-container": "#130007"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "label-md": ["JetBrains Mono"],
+            "body-sm": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 16px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Custom scrollbar to keep layout razor-dense and cybernetic */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F1419;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3D484E;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #879298;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#05080A] text-on-surface min-h-screen flex items-center justify-center p-0 md:p-4 font-body-md antialiased selection:bg-primary-container selection:text-white">
+<!-- Chromium Extension Fixed Canvas (384px x 600px) -->
+<main class="w-[384px] h-[600px] max-w-[384px] max-h-[600px] bg-[#0F1419] text-on-surface flex flex-col font-body-md overflow-hidden border border-[#3D484E] rounded-xl shadow-[0_0_32px_rgba(0,0,0,0.85)] relative">
+<!-- 1. TOP APP BAR (Sticky header, zero top/bottom border line as per Semantic Shell logic) -->
+<header class="sticky top-0 w-full bg-[#0F1419]/95 backdrop-blur-md px-3.5 py-2.5 flex items-center justify-between z-30 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<button class="text-outline hover:text-on-surface font-body-sm text-[12px] font-medium transition-colors duration-75 cursor-pointer focus:outline-none flex items-center gap-1" type="button">
+        Cancel
+      </button>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse shadow-[0_0_8px_#06B6D4]"></span>
+<h1 class="font-headline-sm text-sm font-bold tracking-tight text-on-surface">Edit Login</h1>
+</div>
+<button class="bg-primary-container text-white font-headline-sm text-[12px] font-semibold px-4 py-1.5 rounded-lg shadow-[0_0_12px_rgba(228,4,138,0.35)] hover:shadow-[0_0_16px_rgba(228,4,138,0.55)] active:scale-[0.97] transition-all duration-75 cursor-pointer border border-white/20" type="button">
+        Save
+      </button>
+</header>
+<!-- Scrollable Form Body -->
+<div class="px-3 py-3 space-y-2.5 overflow-y-auto max-h-[550px] overscroll-contain flex-1">
+<!-- 2. ITEM IDENTITY CARD -->
+<section class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2.5 relative shadow-sm">
+<div class="space-y-1">
+<label class="block font-body-sm text-[11px] text-outline font-medium tracking-wide">Item Name</label>
+<div class="bg-[#0F1419] border border-[#3D484E] focus-within:border-[#06B6D4] focus-within:ring-1 focus-within:ring-[#06B6D4]/30 rounded-lg px-2.5 py-1.5 flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[#06B6D4]" data-icon="dns">dns</span>
+<input class="bg-transparent border-0 p-0 text-on-surface font-headline-sm text-xs font-semibold w-full focus:ring-0 focus:outline-none" type="text" value="Checkmk Server"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block font-body-sm text-[11px] text-outline font-medium tracking-wide">Vault Pod</label>
+<button class="w-full bg-[#0F1419] border border-[#3D484E] hover:border-slate-500 rounded-lg px-2.5 py-1.5 text-on-surface font-body-sm text-xs flex justify-between items-center cursor-pointer transition-colors focus:outline-none" type="button">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[15px]" data-icon="folder_shield">arrow_forward_ios</span>
+<span class="text-slate-200">Infrastructure Pod</span>
+</span>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+<!-- 3. CREDENTIALS CARD -->
+<section class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-3 relative shadow-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[13px]" data-icon="key">key</span>
+            CREDENTIALS
+          </h2>
+<span class="font-label-sm text-[9px] bg-secondary-container/10 text-secondary border border-secondary/30 px-1.5 py-0.5 rounded">
+            AES-256-GCM
+          </span>
+</div>
+<!-- Username -->
+<div class="space-y-1">
+<label class="block font-body-sm text-[11px] text-outline font-medium">Username</label>
+<div class="bg-[#0F1419] border border-[#3D484E] focus-within:border-[#06B6D4] rounded-lg px-2.5 py-1.5 flex justify-between items-center group transition-all">
+<input class="bg-transparent border-0 p-0 text-on-surface font-label-md text-xs w-full focus:ring-0 focus:outline-none" type="text" value="cmkadmin"/>
+<button class="text-outline hover:text-secondary opacity-70 group-hover:opacity-100 transition-opacity p-0.5 ml-1" title="Copy Username" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-1">
+<label class="block font-body-sm text-[11px] text-outline font-medium">Password</label>
+<div class="bg-[#0F1419] rounded-lg border border-[#3D484E] focus-within:border-[#06B6D4] p-2 flex flex-col gap-1.5 transition-all">
+<div class="flex items-center justify-between">
+<input class="bg-transparent border-0 p-0 text-on-surface font-label-md text-xs tracking-widest flex-1 focus:ring-0 focus:outline-none" id="pwdField" type="password" value="kX9$vP2#nQ9_zYw7"/>
+<!-- Eye beside Action rule -->
+<div class="flex items-center gap-1 ml-2">
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors" id="togglePwd" title="Reveal Password" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded text-[#06B6D4] hover:bg-secondary-container/15 hover:shadow-[0_0_8px_rgba(6,182,212,0.3)] transition-all" title="Generate Cryptographic Password" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+</button>
+</div>
+</div>
+<!-- Under-stroke Entropy bar -->
+<div class="pt-1 border-t border-[#3D484E]/50">
+<div class="w-full h-[2px] bg-[#3D484E] rounded-full overflow-hidden">
+<div class="h-full bg-[#06B6D4] w-[92%] shadow-[0_0_6px_#06B6D4]"></div>
+</div>
+<p class="font-label-sm text-[9px] text-[#06B6D4] mt-1 tracking-tight flex items-center justify-between">
+<span>104 bits · cryptographically strong</span>
+<span class="text-slate-400">0 breaches</span>
+</p>
+</div>
+</div>
+</div>
+<!-- TOTP Seed -->
+<div class="space-y-1">
+<label class="block font-body-sm text-[11px] text-outline font-medium">Authenticator Key (TOTP Seed)</label>
+<div class="bg-[#0F1419] border border-[#3D484E] focus-within:border-[#06B6D4] rounded-lg px-2.5 py-1.5 flex items-center justify-between transition-all">
+<input class="bg-transparent border-0 p-0 font-label-md text-[#06B6D4] text-xs tracking-wider uppercase w-full focus:ring-0 focus:outline-none" type="text" value="JBSWY3DPEHPK3PXP"/>
+<button class="text-outline hover:text-on-surface p-0.5 ml-1 transition-colors" title="Scan QR Code" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4. AUTOFILL & NETWORK CARD -->
+<section class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2.5 relative shadow-sm">
+<h2 class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[13px]" data-icon="travel_explore">travel_explore</span>
+          AUTOFILL &amp; NETWORK
+        </h2>
+<!-- URI Field -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="font-body-sm text-[11px] text-outline font-medium">URI 1</label>
+<span class="font-label-sm text-[9px] text-tertiary font-mono">LAN HTTP</span>
+</div>
+<div class="bg-[#0F1419] border border-[#3D484E] focus-within:border-[#06B6D4] rounded-lg px-2.5 py-1.5 flex items-center transition-all">
+<span class="material-symbols-outlined text-outline text-[14px] mr-1.5" data-icon="link">link</span>
+<input class="bg-transparent border-0 p-0 text-on-surface font-label-md text-xs w-full focus:ring-0 focus:outline-none" type="text" value="http://192.168.1.73:5000"/>
+</div>
+<!-- Match Rule Selector -->
+<button class="w-full bg-[#0F1419] text-xs text-slate-300 py-1.5 px-2.5 rounded-lg border border-[#3D484E] hover:border-slate-500 flex justify-between items-center cursor-pointer transition-colors" type="button">
+<span class="font-body-sm text-[11px] text-slate-300 flex items-center gap-1">
+<span class="text-outline">Match detection:</span> Host and Port
+            </span>
+<span class="material-symbols-outlined text-outline text-[13px]" data-icon="arrow_drop_down">arrow_drop_down</span>
+</button>
+<!-- Amber Warning Pill -->
+<div class="bg-[#F59E0B]/10 border border-[#F59E0B]/30 rounded-md p-2 flex items-start gap-1.5 mt-1.5">
+<span class="material-symbols-outlined text-[#F59E0B] text-[15px] shrink-0 mt-0.5" data-icon="warning">warning</span>
+<div class="font-label-sm text-[11px] leading-snug text-[#F59E0B]">
+<span class="font-bold">HTTP LAN (RFC 1918 Private Net)</span>
+<p class="text-tertiary-fixed text-[10px] opacity-90 mt-0.5 font-body-sm">
+                Unencrypted transit. Autofill will warn if external host masquerades.
+              </p>
+</div>
+</div>
+</div>
+<button class="text-[#06B6D4] hover:text-[#4cd7f6] font-body-sm text-xs font-medium flex items-center gap-1 cursor-pointer pt-0.5 transition-colors group" type="button">
+<span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform" data-icon="add_circle">add_circle</span>
+          + Add URI
+        </button>
+</section>
+<!-- 5. CUSTOM FIELDS CARD -->
+<section class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2 relative shadow-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[13px]" data-icon="schema">schema</span>
+            CUSTOM FIELDS
+          </h2>
+<span class="font-label-sm text-[9px] text-outline">1 ENCRYPTED</span>
+</div>
+<!-- Field 1 (Hidden Secret) -->
+<div class="bg-[#0F1419] border border-[#3D484E] hover:border-slate-500 rounded-lg p-2.5 flex items-center justify-between transition-colors">
+<div class="flex flex-col">
+<span class="text-slate-400 font-body-sm text-xs font-medium">Cluster Node ID</span>
+<span class="text-[9px] text-outline font-label-sm">Type: Concealed String</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-label-md text-on-surface text-xs tracking-widest mr-1.5">••••••••••</span>
+<button class="p-1 rounded text-outline hover:text-on-surface transition-colors" title="Reveal Field" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span>
+</button>
+<button class="p-1 rounded text-slate-500 hover:text-error transition-colors" title="Delete Field" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="delete_outline">delete_outline</span>
+</button>
+</div>
+</div>
+<button class="text-[#06B6D4] hover:text-[#4cd7f6] font-body-sm text-xs font-medium flex items-center gap-1 cursor-pointer pt-0.5 transition-colors group" type="button">
+<span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform" data-icon="add_circle">add_circle</span>
+          + New Custom Field
+        </button>
+</section>
+<!-- 6. DANGER ZONE FOOTER -->
+<div class="pt-1 pb-2">
+<button class="text-[#EF4444] bg-[#EF4444]/10 hover:bg-[#EF4444]/20 border border-[#EF4444]/30 w-full py-2 rounded-lg font-headline-sm text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="delete_forever">delete_forever</span>
+          Delete Item
+        </button>
+</div>
+</div>
+<!-- Sub-pixel cybernetic bottom bezel indicator -->
+<div class="w-full bg-[#131D22] border-t border-[#3D484E]/70 px-3 py-1 flex items-center justify-between z-20">
+<div class="flex items-center gap-1 text-[9px] font-label-sm text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Zero-Knowledge Master Root
+      </div>
+<span class="text-[9px] font-label-sm text-outline tracking-wider">v3.4.1</span>
+</div>
+</main>
+<!-- Interactive script for password reveal micro-interaction -->
+<script>
+    const toggleBtn = document.getElementById('togglePwd');
+    const pwdInput = document.getElementById('pwdField');
+    if (toggleBtn && pwdInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = pwdInput.type === 'password';
+        pwdInput.type = isPassword ? 'text' : 'password';
+        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+        if (iconSpan) {
+          iconSpan.textContent = isPassword ? 'visibility_off' : 'visibility';
+        }
+      });
+    }
+  </script>
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=384, height=600, initial-scale=1.0, user-scalable=no" name="viewport"/>
+<title>ShellGuard Vault - Quick Lock</title>
+<!-- Material Symbols & Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-high": "#212b30",
+          "error": "#ffb4ab",
+          "tertiary-fixed-dim": "#ffb95f",
+          "secondary": "#4cd7f6",
+          "surface-dim": "#0a1519",
+          "primary-container": "#e4048a",
+          "error-container": "#93000a",
+          "tertiary-fixed": "#ffddb8",
+          "surface-variant": "#2c363b",
+          "surface-container-lowest": "#061014",
+          "on-secondary-container": "#00424e",
+          "tertiary": "#ffb95f",
+          "on-secondary-fixed": "#001f26",
+          "on-secondary": "#003640",
+          "inverse-primary": "#b7006e",
+          "secondary-fixed-dim": "#4cd7f6",
+          "on-tertiary-fixed-variant": "#653e00",
+          "surface-container-highest": "#2c363b",
+          "surface-bright": "#303b40",
+          "on-surface": "#d9e4eb",
+          "inverse-on-surface": "#273237",
+          "surface-tint": "#ffb0cd",
+          "on-primary-fixed": "#3e0021",
+          "primary-fixed-dim": "#ffb0cd",
+          "primary-fixed": "#ffd9e4",
+          "background": "#0a1519",
+          "outline-variant": "#5a3f49",
+          "secondary-container": "#03b5d3",
+          "on-tertiary-container": "#3e2400",
+          "on-primary": "#640039",
+          "tertiary-container": "#ca8100",
+          "surface-container": "#172126",
+          "on-background": "#d9e4eb",
+          "surface": "#0a1519",
+          "primary": "#ffb0cd",
+          "on-secondary-fixed-variant": "#004e5c",
+          "on-primary-fixed-variant": "#8c0053",
+          "on-error-container": "#ffdad6",
+          "secondary-fixed": "#acedff",
+          "inverse-surface": "#d9e4eb",
+          "surface-container-low": "#131d22",
+          "on-error": "#690005",
+          "on-tertiary": "#472a00",
+          "outline": "#a98893",
+          "on-tertiary-fixed": "#2a1700",
+          "on-primary-container": "#130007",
+          "on-surface-variant": "#e1bdc8"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "space-xl": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-md": "0.75rem",
+          "margin": "1rem",
+          "space-lg": "1rem",
+          "gutter": "0.75rem"
+        },
+        "fontFamily": {
+          "label-md": ["JetBrains Mono"],
+          "label-lg": ["JetBrains Mono"],
+          "body-lg": ["Hanken Grotesk"],
+          "label-sm": ["JetBrains Mono"],
+          "body-md": ["Hanken Grotesk"],
+          "body-sm": ["Hanken Grotesk"],
+          "headline-md": ["Space Grotesk"],
+          "headline-sm": ["Space Grotesk"],
+          "headline-lg": ["Space Grotesk"]
+        },
+        "fontSize": {
+          "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+          "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+          "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+          "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+          "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+          "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+          "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+          "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+        }
+      }
+    }
+  }
+  </script>
+<style>
+    body {
+      width: 384px;
+      height: 600px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      user-select: none;
+      background-color: #0F1419;
+    }
+    .custom-scroll-none::-webkit-scrollbar {
+      display: none;
+    }
+    .chitin-glow-shield {
+      filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.45)) drop-shadow(0 0 4px rgba(228, 4, 138, 0.35));
+    }
+    .pin-active-glow {
+      box-shadow: 0 0 12px 1px #06B6D4;
+    }
+    .key-button {
+      border: 1px solid #3D484E;
+      background: #171C21;
+      border-radius: 0.75rem;
+      transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .key-button:hover {
+      border-color: #06B6D4;
+      background: #1E252C;
+      box-shadow: 0 0 10px -2px rgba(6, 182, 212, 0.3);
+    }
+    .key-button:active {
+      transform: scale(0.95);
+      background: #131d22;
+    }
+    .biometric-key {
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      background: #171C21;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.18);
+      transition: all 0.12s ease;
+    }
+    .biometric-key:hover {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: #06B6D4;
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.35);
+    }
+    .biometric-key:active {
+      transform: scale(0.95);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased flex flex-col justify-between w-[384px] h-[600px] relative select-none">
+<!-- TOP APP BAR -->
+<header class="w-full px-space-md py-space-sm flex items-center justify-between border-b border-surface-variant/40 bg-surface-container-lowest/85 backdrop-blur z-20 shrink-0">
+<!-- Brand Anchor -->
+<div class="flex items-center gap-1.5">
+<div class="relative flex items-center justify-center w-6 h-6 rounded-lg bg-surface-container border border-outline-variant/60 shadow-[0_0_8px_rgba(6,182,212,0.3)]">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="shield">shield</span>
+<span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-[#06B6D4] ring-1 ring-[#0F1419]"></span>
+</div>
+<span class="font-headline-sm text-[13px] font-bold text-on-surface tracking-tight">ShellGuard</span>
+</div>
+<!-- Security Telemetry Pill -->
+<div class="flex items-center gap-1.5 bg-[#032830] border border-[#06B6D4]/40 px-2 py-0.5 rounded-full shadow-[0_0_8px_-1px_rgba(6,182,212,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="font-label-sm text-[9px] uppercase tracking-widest text-[#4cd7f6] font-semibold">VAULT ENCRYPTED</span>
+</div>
+<!-- Operator Avatar / Lock Key Slot -->
+<div class="w-7 h-7 rounded-full bg-surface-container-high border border-[#3D484E] flex items-center justify-center font-label-md text-[11px] text-on-surface-variant font-bold shadow-inner">
+      LU
+    </div>
+</header>
+<!-- MAIN VIEWPORT: QUICK LOCK & PIN MATRIX -->
+<main class="flex-1 flex flex-col items-center justify-between px-space-md pt-2 pb-1 text-center w-full max-w-[384px]">
+<!-- HERO SHUTTER CONTAINER -->
+<div class="flex flex-col items-center">
+<!-- Bioluminescent Shell Shield Emblem -->
+<div class="relative mt-1 mb-1 flex items-center justify-center">
+<div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant/80 flex items-center justify-center chitin-glow-shield relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-[#E4048A]/20 via-transparent to-[#06B6D4]/30 pointer-events-none"></div>
+<span class="material-symbols-outlined text-3xl text-secondary z-10" data-icon="lock" data-weight="fill">lock</span>
+</div>
+<!-- Pressure Wave Ring -->
+<div class="absolute -inset-1 rounded-2xl border border-secondary/20 pointer-events-none animate-pulse"></div>
+</div>
+<!-- Header Typography -->
+<h1 class="font-headline-md text-[18px] font-bold text-on-surface tracking-tight mt-1">
+        Vault Locked
+      </h1>
+<p class="font-body-sm text-[11px] text-outline max-w-[260px] mt-0.5 leading-tight">
+        Session memory zeroized. Enter 6-digit PIN or authenticate via biometric key.
+      </p>
+</div>
+<!-- 6-DIGIT PIN CODE SLOTS -->
+<div class="flex justify-center items-center gap-3.5 my-2" id="pin-display">
+<!-- Slot 1 (Filled) -->
+<div class="w-4 h-4 rounded-full bg-[#06B6D4] pin-active-glow ring-2 ring-[#06B6D4]/30 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+<!-- Slot 2 (Filled) -->
+<div class="w-4 h-4 rounded-full bg-[#06B6D4] pin-active-glow ring-2 ring-[#06B6D4]/30 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+<!-- Slot 3 (Filled) -->
+<div class="w-4 h-4 rounded-full bg-[#06B6D4] pin-active-glow ring-2 ring-[#06B6D4]/30 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+<!-- Slot 4 (Empty) -->
+<div class="w-4 h-4 rounded-full bg-[#0F1419] border-2 border-[#3D484E] transition-colors duration-150"></div>
+<!-- Slot 5 (Empty) -->
+<div class="w-4 h-4 rounded-full bg-[#0F1419] border-2 border-[#3D484E] transition-colors duration-150"></div>
+<!-- Slot 6 (Empty) -->
+<div class="w-4 h-4 rounded-full bg-[#0F1419] border-2 border-[#3D484E] transition-colors duration-150"></div>
+</div>
+<!-- TACTILE CYBERNETIC 3x4 KEYPAD MATRIX -->
+<div class="w-full max-w-[280px] grid grid-cols-3 gap-2 my-1">
+<!-- Row 1 -->
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">1</span>
+<span class="font-label-sm text-[8px] text-outline font-normal h-2.5"></span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">2</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">ABC</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">3</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">DEF</span>
+</button>
+<!-- Row 2 -->
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">4</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">GHI</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">5</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">JKL</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">6</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">MNO</span>
+</button>
+<!-- Row 3 -->
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">7</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">PQRS</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">8</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">TUV</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">9</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-wider">WXYZ</span>
+</button>
+<!-- Row 4: Biometric / 0 / Backspace -->
+<button class="biometric-key h-11 flex items-center justify-center" title="WebAuthn / Passkey Biometric Unlock" type="button">
+<span class="material-symbols-outlined text-[22px] text-secondary" data-icon="fingerprint">fingerprint</span>
+</button>
+<button class="key-button h-11 flex flex-col items-center justify-center" type="button">
+<span class="font-headline-sm text-base text-on-surface font-bold leading-none">0</span>
+<span class="font-label-sm text-[8px] text-outline font-medium tracking-widest">+</span>
+</button>
+<button class="key-button h-11 flex items-center justify-center text-outline hover:text-on-surface" title="Delete digit" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- ALTERNATIVE RECOVERY / MASTER CREDENTIAL LINK -->
+<div class="my-1">
+<button class="group flex items-center justify-center gap-1 font-label-md text-[11px] text-secondary hover:text-secondary-fixed transition-colors py-1 px-2 rounded-lg hover:bg-secondary-container/10" type="button">
+<span>Unlock with Master Password</span>
+<span class="material-symbols-outlined text-[13px] group-hover:translate-x-0.5 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- VOLATILE MEMORY ZEROIZATION TELEMETRY BAR -->
+<footer class="w-full px-space-md py-2 text-center bg-[#070B0E] border-t border-surface-variant/40 shrink-0">
+<div class="flex items-center justify-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[12px] text-secondary" data-icon="lock_clock">lock_clock</span>
+<span class="font-label-sm text-[8.5px] uppercase tracking-wider text-outline">
+        Zeroized Memory Active • AES-256-GCM Session Key Flushed
+      </span>
+</div>
+</footer>
+<script>
+    // Micro-interactions for tactile feedback
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (navigator.vibrate) {
+          navigator.vibrate(8);
+        }
+      });
+    });
+  </script>
+</body></html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard - Settings Hub</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#8c0053",
+            "error": "#ffb4ab",
+            "surface-dim": "#0a1519",
+            "surface-variant": "#2c363b",
+            "on-tertiary-fixed": "#2a1700",
+            "on-tertiary": "#472a00",
+            "on-surface": "#d9e4eb",
+            "surface": "#0a1519",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-secondary": "#003640",
+            "outline-variant": "#5a3f49",
+            "on-secondary-container": "#00424e",
+            "surface-container-highest": "#2c363b",
+            "surface-container-lowest": "#061014",
+            "on-surface-variant": "#e1bdc8",
+            "secondary-container": "#03b5d3",
+            "on-secondary-fixed-variant": "#004e5c",
+            "tertiary-fixed": "#ffddb8",
+            "on-background": "#d9e4eb",
+            "primary-container": "#e4048a",
+            "tertiary": "#ffb95f",
+            "primary": "#ffb0cd",
+            "primary-fixed-dim": "#ffb0cd",
+            "secondary": "#4cd7f6",
+            "tertiary-container": "#ca8100",
+            "surface-tint": "#ffb0cd",
+            "on-primary-fixed": "#3e0021",
+            "on-primary-container": "#130007",
+            "surface-container": "#172126",
+            "inverse-surface": "#d9e4eb",
+            "surface-bright": "#303b40",
+            "on-secondary-fixed": "#001f26",
+            "error-container": "#93000a",
+            "primary-fixed": "#ffd9e4",
+            "surface-container-low": "#131d22",
+            "background": "#0a1519",
+            "surface-container-high": "#212b30",
+            "secondary-fixed": "#acedff",
+            "on-primary": "#640039",
+            "outline": "#a98893",
+            "inverse-on-surface": "#273237",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-tertiary-container": "#3e2400",
+            "on-error": "#690005",
+            "inverse-primary": "#b7006e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Space Grotesk", "sans-serif"],
+            "body-sm": ["Hanken Grotesk", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "label-lg": ["JetBrains Mono", "monospace"],
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "body-md": ["Hanken Grotesk", "sans-serif"],
+            "body-lg": ["Hanken Grotesk", "sans-serif"],
+            "headline-md": ["Space Grotesk", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "label-lg": ["0.875rem", { "lineHeight": "125rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom scrollbar for cyber vault feel */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F1419;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A343D;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3D484E;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface flex items-center justify-center min-h-screen p-4 antialiased selection:bg-primary-container selection:text-white">
+<!-- Chrome Extension Popup Frame (384px x 600px viewport) -->
+<div class="w-[384px] h-[600px] bg-[#0F1419] rounded-xl border border-[#3D484E] shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col relative overflow-hidden select-none">
+<!-- 1. Top App Bar (Shared Component Anchored) -->
+<header class="bg-[#0F1419]/95 backdrop-blur-md border-b border-[#3D484E] px-space-md py-space-sm flex items-center justify-between shrink-0 z-20 border-t-2 border-t-primary-container">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#06B6D4] shadow-[0_0_8px_#06B6D4] animate-pulse"></span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase font-bold">Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<!-- Detach / Popout button -->
+<button class="text-on-surface-variant hover:text-secondary hover:bg-surface-container-high p-1 rounded-lg transition-all active:scale-[0.98] flex items-center justify-center" title="Pop out into separate window">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+<!-- Operator Pill -->
+<div class="bg-[#1E252C] border border-[#3D484E] text-on-surface px-2 py-0.5 rounded-full flex items-center gap-1 font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+<span>LU</span>
+</div>
+</div>
+</header>
+<!-- 2. Scrollable Body Content -->
+<main class="flex-1 overflow-y-auto px-space-md py-space-sm pb-20 space-y-3">
+<!-- Operator & Active Session Pod -->
+<section class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-[#10B981]"></div>
+<div class="flex items-center justify-between pl-1">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-[13px] font-bold text-white tracking-tight">Lucas (Operator)</span>
+<span class="font-label-sm text-[9px] bg-[#10B981]/15 text-[#10B981] px-1.5 py-0.2 rounded border border-[#10B981]/30">ROOT</span>
+</div>
+<div class="font-label-sm text-[11px] text-[#10B981] flex items-center gap-1 mt-0.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping"></span>
+<span>Synced to Pod 04 (LAN)</span>
+</div>
+</div>
+<button class="border border-[#E4048A]/60 bg-[#E4048A]/10 text-[#E4048A] hover:bg-[#E4048A]/25 px-2.5 py-1 rounded-lg font-label-md text-label-md font-semibold flex items-center gap-1 cursor-pointer transition-all active:scale-[0.98] shadow-[0_0_12px_-3px_rgba(228,4,138,0.3)]">
+<span class="material-symbols-outlined text-[15px]">lock</span>
+<span>Lock</span>
+</button>
+</div>
+</section>
+<!-- Group 1: Security & Encryption -->
+<section>
+<div class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-[#879298] px-1 mb-1 flex items-center justify-between">
+<span>Security &amp; Encryption</span>
+<span class="text-[9px] text-[#06B6D4] font-mono">CHITIN-256</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-[#06B6D4]/10 border border-[#06B6D4]/25 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-[#06B6D4]/60 transition-colors">
+<span class="material-symbols-outlined text-[#06B6D4] text-[18px]">lock</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">Security &amp; Auto-Lock</div>
+<div class="font-label-sm text-[10px] text-slate-400 font-mono truncate">PIN &amp; WebAuthn active • 5 min timeout</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+<!-- Row 2 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-slate-800 border border-slate-700 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-slate-500 transition-colors">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">vpn_key</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">Agentic Access Keys</div>
+<div class="font-body-sm text-[10.5px] text-slate-400 truncate">Zero-knowledge sub-keys for autonomous agents</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+</div>
+</section>
+<!-- Group 2: Autofill & Browser Integration -->
+<section>
+<div class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-[#879298] px-1 mb-1">
+          Autofill &amp; Browser Integration
+        </div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-[#06B6D4]/10 border border-[#06B6D4]/25 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-[#06B6D4]/60 transition-colors">
+<span class="material-symbols-outlined text-[#06B6D4] text-[18px]">flash_on</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">Autofill &amp; Shadow DOM</div>
+<div class="font-label-sm text-[10px] text-slate-400 font-mono truncate">Closed Shadow DOM • In-field glyph enabled</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+<!-- Row 2 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-slate-800 border border-slate-700 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-slate-500 transition-colors">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">link</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">URI Match Heuristics</div>
+<div class="font-label-sm text-[10px] text-slate-400 font-mono truncate">Default rule: Host &amp; Port</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+</div>
+</section>
+<!-- Group 3: Reef Ecosystem & Server -->
+<section>
+<div class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-[#879298] px-1 mb-1">
+          Reef Ecosystem &amp; Server
+        </div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-slate-800 border border-slate-700 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-slate-500 transition-colors">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">dns</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">Server Connection</div>
+<div class="font-label-sm text-[10px] text-slate-400 font-mono truncate">http://192.168.1.50:8080 (LAN)</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+<!-- Row 2 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-slate-800 border border-slate-700 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-slate-500 transition-colors">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">sync</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">Sync Vault Now</div>
+<div class="font-label-sm text-[10px] text-slate-400 font-mono truncate">Last synced: 2 mins ago</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+</div>
+</section>
+<!-- Group 4: About & System -->
+<section>
+<div class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-[#879298] px-1 mb-1">
+          About &amp; System
+        </div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1 -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C] cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-slate-800 border border-slate-700 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-slate-500 transition-colors">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">info</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-white group-hover:text-[#4cd7f6] transition-colors">About &amp; Open Source</div>
+<div class="font-label-sm text-[10px] text-[#06B6D4] font-mono truncate">v0.4.1-alpha • Zero-Knowledge Chromium MV3</div>
+</div>
+</div>
+<span class="text-slate-500 group-hover:text-slate-300 transition-colors text-base font-mono pl-1">›</span>
+</div>
+<!-- Row 2 (Destructive Zeroize) -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#EF4444]/10 cursor-pointer transition-colors group">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="bg-[#EF4444]/10 border border-[#EF4444]/30 p-1.5 rounded-lg flex items-center justify-center shrink-0 group-hover:border-[#EF4444]/60 transition-colors">
+<span class="material-symbols-outlined text-[#EF4444] text-[18px]">logout</span>
+</div>
+<div class="truncate">
+<div class="font-body-md text-[13px] font-medium text-[#EF4444]">Zeroize &amp; Log Out</div>
+<div class="font-body-sm text-[10px] text-red-400/80 truncate">Instantly purge decrypted memory and lock</div>
+</div>
+</div>
+<span class="text-red-400/50 group-hover:text-[#EF4444] transition-colors text-base font-mono pl-1">›</span>
+</div>
+</div>
+</section>
+<!-- Persistent Entropy Telemetry Ribbon Footer -->
+<div class="pt-1 pb-1">
+<div class="flex items-center justify-between font-label-sm text-[9px] text-[#879298] px-1 mb-1">
+<span>SECURE HARDWARE ENCLAVE</span>
+<span class="text-[#10B981]">TPM 2.0 ATTESTED</span>
+</div>
+<div class="w-full h-[2px] bg-gradient-to-r from-[#06B6D4] via-[#E4048A] to-[#10B981] opacity-60 rounded-full"></div>
+</div>
+</main>
+<!-- 3. BottomNavBar (Shared Component Blueprint Anchored) -->
+<!-- Destination count: 4 | Labels: Vault, Generator, Send, Settings -->
+<!-- Active State Logic: 'Settings' is active -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs border-t border-outline-variant bg-[#0F1419]/95 backdrop-blur-md">
+<!-- Vault (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-secondary hover:bg-surface-container active:scale-[0.98] transition-all duration-75 group w-16">
+<span class="material-symbols-outlined text-[20px] mb-0.5 group-hover:scale-105 transition-transform">lock</span>
+<span class="font-label-sm text-[10px]">Vault</span>
+</button>
+<!-- Generator (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-secondary hover:bg-surface-container active:scale-[0.98] transition-all duration-75 group w-16">
+<span class="material-symbols-outlined text-[20px] mb-0.5 group-hover:scale-105 transition-transform">key</span>
+<span class="font-label-sm text-[10px]">Generator</span>
+</button>
+<!-- Send (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-secondary hover:bg-surface-container active:scale-[0.98] transition-all duration-75 group w-16">
+<span class="material-symbols-outlined text-[20px] mb-0.5 group-hover:scale-105 transition-transform">send</span>
+<span class="font-label-sm text-[10px]">Send</span>
+</button>
+<!-- Settings (Active) -->
+<button class="flex flex-col items-center justify-center text-secondary py-space-xs px-space-sm rounded-lg bg-surface-container-high relative active:scale-[0.98] transition-all duration-75 w-16 shadow-[0_0_12px_-2px_rgba(6,182,212,0.25)]">
+<span class="material-symbols-outlined text-[20px] mb-0.5 text-[#06B6D4]">settings</span>
+<span class="font-label-sm text-[10px] text-[#06B6D4] font-medium">Settings</span>
+<!-- Active Carapace Glow Indicator Dot -->
+<span class="w-1 h-1 rounded-full bg-[#06B6D4] absolute bottom-1 shadow-[0_0_6px_#06B6D4]"></span>
+</button>
+</nav>
+</div>
+</body></html>
