@@ -36,7 +36,7 @@ Zero-knowledge Chrome extension (MV3) for the self-hosted ShellGuard ecosystem. 
    - Rule: Commits must follow Conventional Commits with `User:` (intent/spec) and `AI:` (implementation/tests) trailers.
    - Violation: Commits lacking dual-attribution trailers or raw force pushes (`git push --force`).
    - Reason: Guarantees auditability between human architectural intent and agent execution.
-- **Carve-out (Cleartext LAN):** HTTP permitted strictly on RFC 1918 / Tailscale LAN endpoints with mandatory amber UI warning pill. WAN HTTP is forbidden.
+- **Carve-out (Transport Sovereignty & Homelab TLS):** Cleartext HTTP permitted strictly on RFC 1918 / Tailscale LAN endpoints with mandatory amber UI warning pill. WAN HTTP is forbidden. Self-signed HTTPS certificates supported via explicit user consent toggle ("Trust self-signed certificates") paired with browser origin exception whitelisting.
 
 ## 3. Project Patterns
 - **Reef Modernist UI:** Flat carapace (`elevation: 0`, 1px `#3D484E` borders, 12px radii, `#161B22` fill, `#E4048A` accent). Eye-beside-Copy layout (unmask toggle directly LEFT of Copy). Zero native browser dialogs (`alert`, `confirm`).
@@ -58,6 +58,7 @@ Zero-knowledge Chrome extension (MV3) for the self-hosted ShellGuard ecosystem. 
 ## 5. Project Skills
 > **Skills on Demand:** Skills live in `.agents/skills/`. Use `/learn` to codify recurring patterns or workflows into formal skills as the codebase develops.
 
+- `project`: Reverse-build execution harness, sliding release timeline, domain oracles (`.agents/skills/project/`)
 - `doc-automation`: SSoT doc drift audit & release sync (`scripts/audit_docs_drift.py`)
 - `git-advanced-workflows`: Conventional Commits, two-layer attribution, rebase, autosquash
 - `zero-knowledge-crypto`: WebCrypto HKDF, AES-GCM-256 AAD binding, non-extractable keys
@@ -70,7 +71,7 @@ Zero-knowledge Chrome extension (MV3) for the self-hosted ShellGuard ecosystem. 
 - `changelog-release-automation`: SemVer calculation, Keep a Changelog sync, Web Store packaging
 
 ## References (in reading order)
-1. **Spec:** `.agents/brain/project/` (entry: `meta-prompt.md` — the machine roadmap)
+1. **Spec:** `.agents/skills/project/` (entry: `meta-prompt-antigravity.md` — the machine roadmap)
 2. **Roadmap:** `ROADMAP.md` (human-readable face of the machine roadmap)
 3. **Rules:** `.agents/rules/`
 4. **Skills:** `.agents/skills/`
