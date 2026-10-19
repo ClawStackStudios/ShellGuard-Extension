@@ -33,3 +33,19 @@ export const MessageEnvelopeSchema = z.object({
 - **Amber Warning Pill:** When connected to an HTTP LAN server, the UI must display:
   `⚠️ HTTP LAN (Unencrypted Transport — Homelab Only)`
 - **WAN Prohibition:** Cleartext HTTP over public WAN domains is blocked unconditionally.
+
+---
+
+## §3. Transport Sovereignty & Self-Signed HTTPS Consent
+
+Homelab operators frequently provision self-signed TLS certificates for internal services:
+- **The Checkbox Invariant:** The connection configuration UI exposes:
+  `[ ] Trust Self-Signed Certificates / Homelab HTTPS`
+- **Browser Socket Exception Workflow:**
+  Because Chromium MV3 Service Workers cannot bypass SSL verification flags at the socket layer, the extension provides an "Authorize in Browser" button:
+  1. Opens `https://<server>:port/api/health` in a new tab.
+  2. Guides the user to click "Advanced -> Proceed to site (unsafe)".
+  3. Chromium whitelists the certificate for the browser session.
+  4. Subsequent extension service worker `fetch()` calls succeed seamlessly.
+- **Amber UI Warning:** Operates with the mandatory amber warning pill whenever active:
+  `⚠️ Unverified Transport (Self-Signed / Homelab TLS)`
