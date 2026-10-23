@@ -1,339 +1,324 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShellGuard Extension - Autofill & Shadow DOM Settings</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard - Account &amp; Security Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: "class",
       theme: {
         extend: {
           colors: {
-            abyssal: '#0F1419',
-            surface: {
-              card: '#171C21',
-              cardLow: '#12161A',
-              border: '#3D484E',
-              divider: '#2A343D'
-            },
-            lobster: '#E4048A',
-            claw: '#06B6D4',
-            tacticalAmber: '#F59E0B',
-            tacticalEmerald: '#10B981'
+            "surface-container-highest": "#2c363b",
+            "on-surface": "#d9e4eb",
+            "on-secondary-fixed-variant": "#004e5c",
+            "tertiary-fixed-dim": "#ffb95f",
+            "background": "#0a1519",
+            "tertiary-fixed": "#ffddb8",
+            "outline": "#a98893",
+            "surface-container": "#172126",
+            "primary-container": "#e4048a",
+            "on-primary": "#640039",
+            "on-secondary": "#003640",
+            "surface-bright": "#303b40",
+            "secondary-fixed": "#acedff",
+            "outline-variant": "#5a3f49",
+            "on-secondary-fixed": "#001f26",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary-fixed-variant": "#8c0053",
+            "primary-fixed": "#ffd9e4",
+            "on-surface-variant": "#e1bdc8",
+            "secondary-container": "#03b5d3",
+            "tertiary-container": "#ca8100",
+            "surface-dim": "#0a1519",
+            "tertiary": "#ffb95f",
+            "secondary": "#4cd7f6",
+            "primary-fixed-dim": "#ffb0cd",
+            "inverse-primary": "#b7006e",
+            "inverse-on-surface": "#273237",
+            "surface-container-high": "#212b30",
+            "on-error-container": "#ffdad6",
+            "on-tertiary": "#472a00",
+            "on-primary-container": "#130007",
+            "primary": "#ffb0cd",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-error": "#690005",
+            "surface": "#0a1519",
+            "on-tertiary-container": "#3e2400",
+            "secondary-fixed-dim": "#4cd7f6",
+            "error-container": "#93000a",
+            "on-background": "#d9e4eb",
+            "inverse-surface": "#d9e4eb",
+            "surface-tint": "#ffb0cd",
+            "surface-container-lowest": "#061014",
+            "on-primary-fixed": "#3e0021",
+            "error": "#ffb4ab",
+            "surface-container-low": "#131d22",
+            "surface-variant": "#2c363b",
+            "on-secondary-container": "#00424e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem"
           },
           fontFamily: {
-            space: ['"Space Grotesk"', 'sans-serif'],
-            hanken: ['"Hanken Grotesk"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "body-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.01em", fontWeight: "400" }],
+            "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-sm": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.06em", fontWeight: "600" }],
+            "label-lg": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.02em", fontWeight: "500" }],
+            "body-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.005em", fontWeight: "400" }],
+            "headline-md": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-lg": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0em", fontWeight: "400" }]
           }
         }
       }
-    }
+    };
   </script>
-  <style>
-    /* Custom scrollbar styling for compact extension popup */
+<style>
+    /* Custom scrollbar for dense extension popup view */
     ::-webkit-scrollbar {
-      width: 5px;
+      width: 4px;
     }
     ::-webkit-scrollbar-track {
       background: #0F1419;
     }
     ::-webkit-scrollbar-thumb {
       background: #2A343D;
-      border-radius: 9999px;
+      border-radius: 2px;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: #3D484E;
     }
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-    }
-    .material-symbols-outlined.outlined-glyph {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
     }
   </style>
 </head>
-<body class="bg-[#060A0D] min-h-screen flex items-center justify-center p-0 m-0 font-hanken text-slate-200 antialiased selection:bg-lobster/30 selection:text-lobster">
-
-  <!-- Popup Shell Container: Fixed 384px x 600px Chrome Extension Frame -->
-  <div class="w-[384px] h-[600px] max-w-[384px] max-h-[600px] bg-abyssal border border-surface-border/80 rounded-2xl flex flex-col overflow-hidden shadow-2xl relative shadow-black/90">
-
-    <!-- Top Glow Line (Reef Accent) -->
-    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-lobster via-claw to-lobster z-30 opacity-90"></div>
-
-    <!-- 1. TOP APP BAR (Sticky header) -->
-    <header class="sticky top-0 z-20 bg-abyssal/95 backdrop-blur-md border-b border-surface-border px-3.5 py-3 flex items-center justify-between shrink-0">
-      <div class="flex items-center gap-2.5">
-        <button class="w-7 h-7 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-surface-card border border-transparent hover:border-surface-border transition-all active:scale-95" title="Back to Settings Hub">
-          <span class="material-symbols-outlined outlined-glyph text-[18px]">arrow_back</span>
-        </button>
-        <h1 class="font-space font-bold text-white text-[15px] tracking-tight leading-none flex items-center gap-1.5">
-          <span>Autofill & Shadow DOM</span>
-        </h1>
-      </div>
-
-      <div class="flex items-center gap-1.5">
-        <span class="flex items-center gap-1 text-[10px] font-mono font-medium text-claw bg-claw/15 border border-claw/40 px-2 py-0.5 rounded-full tracking-wide shadow-[0_0_10px_rgba(6,182,212,0.15)]">
-          <span class="w-1.5 h-1.5 rounded-full bg-claw animate-pulse"></span>
-          ISOLATED
-        </span>
-      </div>
-    </header>
-
-    <!-- 2. SCROLLABLE BODY -->
-    <main class="flex-1 overflow-y-auto px-3 py-3 space-y-3.5 pb-8">
-
-      <!-- SECTION 1: IN-PAGE SHADOW DOM INJECTION -->
-      <section>
-        <div class="flex items-center justify-between px-1 mb-1.5">
-          <h2 class="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-sm bg-claw/80"></span>
-            In-Page Shadow DOM Injection
-          </h2>
-          <span class="text-[9px] font-mono text-slate-500">v4.2 PROT</span>
-        </div>
-
-        <div class="bg-surface-card border border-surface-border rounded-xl divide-y divide-surface-divider shadow-sm">
-          <!-- Row 1: Closed Shadow DOM Overlay -->
-          <div class="p-3 flex items-center justify-between gap-2.5 hover:bg-surface-cardLow/40 transition-colors">
-            <div class="flex items-start gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-claw/10 border border-claw/30 flex items-center justify-center text-claw shrink-0 mt-0.5 shadow-[0_0_8px_rgba(6,182,212,0.15)]">
-                <span class="material-symbols-outlined text-[17px]">security</span>
-              </div>
-              <div class="space-y-0.5">
-                <div class="text-[13px] text-white font-medium leading-snug">Closed Shadow DOM Overlay</div>
-                <div class="text-[11px] text-claw font-mono leading-tight flex items-center gap-1">
-                  <code>attachShadow({ mode: "closed" })</code>
-                </div>
-                <div class="text-[10px] text-slate-400 leading-tight pt-0.5">Impervious to page JavaScript and XSS exfiltration</div>
-              </div>
-            </div>
-            <!-- Toggle ON -->
-            <button class="relative w-9 h-5 bg-claw/30 border border-claw/60 rounded-full transition-colors shrink-0 cursor-pointer focus:outline-none focus:ring-1 focus:ring-claw/60">
-              <span class="absolute top-[2px] right-[2px] w-3.5 h-3.5 bg-claw rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-transform"></span>
-            </button>
-          </div>
-
-          <!-- Row 2: In-Field Shell Glyphs -->
-          <div class="p-3 flex items-center justify-between gap-2.5 hover:bg-surface-cardLow/40 transition-colors">
-            <div class="flex items-start gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-slate-800/80 border border-surface-border flex items-center justify-center text-slate-300 shrink-0 mt-0.5">
-                <!-- SVG Carapace Shell Icon -->
-                <svg class="w-4 h-4 text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a9 9 0 0 1 9 9v1a9 9 0 0 1-9 9 9 9 0 0 1-9-9v-1a9 9 0 0 1 9-9z"></path>
-                  <path d="M12 2v20"></path>
-                  <path d="M12 7c3 0 6 2 6 5"></path>
-                  <path d="M12 12c-3 0-6 2-6 5"></path>
-                </svg>
-              </div>
-              <div class="space-y-0.5">
-                <div class="text-[13px] text-white font-medium leading-snug">In-Field Carapace Glyphs</div>
-                <div class="text-[11px] text-slate-400 leading-tight">Bioluminescent indicator inside detected input fields</div>
-              </div>
-            </div>
-            <!-- Toggle ON -->
-            <button class="relative w-9 h-5 bg-claw/30 border border-claw/60 rounded-full transition-colors shrink-0 cursor-pointer focus:outline-none">
-              <span class="absolute top-[2px] right-[2px] w-3.5 h-3.5 bg-claw rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-transform"></span>
-            </button>
-          </div>
-
-          <!-- Row 3: Developer & Agent Keys -->
-          <div class="p-3 flex items-center justify-between gap-2.5 hover:bg-surface-cardLow/40 transition-colors">
-            <div class="flex items-start gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-slate-800/80 border border-surface-border flex items-center justify-center text-slate-300 shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-[17px]">terminal</span>
-              </div>
-              <div class="space-y-0.5">
-                <div class="text-[13px] text-white font-medium leading-snug flex items-center gap-1.5">
-                  <span>Suggest SSH & Agent Keys</span>
-                  <span class="text-[10px] font-mono text-lobster bg-lobster/15 border border-lobster/30 px-1 rounded">lb-</span>
-                </div>
-                <div class="text-[11px] text-slate-400 leading-tight">Offer agentic sub-keys on terminal & dev auth prompts</div>
-              </div>
-            </div>
-            <!-- Toggle ON -->
-            <button class="relative w-9 h-5 bg-claw/30 border border-claw/60 rounded-full transition-colors shrink-0 cursor-pointer focus:outline-none">
-              <span class="absolute top-[2px] right-[2px] w-3.5 h-3.5 bg-claw rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-transform"></span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 2: KEYBOARD SHORTCUTS (BITWARDEN PARITY) -->
-      <section>
-        <div class="flex items-center justify-between px-1 mb-1.5">
-          <h2 class="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-sm bg-lobster"></span>
-            Keyboard Shortcuts (Bitwarden Parity)
-          </h2>
-          <span class="text-[9px] font-mono text-cyan-400/80">GLOBAL HOTKEYS</span>
-        </div>
-
-        <div class="bg-surface-card border border-surface-border rounded-xl p-3 space-y-2.5 shadow-sm">
-          <!-- Row 1: Fill Active Tab -->
-          <div class="flex items-center justify-between gap-2">
-            <div class="space-y-0.5">
-              <div class="text-[12px] text-white font-medium">Autofill Active Tab</div>
-              <div class="text-[11px] text-slate-400">Direct zero-knowledge injection</div>
-            </div>
-            <div class="flex items-center gap-1 font-mono text-[11px] text-cyan-300 bg-abyssal border border-claw/40 px-2 py-1 rounded-md shadow-inner shadow-black/60">
-              <span class="text-[10px] text-slate-400">Ctrl</span>
-              <span class="text-slate-500">+</span>
-              <span class="text-[10px] text-slate-400">Shift</span>
-              <span class="text-slate-500">+</span>
-              <span class="font-bold text-claw">L</span>
-            </div>
-          </div>
-
-          <div class="h-[1px] bg-surface-divider"></div>
-
-          <!-- Row 2: Cycle Accounts -->
-          <div class="flex items-center justify-between gap-2">
-            <div class="space-y-0.5">
-              <div class="text-[12px] text-white font-medium">Next Matching Login</div>
-              <div class="text-[11px] text-slate-400">Cycle through matched accounts</div>
-            </div>
-            <div class="flex items-center gap-1 font-mono text-[11px] text-slate-300 bg-abyssal border border-surface-border px-2 py-1 rounded-md shadow-inner shadow-black/40">
-              <span class="text-[10px] text-slate-400">Ctrl</span>
-              <span class="text-slate-500">+</span>
-              <span class="text-[10px] text-slate-400">Shift</span>
-              <span class="text-slate-500">+</span>
-              <span class="font-bold text-slate-200">9</span>
-            </div>
-          </div>
-
-          <div class="h-[1px] bg-surface-divider"></div>
-
-          <!-- Row 3: Customize Hotkeys Link -->
-          <div class="pt-0.5 flex items-center justify-between">
-            <a href="#" class="text-[11px] font-medium text-claw hover:text-cyan-300 flex items-center gap-1.5 transition-colors group">
-              <span>Customize Hotkeys in Chrome Settings</span>
-              <span class="material-symbols-outlined text-[13px] group-hover:translate-x-0.5 transition-transform">open_in_new</span>
-            </a>
-            <span class="text-[9px] font-mono text-slate-500">chrome://extensions</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 3: PAGE LOAD & CREDENTIAL PIPELINE -->
-      <section>
-        <div class="flex items-center justify-between px-1 mb-1.5">
-          <h2 class="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-sm bg-tacticalAmber"></span>
-            Page Load & Credential Pipeline
-          </h2>
-          <span class="text-[9px] font-mono text-tacticalAmber">FAIL-CLOSED</span>
-        </div>
-
-        <div class="bg-surface-card border border-surface-border rounded-xl p-3 space-y-3 shadow-sm">
-          <!-- Warning Banner: Fail Closed Rule -->
-          <div class="bg-amber-950/25 border border-tacticalAmber/40 rounded-lg p-2.5 flex items-start gap-2.5 shadow-sm">
-            <span class="material-symbols-outlined text-tacticalAmber text-[18px] shrink-0 mt-0.5">warning</span>
-            <div class="text-[11px] text-tacticalAmber font-mono leading-tight">
-              <span class="font-bold">Fail-Closed Rule:</span> Autofill on page load is disabled by default to prevent cross-origin harvesting & iframe snooping.
-            </div>
-          </div>
-
-          <!-- Row: Autofill on Page Load -->
-          <div class="flex items-center justify-between gap-2.5 pt-0.5">
-            <div class="space-y-0.5">
-              <div class="text-[13px] text-white font-medium">Autofill on Page Load</div>
-              <div class="text-[11px] text-slate-400">Only trigger on verified exact origins</div>
-            </div>
-            <!-- Toggle OFF state -->
-            <button class="relative w-9 h-5 bg-surface-divider border border-surface-border rounded-full transition-colors shrink-0 cursor-pointer focus:outline-none">
-              <span class="absolute top-[2px] left-[2px] w-3.5 h-3.5 bg-slate-400 rounded-full transition-transform"></span>
-            </button>
-          </div>
-
-          <div class="h-[1px] bg-surface-divider"></div>
-
-          <!-- Row: Auto-Copy TOTP on Fill -->
-          <div class="flex items-center justify-between gap-2.5">
-            <div class="space-y-0.5">
-              <div class="text-[13px] text-white font-medium">Auto-Copy TOTP Code on Fill</div>
-              <div class="text-[11px] text-tacticalEmerald leading-tight flex items-center gap-1 font-mono">
-                <span class="w-1.5 h-1.5 rounded-full bg-tacticalEmerald"></span>
-                Copies 6-digit 2FA token to clipboard
-              </div>
-            </div>
-            <!-- Toggle ON state (Emerald theme) -->
-            <button class="relative w-9 h-5 bg-tacticalEmerald/25 border border-tacticalEmerald/60 rounded-full transition-colors shrink-0 cursor-pointer focus:outline-none shadow-[0_0_8px_rgba(16,185,129,0.2)]">
-              <span class="absolute top-[2px] right-[2px] w-3.5 h-3.5 bg-tacticalEmerald rounded-full shadow-[0_0_8px_rgba(16,185,129,0.9)] transition-transform"></span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 4: URI MATCH HEURISTICS & BLOCKLIST -->
-      <section>
-        <div class="flex items-center justify-between px-1 mb-1.5">
-          <h2 class="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-sm bg-slate-400"></span>
-            URI Match Heuristics & Blocklist
-          </h2>
-          <span class="text-[9px] font-mono text-slate-500">CHITIN-RULES</span>
-        </div>
-
-        <div class="bg-surface-card border border-surface-border rounded-xl divide-y divide-surface-divider overflow-hidden shadow-sm">
-          <!-- Row 1: Default URI Match Rule -->
-          <div class="p-3 space-y-1.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[12px] text-white font-medium">Default URI Match Detection</span>
-              <span class="text-[10px] font-mono text-slate-400">PORT AWARE</span>
-            </div>
-
-            <!-- Selector Recessed Pill -->
-            <div class="bg-abyssal border border-surface-border hover:border-claw/50 rounded-lg px-2.5 py-2 text-xs text-slate-200 flex items-center justify-between cursor-pointer transition-colors group">
-              <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-claw text-[15px]">lan</span>
-                <span class="font-mono text-[11px] text-slate-200 font-medium">Host and Port (e.g. 192.168.1.50:8080)</span>
-              </div>
-              <span class="material-symbols-outlined text-slate-400 group-hover:text-claw text-[16px] transition-colors">expand_more</span>
-            </div>
-
-            <div class="text-[11px] text-slate-400 leading-tight flex items-center gap-1 pt-0.5">
-              <span class="material-symbols-outlined text-[13px] text-slate-500">info</span>
-              <span>Prevents credential collision across homelab LAN nodes</span>
-            </div>
-          </div>
-
-          <!-- Row 2: Blocked Domains -->
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-surface-cardLow/50 cursor-pointer transition-colors group">
-            <div class="space-y-0.5">
-              <div class="text-[13px] text-white font-medium group-hover:text-claw transition-colors flex items-center gap-1.5">
-                <span>Blocked Domains</span>
-                <span class="px-1.5 py-0.2 bg-slate-800 text-slate-300 border border-slate-700 rounded text-[10px] font-mono">3 active</span>
-              </div>
-              <div class="text-[11px] text-slate-400 font-mono">3 domains excluded from autofill overlays</div>
-            </div>
-            <div class="flex items-center text-slate-400 group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Bottom Status Bar -->
-    <footer class="h-8 bg-abyssal/95 border-t border-surface-border px-3.5 flex items-center justify-between text-[10px] font-mono text-slate-400 shrink-0 select-none">
-      <div class="flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-tacticalEmerald shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
-        <span>SHADOW_DOM: ACTIVE</span>
-      </div>
-      <div class="text-slate-500">
-        SHELLGUARD v3.4.1
-      </div>
-    </footer>
-
-  </div>
-
-</body>
-</html>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex items-center justify-center min-h-screen p-0 m-0">
+<!-- Fixed Chromium Extension Popup Viewport (384px x 600px) -->
+<div class="relative w-[384px] h-[600px] bg-[#0F1419] border border-[#3D484E] rounded-none shadow-2xl flex flex-col overflow-hidden select-none">
+<!-- TOP APP BAR (Sticky header with Back Navigation and AES Cipher Indicator) -->
+<header class="sticky top-0 z-30 bg-[#0F1419]/95 backdrop-blur border-b border-[#3D484E] px-3 py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="p-1 rounded text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all active:scale-[0.98] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-[16px] text-on-surface tracking-tight font-bold">Autofill &amp; Shadow DOM</h1>
+</div>
+<!-- Cyan Security Shield Badge -->
+<div class="flex items-center gap-1.5 font-label-sm text-[11px] font-mono text-[#06B6D4] bg-[#06B6D4]/10 border border-[#06B6D4]/30 px-2.5 py-1 rounded-full shadow-[0_0_12px_-2px_rgba(6,182,212,0.25)]"><span class="w-1.5 h-1.5 rounded-full bg-[#06B6D4] shadow-[0_0_6px_#06B6D4]"></span><span>ISOLATED</span></div>
+</header>
+<!-- SCROLLABLE CANVAS BODY -->
+<main class="flex-1 overflow-y-auto px-3 py-2.5 space-y-3 pb-8"><!-- SECTION 1: IN-PAGE SHADOW DOM INJECTION -->
+<section>
+<div class="px-1 mb-1.5 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">IN-PAGE SHADOW DOM INJECTION</span>
+<span class="font-label-sm text-[9px] text-[#06B6D4] bg-[#06B6D4]/10 border border-[#06B6D4]/30 px-1.5 py-0.5 rounded font-mono">v4.2 PROT</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] p-1">
+<!-- Row 1: Closed Shadow DOM Overlay -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="w-7 h-7 rounded-full bg-[#06B6D4]/15 border border-[#06B6D4]/30 flex items-center justify-center text-[#06B6D4] shrink-0">
+<span class="material-symbols-outlined text-[17px]" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-on-surface font-medium leading-none">Closed Shadow DOM Overlay</p>
+<p class="font-label-sm text-[10.5px] text-[#06B6D4] font-mono mt-1">attachShadow({ mode: "closed" }) anti-XSS</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-[18px] bg-[#06B6D4]/30 border border-[#06B6D4] rounded-full peer peer-checked:after:translate-x-3.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#06B6D4] after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)]"></div>
+</label>
+</div>
+<!-- Row 2: In-Field Carapace Glyphs -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="w-7 h-7 rounded-full bg-[#06B6D4]/15 border border-[#06B6D4]/30 flex items-center justify-center text-[#06B6D4] shrink-0">
+<span class="material-symbols-outlined text-[16px]" data-icon="adjust">adjust</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-on-surface font-medium leading-none">In-Field Carapace Glyphs</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Bioluminescent indicator inside inputs</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-[18px] bg-[#06B6D4]/30 border border-[#06B6D4] rounded-full peer peer-checked:after:translate-x-3.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#06B6D4] after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)]"></div>
+</label>
+</div>
+<!-- Row 3: Suggest SSH & Agent Keys -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="w-7 h-7 rounded-full bg-[#06B6D4]/15 border border-[#06B6D4]/30 flex items-center justify-center text-[#06B6D4] shrink-0">
+<span class="material-symbols-outlined text-[16px]" data-icon="terminal">terminal</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<p class="font-body-md text-[13px] text-on-surface font-medium leading-none">Suggest SSH &amp; Agent Keys</p>
+<span class="font-label-sm text-[9px] font-mono px-1 py-0.5 rounded bg-[#06B6D4]/15 text-[#06B6D4] border border-[#06B6D4]/30 leading-none">lb-</span>
+</div>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Offer agentic sub-keys on terminal &amp; dev auth prompts</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-[18px] bg-[#06B6D4]/30 border border-[#06B6D4] rounded-full peer peer-checked:after:translate-x-3.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#06B6D4] after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)]"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- SECTION 2: KEYBOARD SHORTCUTS (BITWARDEN PARITY) -->
+<section>
+<div class="px-1 mb-1.5 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">KEYBOARD SHORTCUTS (BITWARDEN PARITY)</span>
+<span class="font-label-sm text-[9px] text-slate-400 font-mono">GLOBAL HOTKEYS</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] p-1.5 space-y-1">
+<!-- Row 1: Autofill Active Tab -->
+<div class="p-2 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors rounded-lg">
+<div>
+<p class="font-body-md text-[12.5px] text-on-surface font-medium">Autofill Active Tab</p>
+<p class="font-body-sm text-[10.5px] text-slate-400">Direct zero-knowledge injection</p>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-[10px] font-mono text-[#06B6D4] bg-[#06B6D4]/10 border border-[#06B6D4]/30 px-2 py-1 rounded shadow-[0_0_8px_rgba(6,182,212,0.15)]">
+<span>Ctrl</span><span>+</span><span>Shift</span><span>+</span><span>L</span>
+</div>
+</div>
+<!-- Row 2: Next Matching Login -->
+<div class="p-2 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors rounded-lg">
+<div>
+<p class="font-body-md text-[12.5px] text-on-surface font-medium">Next Matching Login</p>
+<p class="font-body-sm text-[10.5px] text-slate-400">Cycle through matched accounts</p>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-[10px] font-mono text-[#06B6D4] bg-[#06B6D4]/10 border border-[#06B6D4]/30 px-2 py-1 rounded shadow-[0_0_8px_rgba(6,182,212,0.15)]">
+<span>Ctrl</span><span>+</span><span>Shift</span><span>+</span><span>9</span>
+</div>
+</div>
+<!-- Row 3: Customize Hotkeys Link -->
+<a class="p-2 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors rounded-lg group block" href="#">
+<div>
+<p class="font-body-md text-[12px] text-[#06B6D4] font-medium group-hover:text-white transition-colors flex items-center gap-1">
+<span>Customize Hotkeys in Chrome Settings</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</p>
+<p class="font-label-sm text-[10px] text-slate-500 font-mono">chrome://extensions/shortcuts</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-[#06B6D4] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- SECTION 3: PAGE LOAD & CREDENTIAL PIPELINE -->
+<section>
+<div class="px-1 mb-1.5 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">PAGE LOAD &amp; CREDENTIAL PIPELINE</span>
+<span class="font-label-sm text-[9px] uppercase px-1.5 py-0.5 rounded bg-amber-500/10 text-tertiary-fixed-dim border border-tertiary/30 font-mono">FAIL-CLOSED</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-2.5 space-y-2.5">
+<!-- Amber Fail-Closed Warning Card -->
+<div class="border border-tertiary/30 bg-tertiary-container/10 rounded-lg p-2.5 flex gap-2 items-start">
+<span class="material-symbols-outlined text-[16px] text-tertiary shrink-0 mt-0.5" data-icon="warning">warning</span>
+<p class="font-body-sm text-[11px] text-slate-300 leading-tight">
+<strong class="text-tertiary font-semibold">Fail-Closed Rule:</strong> Autofill on page load is disabled by default to prevent cross-origin harvesting or malicious script spoofing.
+      </p>
+</div>
+<div class="divide-y divide-[#2A343D]">
+<!-- Setting 1: Autofill on Page Load -->
+<div class="py-2 flex items-center justify-between hover:bg-[#1E252C]/40 px-1 rounded transition-colors">
+<div>
+<p class="font-body-md text-[13px] text-on-surface font-medium leading-none">Autofill on Page Load</p>
+<p class="font-body-sm text-[11px] text-error mt-1">Unsafe / Not Recommended</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-[18px] bg-[#2A343D] border border-[#3D484E] rounded-full peer-checked:after:translate-x-3.5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:rounded-full after:h-3.5 after:w-3.5 after:transition-all"></div>
+</label>
+</div>
+<!-- Setting 2: Auto-Copy TOTP on Fill -->
+<div class="py-2 flex items-center justify-between hover:bg-[#1E252C]/40 px-1 rounded transition-colors">
+<div>
+<p class="font-body-md text-[13px] text-on-surface font-medium leading-none">Auto-Copy TOTP on Fill</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Stores 6-digit authenticator code on system clipboard</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-[18px] bg-[#06B6D4]/30 border border-[#06B6D4] rounded-full peer peer-checked:after:translate-x-3.5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#06B6D4] after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)]"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: URI MATCH HEURISTICS -->
+<section>
+<div class="px-1 mb-1.5">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">URI MATCH HEURISTICS</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-3">
+<!-- Row 1: Default URI Match Rule -->
+<div>
+<span class="block font-headline-sm text-[12px] text-on-surface font-medium mb-1.5">Default URI Match Rule</span>
+<div class="bg-[#0F1419] border border-[#3D484E] rounded-lg px-2.5 py-1.5 flex justify-between items-center cursor-pointer hover:border-[#879298] transition-colors">
+<span class="font-label-sm text-[11px] text-on-surface font-mono">Host and Port (192.168.1.50:8080)</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400" data-icon="expand_more">expand_more</span>
+</div>
+<p class="font-body-sm text-[10.5px] text-slate-400 mt-1.5">Matches exact host and port for homelab microservices and LAN pods.</p>
+</div>
+<!-- Row 2: Blocked Domains -->
+<div class="pt-2 border-t border-[#2A343D] flex items-center justify-between">
+<div>
+<p class="font-body-md text-[12.5px] text-on-surface font-medium leading-none">Blocked Domains</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">3 domains excluded from in-page injection</p>
+</div>
+<button class="px-2 py-1 rounded bg-[#0F1419] border border-[#3D484E] text-[#06B6D4] hover:border-[#06B6D4]/60 font-label-sm text-[11px] transition-colors">
+        Manage
+      </button>
+</div>
+</div>
+</section></main>
+<!-- ENTROPY HEX RIBBON TELEMETRY (Persistent 2px bottom visual anchor) -->
+<div class="bg-[#0A1519] border-t border-[#2A343D] px-3 py-1.5 flex items-center justify-between font-label-sm text-[10px] font-mono text-slate-400 select-none shrink-0">
+<div class="flex items-center gap-1.5 text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]"></span>
+<span>SHADOW_DOM : ACTIVE</span>
+</div>
+<span class="text-slate-500">SHELLGUARD v2.4.1</span>
+</div><div class="h-[2px] w-full bg-gradient-to-r from-[#E4048A] via-[#06B6D4] to-[#10B981] opacity-75"></div>
+</div>
+</body></html>

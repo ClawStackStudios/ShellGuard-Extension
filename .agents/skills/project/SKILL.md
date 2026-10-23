@@ -45,7 +45,7 @@ Next stage becomes leading edge (Permanent receipt preserved in Git tag)
 - `meta-prompt-antigravity.md`: Orchestration index, active stage pointer, version table.
 - `stages/`: Shifting directories (`stage-00-genesis`, `stage-01-crypto-bedrock`, etc.).
 - `specs/crypto/`: WebCrypto HKDF derivation, AES-GCM-256 AAD binding, IndexedDB structured cloning, LAN fallback.
-- `specs/autofill/`: Co-presence gate heuristics, closed Shadow DOM mounting, pristine prototype descriptor injection.
-- `specs/ui/`: Reef Modernist tokens, Eye-beside-Copy layout, micro-TOTP SVG pulse ring geometry.
+- `specs/autofill/`: Co-presence gate heuristics, anti-collision offset engine (§4), closed Shadow DOM mounting, pristine prototype descriptor injection.
+- `specs/ui/`: `design-tokens.md` (4 themes, typography scales, 3-tier elevation), `screen-blueprints-core.md` (Screens 1–8: login, dashboard, TOTP, generator, PIN lock), `screen-blueprints-settings.md` (Screens 9–20B: settings hub, security, autofill, notifications, vault ops, pods, import/export, trash shredder, appearance, about).
 - `specs/network/`: Zod envelope wire schemas, delta sync protocols, cleartext RFC 1918 LAN carve-out.
 - `specs/verification/`: Unit test oracles, tamper rejection suites, Cloud CI workflows.

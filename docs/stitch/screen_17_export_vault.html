@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Extension - Vault Operations Hub (Edge-to-Edge Mobile)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-highest": "#2c363b",
+            "on-surface": "#d9e4eb",
+            "on-secondary-fixed-variant": "#004e5c",
+            "tertiary-fixed-dim": "#ffb95f",
+            "background": "#0a1519",
+            "tertiary-fixed": "#ffddb8",
+            "outline": "#a98893",
+            "surface-container": "#172126",
+            "primary-container": "#e4048a",
+            "on-primary": "#640039",
+            "on-secondary": "#003640",
+            "surface-bright": "#303b40",
+            "secondary-fixed": "#acedff",
+            "outline-variant": "#5a3f49",
+            "on-secondary-fixed": "#001f26",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary-fixed-variant": "#8c0053",
+            "primary-fixed": "#ffd9e4",
+            "on-surface-variant": "#e1bdc8",
+            "secondary-container": "#03b5d3",
+            "tertiary-container": "#ca8100",
+            "surface-dim": "#0a1519",
+            "tertiary": "#ffb95f",
+            "secondary": "#4cd7f6",
+            "primary-fixed-dim": "#ffb0cd",
+            "inverse-primary": "#b7006e",
+            "inverse-on-surface": "#273237",
+            "surface-container-high": "#212b30",
+            "on-error-container": "#ffdad6",
+            "on-tertiary": "#472a00",
+            "on-primary-container": "#130007",
+            "primary": "#ffb0cd",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-error": "#690005",
+            "surface": "#0a1519",
+            "on-tertiary-container": "#3e2400",
+            "secondary-fixed-dim": "#4cd7f6",
+            "error-container": "#93000a",
+            "on-background": "#d9e4eb",
+            "inverse-surface": "#d9e4eb",
+            "surface-tint": "#ffb0cd",
+            "surface-container-lowest": "#061014",
+            "on-primary-fixed": "#3e0021",
+            "error": "#ffb4ab",
+            "surface-container-low": "#131d22",
+            "surface-variant": "#2c363b",
+            "on-secondary-container": "#00424e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem"
+          },
+          fontFamily: {
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "body-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.01em", fontWeight: "400" }],
+            "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-sm": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.06em", fontWeight: "600" }],
+            "label-lg": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.02em", fontWeight: "500" }],
+            "body-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.005em", fontWeight: "400" }],
+            "headline-md": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-lg": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0em", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    /* Custom scrollbar for dense extension popup view */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F1419;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A343D;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3D484E;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex items-center justify-center min-h-screen p-0 m-0">
+<!-- Fixed Chromium Extension Popup Viewport (384px x 600px) -->
+<div class="relative w-[384px] h-[600px] bg-[#0F1419] border border-[#3D484E] rounded-none shadow-2xl flex flex-col overflow-hidden select-none">
+<!-- TOP APP BAR (Sticky header with Back Navigation and AES Cipher Indicator) -->
+<header class="sticky top-0 z-30 bg-[#0F1419]/95 backdrop-blur border-b border-[#3D484E] px-3 py-2.5 flex items-center justify-between"><div class="flex items-center gap-2"><button class="p-1 rounded text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all active:scale-[0.98] flex items-center justify-center"><span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span></button><h1 class="font-headline-sm text-[16px] text-white tracking-tight font-bold">Export Vault</h1></div><span class="text-[10px] font-mono text-[#10B981] bg-[#10B981]/15 border border-[#10B981]/40 px-2 py-0.5 rounded-full flex items-center gap-1 font-semibold tracking-wide">• ENCRYPTED</span></header>
+<!-- SCROLLABLE CANVAS BODY -->
+<main class="flex-1 overflow-y-auto px-3 py-2.5 space-y-3 pb-8"><div><div class="text-[10px] uppercase tracking-wider font-bold text-slate-400 px-1 mb-1 font-mono">EXPORT SCOPE &amp; COMPARTMENT</div><div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2"><label class="block text-[12px] text-white font-medium">Export Scope</label><div class="bg-[#0F1419] border border-[#3D484E] hover:border-[#06B6D4]/50 rounded-lg px-3 py-2 text-xs text-slate-200 flex justify-between items-center cursor-pointer transition-colors"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-[#06B6D4]">folder_zip</span><span class="font-medium">Entire Vault (All 48 Items)</span></div><span class="material-symbols-outlined text-[18px] text-slate-400">expand_more</span></div><p class="text-[11px] text-slate-400 font-mono">Exports all sovereign pods, archives, and custom fields</p></div></div><div><div class="text-[10px] uppercase tracking-wider font-bold text-slate-400 px-1 mb-1 font-mono">ENVELOPE FORMAT &amp; CIPHER</div><div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-3"><div class="space-y-1.5"><label class="block text-[12px] text-white font-medium">File &amp; Cipher Format</label><div class="bg-[#0F1419] border border-[#06B6D4] rounded-lg px-3 py-2 text-xs text-[#06B6D4] flex justify-between items-center cursor-pointer transition-colors shadow-[0_0_8px_rgba(6,182,212,0.15)]"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-[#06B6D4]">lock</span><span class="font-medium text-slate-100">ShellGuard Encrypted JSON (.json)</span></div><span class="material-symbols-outlined text-[18px] text-[#06B6D4]">expand_more</span></div><p class="text-[11px] text-[#06B6D4] font-mono">AES-256-GCM encrypted envelope bound to Master Key PRK</p></div><div class="bg-[#0A2E28]/40 border border-[#10B981]/40 rounded-lg p-2.5 flex items-start gap-2"><span class="material-symbols-outlined text-[16px] text-[#10B981] shrink-0 mt-0.5">verified_user</span><p class="text-[11px] text-[#10B981] font-mono leading-tight">Recommended: Encrypted export guarantees zero-knowledge security even if downloaded file is intercepted.</p></div></div></div><div><div class="text-[10px] uppercase tracking-wider font-bold text-slate-400 px-1 mb-1 font-mono">MASTER AUTHORIZATION</div><div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2"><label class="block text-[12px] text-white font-medium">Master Password Challenge</label><div class="bg-[#0F1419] border border-[#3D484E] rounded-lg px-3 py-2 text-xs flex items-center justify-between"><input class="bg-transparent border-0 p-0 text-xs text-white placeholder-slate-500 focus:outline-none w-full font-mono" placeholder="Enter master password to authorize..." type="password"/><span class="material-symbols-outlined text-[16px] text-slate-400 hover:text-slate-200 cursor-pointer ml-2 shrink-0">visibility</span></div><p class="text-[11px] text-slate-400 font-mono">Required to generate HKDF envelope export key</p></div></div><div class="flex gap-2 pt-1"><button class="bg-[#171C21] border border-[#3D484E] text-slate-300 hover:text-white text-xs font-semibold py-2.5 px-4 rounded-xl flex-1 text-center cursor-pointer transition-colors" type="button">Cancel</button><button class="bg-[#E4048A] hover:brightness-110 active:scale-95 text-white text-xs font-headline-sm font-semibold py-2.5 px-4 rounded-xl flex-[2] text-center cursor-pointer shadow-[0_0_15px_rgba(228,4,138,0.35)] flex items-center justify-center gap-1.5 transition-all" type="button"><span class="material-symbols-outlined text-[16px]">lock</span><span>Export Vault Envelope</span></button></div></main>
+<!-- ENTROPY HEX RIBBON TELEMETRY (Persistent 2px bottom visual anchor) -->
+<div class="bg-[#0A1519] border-t border-[#2A343D] px-3 py-1.5 flex items-center justify-between font-label-sm text-[10px] font-mono text-slate-400 select-none shrink-0"><div class="flex items-center gap-1.5 text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]"></span><span class="text-[#10B981] font-bold">EXPORT_GUARD</span><span class="text-slate-400">: ENCRYPTED_ONLY</span></div><span class="text-slate-400 font-mono">SHELLGUARD V2.4.1</span></div><div class="h-[2px] w-full bg-gradient-to-r from-[#E4048A] via-[#06B6D4] to-[#10B981] opacity-75"></div>
+</div>
+</body></html>

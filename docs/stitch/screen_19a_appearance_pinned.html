@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Extension - Appearance &amp; Vault Customization</title>
+<!-- Google Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#ffb0cd",
+            "surface-container-lowest": "#061014",
+            "surface-container-low": "#131d22",
+            "inverse-primary": "#b7006e",
+            "on-surface-variant": "#e1bdc8",
+            "surface-dim": "#0a1519",
+            "surface-bright": "#303b40",
+            "primary": "#ffb0cd",
+            "background": "#0a1519",
+            "on-primary-container": "#130007",
+            "surface-container-highest": "#2c363b",
+            "secondary": "#4cd7f6",
+            "surface": "#0a1519",
+            "surface-tint": "#ffb0cd",
+            "tertiary-container": "#ca8100",
+            "tertiary": "#ffb95f",
+            "on-secondary": "#003640",
+            "outline-variant": "#5a3f49",
+            "on-primary-fixed-variant": "#8c0053",
+            "secondary-fixed": "#acedff",
+            "on-surface": "#d9e4eb",
+            "on-primary": "#640039",
+            "surface-variant": "#2c363b",
+            "inverse-surface": "#d9e4eb",
+            "surface-container-high": "#212b30",
+            "primary-fixed": "#ffd9e4",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-primary-fixed": "#3e0021",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-error-container": "#ffdad6",
+            "on-background": "#d9e4eb",
+            "on-secondary-container": "#00424e",
+            "on-secondary-fixed": "#001f26",
+            "error-container": "#93000a",
+            "primary-container": "#e4048a",
+            "on-secondary-fixed-variant": "#004e5c",
+            "outline": "#a98893",
+            "on-tertiary-fixed": "#2a1700",
+            "error": "#ffb4ab",
+            "inverse-on-surface": "#273237",
+            "surface-container": "#172126",
+            "tertiary-fixed": "#ffddb8",
+            "on-tertiary-container": "#3e2400",
+            "secondary-container": "#03b5d3",
+            "on-tertiary": "#472a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "0.75rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Space Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Chitin armor plating accents */
+    .chitin-border {
+      border: 1px solid #2A3644;
+    }
+    /* Scrollbar ergonomics for extension viewport */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061014;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c363b;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #03b5d3;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#05080C] text-on-surface min-h-screen flex items-center justify-center p-0 sm:p-4 selection:bg-secondary-container selection:text-surface-container-lowest">
+<!-- Mobile Browser Extension Frame: Exactly 384px width, docked aesthetic -->
+<div class="w-[384px] max-w-full bg-[#0A0D12] border border-[#2A3644] shadow-2xl flex flex-col overflow-hidden relative selection:bg-secondary/20">
+<!-- 0. Top Enclave Status Ribbon (Mechanical Zero-Knowledge Telemetry Line) -->
+<div class="h-0.5 w-full bg-gradient-to-r from-primary-container via-secondary-container to-tertiary-container"></div>
+<!-- 1. Header Bar (Sticky top, bg #0A0D12 with glassmorphic depth, border-b border-[#2A3644]) -->
+<header class="sticky top-0 z-40 bg-[#0A0D12]/95 backdrop-blur-md border-b border-[#2A3644] px-3.5 py-3"><div class="flex items-center justify-between mb-1.5">
+<a class="inline-flex items-center gap-1 font-mono text-[11px] text-[#06B6D4] hover:text-white transition-colors group cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[14px] transition-transform group-hover:-translate-x-0.5">chevron_left</span>
+<span>Settings</span>
+</a>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/40 border border-emerald-800/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-mono text-[10px] tracking-wider text-emerald-400 uppercase font-semibold">CLIENT ENCLAVE</span>
+</div>
+</div>
+<h1 class="font-headline-sm text-[18px] text-white tracking-tight font-bold leading-tight">
+Appearance &amp; Themes
+</h1>
+<p class="font-mono text-[11px] text-slate-400 leading-tight mt-0.5">
+Visual carapace, themes, and display settings
+</p></header>
+<!-- 2. Scrollable Content Body (px-3 py-3 space-y-3.5) -->
+<main class="px-3 py-3 space-y-3.5 max-h-[530px] overflow-y-auto"><section class="space-y-1.5">
+<div class="px-0.5 flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+THEME &amp; CARAPACE GEOMETRY
+</span>
+<span class="font-mono text-[10px] text-slate-500">
+v2.4
+</span>
+</div>
+<div class="bg-[#121820] border border-[#2A3644] rounded-xl p-3 space-y-2.5 shadow-sm">
+<div class="grid grid-cols-2 gap-1.5">
+<button class="border-2 border-[#06B6D4] bg-[#0A0D12] rounded-lg p-2 flex items-center justify-between shadow-[0_0_10px_rgba(6,182,212,0.15)] text-left cursor-pointer transition-all" type="button">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#06B6D4] shadow-[0_0_8px_#06B6D4]"></span>
+<span class="font-mono text-[11px] font-medium text-white">Abyssal Dark</span>
+</div>
+<span class="material-symbols-outlined text-[#06B6D4] text-[14px] font-bold">check</span>
+</button>
+<button class="border border-[#2A3644] bg-[#161B22] rounded-lg p-2 flex items-center justify-between hover:border-slate-500 text-left cursor-pointer transition-all" type="button">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span class="font-mono text-[11px] font-medium text-slate-300">Trench Slate</span>
+</div>
+</button>
+<button class="border border-[#2A3644] bg-[#0F141C] rounded-lg p-2 flex items-center justify-between hover:border-slate-500 text-left cursor-pointer transition-all" type="button">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#E4048A] shadow-[0_0_4px_#E4048A]"></span>
+<span class="font-mono text-[11px] font-medium text-slate-300">Hydro Coral</span>
+</div>
+</button>
+<button class="border border-[#2A3644] bg-[#08141E] rounded-lg p-2 flex items-center justify-between hover:border-slate-500 text-left cursor-pointer transition-all" type="button">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_4px_#34d399]"></span>
+<span class="font-mono text-[11px] font-medium text-slate-300">Bioluminescent</span>
+</div>
+</button>
+</div>
+<div class="pt-0.5">
+<div class="grid grid-cols-3 gap-1">
+<button class="bg-[#161F2C] text-slate-400 border border-[#2A3644] py-1 text-center font-mono text-[11px] rounded-lg hover:text-white transition-all" type="button">
+Compact <span class="text-[10px] text-slate-500 block">340px</span>
+</button>
+<button class="bg-[#06B6D4]/15 border border-[#06B6D4] text-[#06B6D4] py-1 text-center font-mono text-[11px] font-semibold rounded-lg shadow-[0_0_8px_rgba(6,182,212,0.15)] transition-all" type="button">
+Default <span class="text-[10px] text-[#06B6D4] block">384px</span>
+</button>
+<button class="bg-[#161F2C] text-slate-400 border border-[#2A3644] py-1 text-center font-mono text-[11px] rounded-lg hover:text-white transition-all" type="button">
+Wide <span class="text-[10px] text-slate-500 block">480px</span>
+</button>
+</div>
+</div>
+<div class="border-t border-[#2A3644] pt-2 space-y-2">
+<div class="flex items-center justify-between gap-2">
+<div>
+<div class="font-mono text-[11px] font-medium text-white">Micro-Animations &amp; Spring Physics</div>
+<div class="font-mono text-[10px] text-slate-400">0.97 scale tactile press feedback</div>
+</div>
+<button aria-checked="true" class="w-8 h-4.5 bg-[#06B6D4] rounded-full p-0.5 relative flex-shrink-0 cursor-pointer shadow-[0_0_8px_rgba(6,182,212,0.3)]" role="switch" type="button">
+<span class="block w-3.5 h-3.5 bg-white rounded-full translate-x-3.5 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between gap-2">
+<div>
+<div class="font-mono text-[11px] font-medium text-white">Show Match Count on Extension Icon</div>
+<div class="font-mono text-[10px] text-slate-400">Badge count on active tab icon</div>
+</div>
+<button aria-checked="true" class="w-8 h-4.5 bg-[#06B6D4] rounded-full p-0.5 relative flex-shrink-0 cursor-pointer shadow-[0_0_8px_rgba(6,182,212,0.3)]" role="switch" type="button">
+<span class="block w-3.5 h-3.5 bg-white rounded-full translate-x-3.5 transition-transform"></span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-1.5">
+<div class="px-0.5 flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+VAULT DISPLAY ESSENTIALS
+</span>
+<span class="font-mono text-[10px] text-emerald-400 tracking-wider font-semibold">
+ZERO_LEAKAGE
+</span>
+</div>
+<div class="bg-[#121820] border border-[#2A3644] rounded-xl p-3 space-y-2.5 shadow-sm">
+<div class="space-y-0.5">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-[11px] font-medium text-white">Local Website Favicons &amp; Cache</span>
+<span class="inline-flex items-center text-[9px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-1 py-0.2 rounded-full">
+🛡️ Zero-Leakage
+</span>
+</div>
+<button aria-checked="true" class="w-8 h-4.5 bg-[#06B6D4] rounded-full p-0.5 relative flex-shrink-0 cursor-pointer shadow-[0_0_8px_rgba(6,182,212,0.3)]" role="switch" type="button">
+<span class="block w-3.5 h-3.5 bg-white rounded-full translate-x-3.5 transition-transform"></span>
+</button>
+</div>
+<p class="font-mono text-[10px] text-slate-400 leading-normal">
+Direct tab origin resolution; zero CDN pings
+</p>
+</div>
+<div class="border-t border-[#2A3644] pt-2 space-y-0.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-mono text-[11px] font-medium text-white">Eye-beside-Copy Action Cluster</span>
+<button aria-checked="true" class="w-8 h-4.5 bg-[#06B6D4] rounded-full p-0.5 relative flex-shrink-0 cursor-pointer shadow-[0_0_8px_rgba(6,182,212,0.3)]" role="switch" type="button">
+<span class="block w-3.5 h-3.5 bg-white rounded-full translate-x-3.5 transition-transform"></span>
+</button>
+</div>
+<p class="font-mono text-[10px] text-slate-400 leading-normal">
+Unmask eye directly left of copy button in vault lists
+</p>
+</div>
+<div class="pt-1">
+<a class="w-full py-1.5 px-2 bg-[#06B6D4]/15 border border-[#06B6D4] text-[#06B6D4] hover:text-white hover:bg-[#06B6D4]/25 transition-colors rounded-lg font-mono text-[11px] text-center flex items-center justify-center gap-1 cursor-pointer font-medium" href="#">
+<span>More Appearance &amp; Vault Options in Expanded View</span>
+<span class="material-symbols-outlined text-[13px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</section></main>
+<!-- 4. Pinned Bottom Telemetry & Status Bar -->
+<footer class="bg-[#0A0D12] border-t border-[#2A3644] px-3.5 py-2 flex items-center justify-between font-label-sm text-[10px]"><div class="flex items-center gap-1.5 text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-mono tracking-wider uppercase font-semibold text-[10px]">APPEARANCE : LOCAL_PROFILE</span>
+</div>
+<span class="text-slate-500 font-mono tracking-tight text-[10px]">SHELLGUARD V2.4.1</span></footer>
+</div>
+</body></html>

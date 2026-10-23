@@ -47,35 +47,35 @@ Each stage delivers exactly two tasks: **Task A (Core Logic/Engine)** and **Task
 
 ### ⚪ Stage 04 — Closed Shadow DOM Carapace Overlay
 - [ ] **Task A [Coordinate Anchor Engine]:** Relative viewport coordinate tracking and scroll/resize auto-repositioning.
-- [ ] **Task B [In-Page Badge & Picker]:** Injected bioluminescent badge and drop-down menu mounted inside closed Shadow DOM (`attachShadow({ mode: 'closed' })`).
-- *Target Release:* `v0.0.1.4` (Build 5) | *Gate:* Shadow DOM encapsulation & CSS reset verification.
+- [ ] **Task B [In-Page Badge, Anti-Collision & Prompts]:** Injected bioluminescent badge and drop-down menu mounted inside closed Shadow DOM (`attachShadow({ mode: 'closed' })` • `Screen 7`), Anti-Collision Dynamic Offset Engine (`DYNAMIC_INSET_RIGHT = 68px`) with 4 glyph states (`Screen 13`), and in-page save/update prompt bar (`Screen 12`).
+- *Target Release:* `v0.0.1.4` (Build 5) | *Gate:* Shadow DOM encapsulation, anti-collision offset & CSS reset verification.
 
 ### ⚪ Stage 05 — Popup Vault Browser & Reef Modernist UI
 - [ ] **Task A [Vault State & Filtering]:** In-memory decrypted vault index, instant search, and pod hierarchical filtering.
-- [ ] **Task B [Popup SPA Viewport]:** High-density 400x600 Reef Modernist UI, Eye-beside-Copy layout, and amber LAN warning pill.
-- *Target Release:* `v0.0.1.5` (Build 6) | *Gate:* Visual component test suite & lint.
+- [ ] **Task B [Popup SPA Viewport & Core Forms]:** High-density 384px Reef Modernist UI: Master Login Gateway (`Screen 1`), Resting Dashboard with active tab match priority (`Screen 2B`), 2×2 Filter Bento & 3-Dots Quick Actions Flyout (`Screen 2C`), Add/Edit form with under-stroke entropy meter (`Screen 6`), and 6-digit PIN Pad lock view (`Screen 8`).
+- *Target Release:* `v0.0.1.5` (Build 6) | *Gate:* Visual component test suite, Eye-beside-Copy invariant & lint.
 
 ### ⚪ Stage 06 — Micro-TOTP Engine & Pulse Ring
 - [ ] **Task A [RFC 6238 Engine]:** Pure-TS TOTP generator supporting HMAC-SHA1/256/512, 6/8 digits, and custom intervals.
-- [ ] **Task B [Animated SVG Pulse Ring]:** Visual circular progress countdown in Claw Cyan (`#06B6D4`) transitioning to Coral Amber (`#D29922`) at $\le 5$s.
+- [ ] **Task B [Animated SVG Pulse Ring & Item Detail]:** Detailed credential view with live 28px SVG circular progress countdown in Claw Cyan (`#06B6D4`) transitioning to Coral Amber (`#D29922`) at $\le 5$s, split 6-digit formatting (`739 214`), and 800ms emerald flash copy feedback (`Screen 3`).
 - *Target Release:* `v0.0.1.6` (Build 7) | *Gate:* RFC 6238 published test vector compliance.
 
 ### ⚪ Stage 07 — Credential Generator Suite & History
 - [ ] **Task A [Entropy Builder]:** Diceware passphrase and character-class password generators with CSPRNG entropy guarantees.
-- [ ] **Task B [History Drawer]:** In-memory password generation history drawer with one-click restore.
-- *Target Release:* `v0.0.1.7` (Build 8) | *Gate:* Entropy randomness distribution tests.
+- [ ] **Task B [Tactile Generator & Volatile History]:** Generator UI with tactile range slider, jump chips (`12..64`), 2×2 character matrix, and syntax-highlighted display card (`Screen 4`), paired with volatile RAM-only history drawer with clear action (`Screen 5`).
+- *Target Release:* `v0.0.1.7` (Build 8) | *Gate:* Entropy randomness distribution tests & Rule 4 zeroization check.
 
-### ⚪ Stage 08 — Server Sync Engine & Transport Sovereignty
+### ⚪ Stage 08 — Server Sync Engine & Vault Operations Suite
 - [ ] **Task A [Delta Sync & Offline Cache]:** Mutex-serialized delta reconciliation with self-hosted ShellGuard servers (`/api/sync`).
-- [ ] **Task B [Transport Sovereignty Gateway]:** Explicit "Trust self-signed certificates" toggle, browser origin whitelisting helper, and cleartext LAN fallback.
-- *Target Release:* `v0.0.1.8` (Build 9) | *Gate:* Delta sync reconciliation and LAN fallback tests.
+- [ ] **Task B [Settings & Vault Operations Carapace]:** Transport Sovereignty gateway with self-signed TLS consent (`Screen 1`), Settings Hub with operator session card (`Screen 9`), Account Security & Panic Wipe (`Screen 10`), Autofill Settings with fail-closed banner (`Screen 11`), Vault Operations Hub (`Screen 14A`), Import Dropzone (`Screen 16`), Export Envelopes (`Screen 17`), and 30-Day Trash Retention & Memory Shredder (`Screen 18`).
+- *Target Release:* `v0.0.1.8` (Build 9) | *Gate:* Delta sync reconciliation, import/export signature check & LAN fallback tests.
 
 ### ⚪ Stage 09 — Agentic Delegation Port (`lb-` LobsterKeys)
 - [ ] **Task A [Agent Protocol Port]:** Scoped sub-agent message port supporting structural permissions (`canRead`, `canWrite`, `canEdit`).
-- [ ] **Task B [Audit Logging Bridge]:** Transactional logging of all agent vault operations to server `audit.sqlite`.
+- [ ] **Task B [Sovereign Pods & Audit Bridge]:** Pods & Compartments Manager with per-pod `lb-` agent permission badges (`LB-READ`, `LB-RW`, `HUMAN ONLY`) and item counters (`Screen 15`), and transactional logging of agent vault operations to `audit.sqlite`.
 - *Target Release:* `v0.0.1.9` (Build 10) | *Gate:* Permission boundary enforcement tests.
 
-### ⚪ Stage 10 — Web Store Packaging & Verification Summit
-- [ ] **Task A [Store Packaging]:** Automated `wxt zip` packaging, manifest policy validation, and CSP audit.
-- [ ] **Task B [Full Verification Gate]:** 100% green Cloud CI pipeline and documentation alignment.
-- *Target Release:* `v0.0.2.0` (Build 11) | *Gate:* Zero-waste release workflow.
+### ⚪ Stage 10 — Appearance Engine, About Enclave & Store Summit
+- [ ] **Task A [Store Packaging]:** Automated `wxt zip` packaging, manifest policy validation, CSP audit, and production bundles.
+- [ ] **Task B [Appearance, About Verification & Summit Gate]:** Appearance settings with 4 sovereign theme palettes, viewport width presets (`340/384/480px`), density switcher, zero-leakage local favicons (`Screens 19A/19B`), About Enclave Verification with GitHub repo card and 2×2 crypto spec (`Screens 20A/20B`), and 100% green Cloud CI pipeline.
+- *Target Release:* `v0.0.2.0` (Build 11) | *Gate:* Zero-waste release workflow, SSoT doc drift audit & Cloud CI.
