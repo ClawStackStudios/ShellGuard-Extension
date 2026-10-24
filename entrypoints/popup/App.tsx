@@ -27,7 +27,7 @@ export default function App(): React.JSX.Element {
                 • CLIENT ENCLAVE
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-mono leading-none">v0.0.1.0 (Build 1)</p>
+            <p className="text-[11px] text-slate-400 font-mono leading-none">v0.0.0.1 (Build 1)</p>
           </div>
         </div>
 

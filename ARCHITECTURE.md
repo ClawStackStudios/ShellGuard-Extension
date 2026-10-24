@@ -5,7 +5,7 @@
 [![Reef Modernist](https://img.shields.io/badge/Design-Reef_Modernist-10B981?style=for-the-badge)](#)
 [![Twin Ecosystem](https://img.shields.io/badge/Twin_Ecosystem-ShellGuard_Web_%26_Mobile-purple?style=for-the-badge)](#)
 
-> Authoritative structural and technical specification for **ShellGuard-Extension v0.0.1.0** — zero-knowledge Chromium browser extension (Manifest V3) for client-decrypted autofill, micro-TOTP generation, and agentic vault delegation.
+> Authoritative structural and technical specification for **ShellGuard-Extension Meta-Phase 1** (Genesis `v0.0.0.1` progressing to `v0.0.1.0` GA) — zero-knowledge Chromium browser extension (Manifest V3) for client-decrypted autofill, micro-TOTP generation, and agentic vault delegation.
 
 ---
 

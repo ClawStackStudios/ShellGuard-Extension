@@ -1,4 +1,4 @@
-# Stage 08 — Server Delta Sync, Settings Suite, Envelopes & Shredder (`v0.0.1.8` • Build 9)
+# Stage 08 — Server Delta Sync, Settings Suite, Envelopes & Shredder (`v0.0.0.9` • Build 9)
 
 **Target Oracles:**
 - `.agents/skills/project/modules/06-settings/00-settings-hub/spec.md` (`screen_9_settings_hub.png`)

@@ -1,4 +1,4 @@
-# Stage 02 — MV3 Runtime & Offscreen Enclave Router (`v0.0.1.2` • Build 3)
+# Stage 02 — MV3 Runtime & Offscreen Enclave Router (`v0.0.0.3` • Build 3)
 
 **Target Oracles:** `.agents/skills/project/specs/network/wire-contracts.md`, `.agents/skills/project/specs/crypto/key-hierarchy.md`.
 

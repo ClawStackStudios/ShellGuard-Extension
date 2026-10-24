@@ -39,10 +39,10 @@ REQUIRED_MODULES = [
 def audit_package_version():
     pkg_file = ROOT / "package.json"
     if not pkg_file.exists():
-        return "0.0.1.0"
+        return "0.0.0.1"
     try:
         data = json.loads(pkg_file.read_text(encoding="utf-8"))
-        return data.get("version", "0.0.1.0")
+        return data.get("version", "0.0.0.1")
     except Exception as e:
         sys.exit(f"[-] Failed to parse package.json: {e}")
 
