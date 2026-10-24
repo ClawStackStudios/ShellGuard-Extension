@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="abyssal"] {
+  --color-floor: #0A0D12;
+  --color-surface: #121820;
+  --color-focus: #161F2C;
+  --color-border: #2A3644;
+  --color-accent: #06B6D4;
+}
+
+[data-theme="trench"] {
+  --color-floor: #0D1117;
+  --color-surface: #161B22;
+  --color-focus: #21262D;
+  --color-border: #30363D;
+  --color-accent: #879298;
+}
+
+[data-theme="coral"] {
+  --color-floor: #0F141C;
+  --color-surface: #171F28;
+  --color-focus: #222D3B;
+  --color-border: #384758;
+  --color-accent: #E4048A;
+}
+
+[data-theme="biolum"] {
+  --color-floor: #08141E;
+  --color-surface: #0F2231;
+  --color-focus: #163044;
+  --color-border: #1F415A;
+  --color-accent: #03B5D3;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-floor);
+  color: #F0F6FC;
+  font-family: "Hanken Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Planar hierarchy: elevation 0 everywhere */
+* {
+  box-sizing: border-box;
+}
+
+/* Tactile button press physics: 0.97 scale */
+button:active,
+.tactile-press:active {
+  transform: scale(0.97);
+  transition: transform 75ms ease;
+}
