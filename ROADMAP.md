@@ -27,8 +27,8 @@ Each stage delivers exactly two tasks: **Task A (Core Logic/Engine)** and **Task
 
 ### 🟢 Stage 00 — Extension Scaffold & Toolchain Genesis
 - **Bound Oracles:** `ARCHITECTURE.md`, `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`
-- [ ] **Task A [Core Infrastructure]:** Initialize WXT + React 18 + TypeScript + Tailwind CSS v3 bundler configuration, MV3 manifest permissions (`storage`, `unlimitedStorage`, `activeTab`, `scripting`, `alarms`, `offscreen`, `sidePanel`, `favicon`, `contextMenus`), and hotkey bindings (`Ctrl+Shift+L`, `Ctrl+Shift+9`).
-- [ ] **Task B [Carapace Scaffolding]:** Minimal compiling entrypoints (`background.ts`, `offscreen/`, `content.ts`, `popup/`, `sidepanel/`), linked carapace icons, and GitHub Actions Cloud CI pipeline.
+- [x] **Task A [Core Infrastructure]:** Initialize WXT + React 18 + TypeScript + Tailwind CSS v3 bundler configuration, MV3 manifest permissions (`storage`, `unlimitedStorage`, `activeTab`, `scripting`, `alarms`, `offscreen`, `sidePanel`, `favicon`, `contextMenus`), and hotkey bindings (`Ctrl+Shift+L`, `Ctrl+Shift+9`).
+- [x] **Task B [Carapace Scaffolding]:** Minimal compiling entrypoints (`background.ts`, `offscreen/`, `content.ts`, `popup/`, `sidepanel/`), linked carapace icons, and GitHub Actions Cloud CI pipeline.
 - *Target Release:* `v0.0.1.0` (Build 1) | *Gate:* `npm run lint && npm run typecheck && python3 scripts/audit_docs_drift.py`
 
 ### ⚪ Stage 01 — Cryptographic Bedrock & Session Quarantine

@@ -195,3 +195,23 @@ I inspected the complete suite of 28 screens created in Google Stitch and stored
    - **11 Sliding Release Stage Directories (`stages/stage-00-genesis` through `stage-10-web-store-release`):** Bound each stage directly to its target `modules/` and `specs/`.
 4. I upgraded `scripts/audit_docs_drift.py` to verify all 21 feature-activity modules and their Stitch visual oracle bindings; ran the audit and confirmed 100% alignment (`exit code 0`).
 
+### Stage 00 — Extension Scaffold & Toolchain Genesis (`feat/stage-00-genesis-scaffold`)
+1. I branched `feat/stage-00-genesis-scaffold` off `main` to establish the foundational WXT + React 18 + TypeScript + Tailwind CSS v3 architecture.
+2. I configured `package.json` with strict versioning (`0.0.1.0`), WXT, React 18, Tailwind CSS v3, Zod, and sub-second pre-flight scripts (`typecheck`, `lint`, `audit:docs`).
+3. I configured `tailwind.config.ts` and `src/styles/globals.css` with the 4 Reef Modernist theme palettes (Abyssal Dark, Trench Slate, Hydro Coral, Bioluminescent Cyan) and tripartite font stack (`Space Grotesk`, `Hanken Grotesk`/`Inter`, `JetBrains Mono`), setting planar `elevation: 0`, 12px carapace radii, and 0.97 scale tactile press physics.
+4. I created `wxt.config.ts` with Manifest V3 permissions (`storage`, `unlimitedStorage`, `activeTab`, `scripting`, `alarms`, `offscreen`, `sidePanel`, `favicon`, `contextMenus`), shortcuts (`Ctrl+Shift+L`, `Ctrl+Shift+9`), and action/side_panel paths.
+5. I generated pristine PNG icon suites (16x16, 48x48, 128x128) in both `public/icons/` and `assets/icons/` using a pure Node PNG builder (`scripts/generate_png_icons.mjs`).
+6. I established compiling entrypoints:
+   - `entrypoints/background.ts`: Service worker (Zone 0) listening for keyboard shortcuts and alarms.
+   - `entrypoints/offscreen/`: Persistent offscreen document (Zone 0) for WebCrypto execution.
+   - `entrypoints/content.ts`: Content script (Zone 2) for future form observer attachment.
+   - `entrypoints/popup/`: Primary popup SPA (Zone 1) with Reef Modernist header, active match card, and the Eye-beside-Copy invariant.
+   - `entrypoints/sidepanel/`: Persistent drawer companion (Zone 1).
+   - `entrypoints/options/`: Options hub (Zone 1).
+7. I created `.github/workflows/ci.yml` offloading test execution and production extension packaging (`wxt build`, `wxt zip`) to GitHub Actions Cloud CI while enforcing sub-second local pre-flight gates.
+8. I verified the entire toolchain:
+   - `npm run lint` -> 0 warnings, 0 errors.
+   - `npm run typecheck` -> 0 errors.
+   - `npm run test` -> 2 tests passed.
+   - `python3 scripts/audit_docs_drift.py` -> 100% SSoT alignment.
+

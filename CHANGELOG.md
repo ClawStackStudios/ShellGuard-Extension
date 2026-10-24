@@ -21,7 +21,13 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ---
 
-## [0.0.1.0] - 2026-10-18
+## [0.0.1.0] - 2026-10-24
 
 ### Added
-- **Repository Genesis:** Initialized Git repository `ClawStackStudios/ShellGuard-Extension` targeting Manifest V3 Chromium browser extension ecosystem.
+- **Stage 00 Genesis Scaffold:**
+  - WXT Manifest V3 bundler toolchain with React 18, TypeScript, and Tailwind CSS v3.
+  - Chromium MV3 manifest permissions (`storage`, `unlimitedStorage`, `activeTab`, `scripting`, `alarms`, `offscreen`, `sidePanel`, `favicon`, `contextMenus`) and keyboard shortcuts (`Ctrl+Shift+L`, `Ctrl+Shift+9`).
+  - Four Reef Modernist theme palettes (Abyssal Dark, Trench Slate, Hydro Coral, Bioluminescent Cyan) bound to CSS variables and Tailwind utility classes with tripartite typography (`Space Grotesk`, `Hanken Grotesk`/`Inter`, `JetBrains Mono`).
+  - Compiling entrypoints: `entrypoints/background.ts` (Zone 0 Service Worker), `entrypoints/offscreen/` (Zone 0 Cryptographic Enclave), `entrypoints/content.ts` (Zone 2 Content Script), `entrypoints/popup/` (Zone 1 Popup SPA), `entrypoints/sidepanel/` (Zone 1 Side Panel), and `entrypoints/options/` (Zone 1 Settings Hub).
+  - High-density vector icons and generated PNG assets (16x16, 48x48, 128x128) in `assets/icons/` and `public/icons/`.
+  - GitHub Actions CI pipeline (`.github/workflows/ci.yml`) enforcing sub-second local pre-flight gates (`npm run lint && npm run typecheck && python3 scripts/audit_docs_drift.py`) while offloading test runner and packaging suites (`wxt build`, `wxt zip`) to cloud runners.

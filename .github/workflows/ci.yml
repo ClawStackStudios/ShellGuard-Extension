@@ -1,0 +1,78 @@
+name: ShellGuard-Extension CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pre-flight:
+    name: Sub-Second SSoT, Lint & Typecheck Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Setup Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: SSoT Documentation & Skill Drift Audit
+        run: python3 scripts/audit_docs_drift.py
+
+      - name: Generate WXT Types
+        run: npx wxt prepare
+
+      - name: TypeScript Typecheck
+        run: npm run typecheck
+
+      - name: ESLint Static Code Analysis
+        run: npm run lint
+
+  test-and-package:
+    name: Test Matrix & MV3 Extension Packaging
+    needs: pre-flight
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Test Suite
+        run: npm run test
+
+      - name: Build MV3 Production Extension
+        run: npm run build
+
+      - name: Package Extension Distribution Zip
+        run: npm run zip
+
+      - name: Archive Extension Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shellguard-extension-mv3
+          path: .output/*.zip
+          retention-days: 14
