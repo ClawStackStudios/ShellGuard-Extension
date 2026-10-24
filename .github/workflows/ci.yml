@@ -35,6 +35,9 @@ jobs:
       - name: SSoT Documentation & Skill Drift Audit
         run: python3 scripts/audit_docs_drift.py
 
+      - name: Generate WXT Types
+        run: npx wxt prepare
+
       - name: TypeScript Typecheck
         run: npm run typecheck
 
