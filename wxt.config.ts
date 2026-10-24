@@ -1,7 +1,15 @@
 import { defineConfig } from 'wxt';
+import path from 'node:path';
 
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
+  vite: () => ({
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+  }),
   manifest: {
     name: 'ShellGuard — Sovereign Zero-Knowledge Vault',
     short_name: 'ShellGuard',
