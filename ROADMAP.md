@@ -13,9 +13,9 @@
 
 ```text
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║  CURRENT RELEASE: v0.0.0.1 (Build 1) Genesis Scaffold                           ║
-║  ACTIVE STAGE:    Stage 00 — Extension Scaffold & Toolchain Genesis              ║
-║  LOCATION:        .agents/skills/project/stages/stage-00-genesis/prompt.md       ║
+║  CURRENT RELEASE: v0.0.0.2 (Build 2) Cryptographic Bedrock & Session Quarantine  ║
+║  ACTIVE STAGE:    Stage 02 — MV3 Runtime & Offscreen Enclave Router              ║
+║  LOCATION:        .agents/skills/project/stages/stage-02-mv3-runtime/prompt.md   ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -31,11 +31,12 @@ Each stage delivers exactly two tasks: **Task A (Core Logic/Engine)** and **Task
 - [x] **Task B [Carapace Scaffolding]:** Minimal compiling entrypoints (`background.ts`, `offscreen/`, `content.ts`, `popup/`, `sidepanel/`), linked carapace icons, and GitHub Actions Cloud CI pipeline.
 - *Target Release:* `v0.0.0.1` (Build 1) | *Gate:* `npm run lint && npm run typecheck && python3 scripts/audit_docs_drift.py`
 
-### ⚪ Stage 01 — Cryptographic Bedrock & Session Quarantine
+### 🟢 Stage 01 — Cryptographic Bedrock & Session Quarantine
 - **Bound Oracles:** `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md`
-- [ ] **Task A [WebCrypto & Pure-TS Engine]:** HKDF-SHA256 derivation across 10 namespaces (`vault_pearls`..`export`), AES-GCM-256 envelope sealing with fresh 96-bit IVs and strict $\text{AAD} = \text{recordUuid} \parallel \text{":"} \parallel \text{namespace} \parallel (\text{":"} \parallel \text{podId})$ binding, plus `@noble` pure-TS fallback strictly for RFC 1918 LAN HTTP.
-- [ ] **Task B [Session Vault Persistence]:** IndexedDB StructuredClone store (`ShellGuardSessionVault`) for non-extractable `CryptoKey` survival across MV3 worker sleep cycles, with deterministic Rule 4 memory and store zeroization on lock.
-- *Target Release:* `v0.0.0.2` (Build 2) | *Gate:* Tamper rejection unit tests & WebCrypto vector suite.
+- [x] **Task A [WebCrypto & Pure-TS Engine]:** HKDF-SHA256 derivation across 10 namespaces (`vault_pearls`..`export`), AES-GCM-256 envelope sealing with fresh 96-bit IVs and strict $\text{AAD} = \text{recordUuid} \parallel \text{":"} \parallel \text{namespace} \parallel (\text{":"} \parallel \text{podId})$ binding, plus `@noble` pure-TS fallback strictly for RFC 1918 LAN HTTP with bidirectional cross-decryption testing.
+- [x] **Task B [Session Vault Persistence]:** IndexedDB StructuredClone store (`ShellGuardSessionVault`) for non-extractable `CryptoKey` survival across MV3 worker sleep cycles, with deterministic Rule 4 memory and store zeroization on lock (`zeroizeBytes`, `zeroizeBuffer`).
+- *Target Release:* `v0.0.0.2` (Build 2) | *Gate:* Tamper rejection unit tests & WebCrypto vector suite (16/16 tests green).
+
 
 ### ⚪ Stage 02 — MV3 Runtime & Offscreen Enclave Router
 - **Bound Oracles:** `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`

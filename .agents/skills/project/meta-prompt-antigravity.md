@@ -8,9 +8,9 @@
 
 | Stage | Version / Build | Stage Directory | Bound Feature-Activity Modules (`modules/`) & Core Laws (`specs/`) | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Stage 00** | `v0.0.0.1 (Build 1)` | `stages/stage-00-genesis/` | `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`, `ARCHITECTURE.md` | 🟢 **ACTIVE LEADING EDGE** |
-| **Stage 01** | `v0.0.0.2 (Build 2)` | `stages/stage-01-crypto-bedrock/` | `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
-| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-mv3-runtime/` | `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
+| **Stage 00** | `v0.0.0.1 (Build 1)` | `stages/stage-00-genesis/` | `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`, `ARCHITECTURE.md` | 🟢 Complete |
+| **Stage 01** | `v0.0.0.2 (Build 2)` | `stages/stage-01-crypto-bedrock/` | `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md` | 🟢 Complete |
+| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-mv3-runtime/` | `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 **ACTIVE LEADING EDGE** |
 | **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-autofill-heuristics/` | `specs/autofill/autofill-mechanics.md`, `modules/06-settings/02-autofill-and-shadow-dom/` | ⚪ Queued |
 | **Stage 04** | `v0.0.0.5 (Build 5)` | `stages/stage-04-shadow-dom-carapace/` | `modules/03-inpage-autofill/01-shadow-dropdown-overlay/`, `modules/03-inpage-autofill/02-glyph-states-and-inset/`, `modules/06-settings/03-notifications-and-prompts/` | ⚪ Queued |
 | **Stage 05** | `v0.0.0.6 (Build 6)` | `stages/stage-05-popup-vault-browser/` | `modules/01-login-gateway/`, `modules/02-vault-dashboard/{01,02,04}`, `modules/05-lock-enclave/01-pin-and-biometric-pad/` | ⚪ Queued |
@@ -24,8 +24,9 @@
 
 ## 2. Active Stage Pointer
 
-- **Current Active Stage:** `Stage 00: Extension Scaffold & Toolchain Genesis`
-- **Location:** `.agents/skills/project/stages/stage-00-genesis/prompt.md`
+- **Current Active Stage:** `Stage 02: MV3 Runtime & Offscreen Enclave Router`
+- **Location:** `.agents/skills/project/stages/stage-02-mv3-runtime/prompt.md`
+
 
 ---
 
