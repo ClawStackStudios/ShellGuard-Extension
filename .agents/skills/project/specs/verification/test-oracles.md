@@ -1,22 +1,5 @@
-# 🧪 Verification Oracle: Test Harness & Cloud CI Gates
+# Verification Law: Host Preservation & Falsifiable Cloud CI Oracles
 
-> Test assertions, tamper detection oracles, and GitHub Actions verification pipeline.
+To preserve host hardware resources (Rule 5), heavy browser compilation, bundling loops, and E2E suites never execute locally; local verification is restricted to the sub-second static gate (`npm run lint && npm run typecheck && python3 scripts/audit_docs_drift.py`), which must exit `0` before any branch push. All full build (`wxt build`, `wxt zip`) and automated test matrices run exclusively on GitHub Actions Cloud CI (`.github/workflows/ci.yml`).
 
----
-
-## §1. Local Verification (Sub-Second Gate)
-
-To preserve host resources, run only fast static checks locally:
-```bash
-npm run lint && npm run typecheck && python3 scripts/audit_docs_drift.py
-```
-
----
-
-## §2. Cloud Verification Runner (GitHub Actions)
-
-Full build and test executions run in GitHub Actions (`.github/workflows/ci.yml`):
-- `tests/crypto/`: WebCrypto HKDF and AES-GCM standard vectors.
-- `tests/tamper/`: Tamper rejection tests asserting modified AAD or ciphertext throws `OperationError`.
-- `tests/matcher/`: 6-mode URI matching assertions.
-- `wxt zip`: Automated packaging and Manifest V3 validation.
+The Cloud CI suite enforces falsifiable cryptographic and DOM invariants: (1) HKDF-SHA256 and AES-GCM-256 test vectors verify 1:1 parity with ShellGuard Web/Mobile and assert that flipping 1 bit of ciphertext, IV, `recordUuid`, `namespace`, or `podId` throws `OperationError`; (2) storage audits assert zero plaintext secrets or extractable keys exist in `chrome.storage.local` and verify immediate RAM/IndexedDB zeroization on lock; (3) DOM isolation tests verify `host.shadowRoot === null`, pristine prototype setter invocation, dynamic `68px` anti-collision glyph offsets, and 6-mode URI matching accuracy.
