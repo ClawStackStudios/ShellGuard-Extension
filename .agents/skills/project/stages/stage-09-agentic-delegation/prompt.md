@@ -1,4 +1,4 @@
-# Stage 09 — Agentic Delegation Port (`lb-`) & Sovereign Pods Manager (`v0.0.1.9` • Build 10)
+# Stage 09 — Agentic Delegation Port (`lb-`) & Sovereign Pods Manager (`v0.0.0.10` • Build 10)
 
 **Target Oracle:** `.agents/skills/project/modules/06-settings/05-pods-and-compartments/spec.md` (`screen_15_pods_manager.png`).
 

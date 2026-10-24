@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ---
 
-## [0.0.1.0] - 2026-10-24
+## [0.0.0.1] - 2026-10-24
 
 ### Added
 - **Stage 00 Genesis Scaffold:**

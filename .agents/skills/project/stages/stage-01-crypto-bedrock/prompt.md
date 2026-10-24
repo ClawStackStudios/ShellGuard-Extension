@@ -1,4 +1,4 @@
-# Stage 01 — Cryptographic Bedrock & Session Quarantine (`v0.0.1.1` • Build 2)
+# Stage 01 — Cryptographic Bedrock & Session Quarantine (`v0.0.0.2` • Build 2)
 
 **Target Oracles:** `.agents/skills/project/specs/crypto/key-hierarchy.md`, `.agents/skills/project/specs/crypto/encryption-layers.md`, `.agents/skills/project/specs/verification/test-oracles.md`.
 

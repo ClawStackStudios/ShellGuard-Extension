@@ -1,4 +1,4 @@
-# Stage 03 — Content Script Observers & Pristine Injector (`v0.0.1.3` • Build 4)
+# Stage 03 — Content Script Observers & Pristine Injector (`v0.0.0.4` • Build 4)
 
 **Target Oracles:** `.agents/skills/project/specs/autofill/autofill-mechanics.md`, `.agents/skills/project/modules/06-settings/02-autofill-and-shadow-dom/spec.md`.
 

@@ -1,4 +1,4 @@
-# Stage 00 — Extension Scaffold & Toolchain Genesis (`v0.0.1.0` • Build 1)
+# Stage 00 — Extension Scaffold & Toolchain Genesis (`v0.0.0.1` • Build 1)
 
 **Target Oracles:** `ARCHITECTURE.md`, `.agents/skills/project/specs/ui/design-tokens.md`, `.agents/skills/project/specs/verification/test-oracles.md`.
 

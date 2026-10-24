@@ -1,4 +1,4 @@
-# Stage 06 — Micro-TOTP Engine & Animated SVG Pulse Ring (`v0.0.1.6` • Build 7)
+# Stage 06 — Micro-TOTP Engine & Animated SVG Pulse Ring (`v0.0.0.7` • Build 7)
 
 **Target Oracle:** `.agents/skills/project/modules/02-vault-dashboard/03-view-item-and-totp/spec.md` (`screen_3_view_item.png`).
 

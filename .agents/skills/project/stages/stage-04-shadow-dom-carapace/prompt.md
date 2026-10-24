@@ -1,4 +1,4 @@
-# Stage 04 — Closed Shadow DOM Carapace, Anti-Collision Glyphs & Prompts (`v0.0.1.4` • Build 5)
+# Stage 04 — Closed Shadow DOM Carapace, Anti-Collision Glyphs & Prompts (`v0.0.0.5` • Build 5)
 
 **Target Oracles:**
 - `.agents/skills/project/modules/03-inpage-autofill/01-shadow-dropdown-overlay/spec.md` (`screen_7_inpage_overlay.png`)

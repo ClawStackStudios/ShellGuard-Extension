@@ -215,3 +215,6 @@ I inspected the complete suite of 28 screens created in Google Stitch and stored
    - `npm run test` -> 2 tests passed.
    - `python3 scripts/audit_docs_drift.py` -> 100% SSoT alignment.
 
+### Meta-Phase 1 Version Alignment & Phase 2 Handoff Protocol (`refactor/meta-phase-1-versioning-and-handoff`)
+I am aligning the release versions so Genesis Scaffold is `0.0.0.1` (1:1 with Stitch Screen 20a). The 11 sliding stages increment through `v0.0.0.1` to `v0.0.0.10`, landing on `v0.0.1.0` at Stage 10. Stage 10 marks the formal culmination of Meta-Phase 1 (Extension Core & Sovereign Parity) with an explicit architectural handoff into scoping and mapping Meta-Phase 2.
+

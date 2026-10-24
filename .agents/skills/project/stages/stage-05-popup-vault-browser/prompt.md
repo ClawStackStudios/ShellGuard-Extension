@@ -1,4 +1,4 @@
-# Stage 05 — Core Popup SPA: Login, Dashboard, Editor & Lock Pad (`v0.0.1.5` • Build 6)
+# Stage 05 — Core Popup SPA: Login, Dashboard, Editor & Lock Pad (`v0.0.0.6` • Build 6)
 
 **Target Oracles:**
 - `.agents/skills/project/modules/01-login-gateway/spec.md` (`screen_1_login.png`)
