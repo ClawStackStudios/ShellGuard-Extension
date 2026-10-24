@@ -1,38 +1,5 @@
-# 🔐 Crypto Oracle: AES-GCM-256 with AAD Record-Binding
+# Crypto Law: AES-GCM-256 Envelopes & AAD Record-Binding
 
-> Prevents record-swapping and ciphertext-shuffling attacks by fusing record UUID and namespace into the authentication tag.
+Every vault record, pod manifest, and settings blob persisted to `chrome.storage.local` or transmitted across `/api/sync` is sealed inside a versioned JSON envelope (`{ v: 1, alg: "AES-GCM-256", iv, ct, aad }`) encrypted under its respective $K_{\text{domain}}$ with a fresh 96-bit (12-byte) CSPRNG initialization vector (`crypto.getRandomValues`) and a 128-bit (16-byte) authentication tag; IV reuse across any two encryptions under the same key is strictly forbidden.
 
----
-
-## §1. Mathematical Formula
-
-$$\text{Ciphertext} = \text{AES-GCM-256}_{K_{\text{domain}}}(\text{Plaintext}, \text{IV}, \text{AAD})$$
-$$\text{AAD} = \text{recordUuid} \parallel \text{":"} \parallel \text{namespace}$$
-
----
-
-## §2. Envelope JSON Schema
-
-Encrypted records stored on disk (`chrome.storage.local`) or transmitted across network endpoints follow this schema:
-
-```json
-{
-  "v": 1,
-  "alg": "AES-GCM-256",
-  "iv": "12-byte base64 string",
-  "ct": "base64 ciphertext including 16-byte auth tag",
-  "aad": "recordUuid:namespace"
-}
-```
-
----
-
-## §3. Tamper Rejection Invariant
-
-If an attacker modifies:
-1. Even 1 bit of `ct`
-2. The `recordUuid` in `aad`
-3. The `namespace` in `aad`
-4. The 12-byte `iv`
-
-WebCrypto `crypto.subtle.decrypt()` throws a terminal `OperationError: Decryption failed`.
+To defeat ciphertext-swapping and cross-compartment splicing by a compromised storage layer or rogue server, encryption and decryption bind Additional Authenticated Data formatted strictly as $\text{AAD} = \text{recordUuid} \parallel \text{":"} \parallel \text{namespace} \parallel (\text{":"} \parallel \text{podId})$. If a single bit of `ct`, `iv`, `recordUuid`, `namespace`, or `podId` is altered, WebCrypto `decrypt()` throws a terminal `OperationError` and the enclave fails closed without emitting partial plaintext.

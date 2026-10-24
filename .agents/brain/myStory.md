@@ -182,8 +182,16 @@ I inspected the complete suite of 28 screens created in Google Stitch and stored
 - Authored synthesis artifact `10-full-ui-inspection-synthesis.md`.
 - Ran `python3 scripts/audit_docs_drift.py`; passed 100% green.
 
-
-
-
-
+### Deterministic Multimodal Skill Restructuring (`refactor/deterministic-modular-project-skill`)
+1. I inspected all 22 unique visual screenshot PNGs in `docs/stitch/` directly via `view_file` (`screen_1_login.png` through `screen_20b_about_expanded.png`) to eliminate the Double-Translation Tax (where visual mockups are summarized into lossy prose and then re-imagined into drifting UI).
+2. I discovered critical details visible directly in the screenshots that prose summaries had flattened:
+   - `screen_1_login.png` authenticates via `.json` Identity File upload (`Local Decrypt`) OR pasted ClawKey (`hu-` / `lb-`) against a split `https://` | `host` | `:port` bar, with `Molt a New Identity` routing to the server's web portal.
+   - `screen_12b_notifications_expanded.png` configures 6 capture triggers (including `SSH Public/Private Keys` and default-OFF `Payment Cards & Identifiers`), `440Hz` capture chime, and 3 fail-closed heuristic guards (`Strict Origin Verification`, `Third-Party Iframe Protection`, `Prompt Suppression in Incognito`).
+   - `screen_13_inpage_glyph_states.png` specifies `STATE 01` (`Generate Alias / Email Mask`) and `STATE 02` (`ENFORCED_OFFSET: 68PX`, `AUTO-CASCADE 2FA: ON`, `Fill All`, `Never for this site`).
+   - `screen_14a_vault_operations.png` and `screen_18_trash_shredder.png` pair `Archive (Cold Storage)` (excluded from autofill heuristics and global search) with `Trash (30-Day Purge)` and `Empty Trash & Shred Memory Now`.
+3. I authored three chronological phased artifacts (`11-deterministic-skill-methodology.md`, `12-phase-core-modules-specs.md`, `13-phase-settings-modules-and-criteria.md`) and refactored `.agents/skills/project/` into:
+   - **21 Feature-Activity Modules (`modules/01-login-gateway` through `modules/06-settings/10-about-and-enclave-audit`):** Each module opens with a mandatory `view_file` pointer to its `docs/stitch/screen_*.{png,html}` visual oracle followed by $\le 2$ paragraphs of high-density, zero-qualifier, falsifiable, decompressible subterranean prose.
+   - **6 Compressed Cross-Cutting Laws (`specs/`):** Removed the monolithic `screen-blueprints-core.md` and `screen-blueprints-settings.md` files and compressed `crypto/`, `autofill/`, `ui/`, `network/`, and `verification/` into $\le 2$-paragraph probability-collapse invariants.
+   - **11 Sliding Release Stage Directories (`stages/stage-00-genesis` through `stage-10-web-store-release`):** Bound each stage directly to its target `modules/` and `specs/`.
+4. I upgraded `scripts/audit_docs_drift.py` to verify all 21 feature-activity modules and their Stitch visual oracle bindings; ran the audit and confirmed 100% alignment (`exit code 0`).
 

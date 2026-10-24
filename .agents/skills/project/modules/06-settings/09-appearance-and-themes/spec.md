@@ -1,0 +1,9 @@
+# 06.09 — Appearance, Themes & Zero-Leakage Favicons (`screen_19`, `screen_19a_pinned`, `screen_19b_expanded`)
+
+**Visual & Markup Oracles (Inspect First):**
+Invoke `view_file` on `docs/stitch/screen_19_appearance.png`, `docs/stitch/screen_19a_appearance_pinned.png`, `docs/stitch/screen_19b_appearance_expanded.png`, and their corresponding `.html` files. Every visual control across both the Pinned Popup (`384×600px`) and Expanded Side Panel viewports is mandatory.
+
+**Subterranean Invariants:**
+The Pinned View (`19` / `19a`) exposes the 2×2 `Theme Palette` (`Abyssal Dark`, `Trench Slate`, `Hydro Coral`, `Bioluminescent`), `Popup Viewport Width` (`Compact 340px`, `Default 384px`, `Wide 480px`), `Micro-Animations & Spring Physics` (`0.97` scale press feedback), `Show Match Count on Extension Icon` (`chrome.action.setBadgeText`), `Local Website Favicons & Cache`, `Eye-beside-Copy Action Cluster`, and the `More Appearance & Vault Options in Expanded View ↗` trigger. The Expanded View (`19b`) adds `Dynamic Accent Color` (`Electric Cyan`, `Hydro Coral`, `Tactical Amber`), `Display Density` (`Comfortable` vs `Dense Chitin`), `1-Tap Inline Autofill from Suggestion Dropdown` (default OFF, `FAIL-SAFE`), `Proactive Security Diagnostic Badges`, `Obfuscate Secrets in Vault Listings`, `Show Item Counters on Pod Compartments`, `Typography Scale` (`100%`, `110%`, `120%`), and `High-Contrast Chitin Outlines`.
+
+The `Local Website Favicons & Cache` (`🛡️ Zero-Leakage`) invariant strictly forbids querying external favicon CDNs (such as Google or DuckDuckGo favicon APIs) which leak browsing history; icons resolve exclusively from Chromium's local internal `chrome-extension://<id>/_favicon/?pageUrl=...` cache (`favicon` permission) or deterministic monogram squircles. All visual profile tokens persist locally and apply synchronously before first paint to prevent theme flash.

@@ -1,0 +1,9 @@
+# 01 — Login Gateway (`screen_1_login`)
+
+**Visual & Markup Oracle (Inspect First):**
+Invoke `view_file` on `docs/stitch/screen_1_login.png` and `docs/stitch/screen_1_login.html`. Every visual control, split URL input (`https://` | `host` | `:port`), segmented mode switcher (`Upload File` vs `Paste ClawKey`), warning card, and footer telemetry badge visible in the oracle is mandatory.
+
+**Subterranean Invariants:**
+Identity provisioning is strictly server-side (`Molt a New Identity` opens the configured server's web registration portal in a new tab); this gateway authenticates pre-existing identities via `.json` identity envelope upload (`Local Decrypt`) or pasted ClawKey (`hu-` sovereign or `lb-` agentic) against the split protocol/host/port endpoint bar. Cleartext `http://` is permitted exclusively on RFC 1918 or Tailscale (`100.64.0.0/10`) private addresses, which dynamically activates the amber LAN transport warning and routes key derivation through the pure-TS fallback when `crypto.subtle` is context-restricted; any public WAN `http://` origin fails closed prior to network dispatch. Self-signed HTTPS endpoints require explicit operator consent via browser tab TLS exception whitelisting before the `/api/salt` handshake executes.
+
+Raw keys and uploaded `.json` identity payloads never touch `chrome.storage.local` or content script memory. Submission streams the secret over a Zod-validated internal port to the offscreen enclave, which verifies the 256-bit entropy format, derives the Master PRK via HKDF-SHA256 using the account salt, expands all 10 domain sub-keys (`ShellGuard-Domain-<ns>`), and stores strictly non-extractable `CryptoKey` handles inside `ShellGuardSessionVault` IndexedDB within a `<50ms` unlock budget before zeroizing the input buffer.

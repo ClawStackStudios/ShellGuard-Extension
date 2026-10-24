@@ -1,0 +1,9 @@
+# 06.03 — Notifications & Prompt Policy (`screen_12`, `screen_12a_pinned`, `screen_12b_expanded`)
+
+**Visual & Markup Oracles (Inspect First):**
+Invoke `view_file` on `docs/stitch/screen_12_notifications.png`, `docs/stitch/screen_12a_notifications_pinned.png`, `docs/stitch/screen_12b_notifications_expanded.png`, and their corresponding `.html` files. Every visual control across both the Pinned Popup (`384×600px`) and Expanded Side Panel viewports is mandatory.
+
+**Subterranean Invariants:**
+The Pinned View (`12` / `12a`) exposes the 4 primary capture triggers (`Passkeys`, `Add Login`, `Update Existing Login`, `Agent Keys lb-`), `Prompt Delivery Style` (`Closed Shadow DOM Pill`, `Toolbar Badge`, `Full Banner`), `Prompt Auto-Dismiss` (`10s`, `15s`, `30s`, `Never`), and a deep-link to manage excluded domains. The Expanded View (`12b`) unlocks all 6 capture triggers (adding `SSH Public/Private Keys` and default-OFF `Payment Cards & Identifiers`), the `Target Pod for Auto-Captures` routing selector, `Screen Anchor Position` (`Bottom-Right`, `Top-Right`, `Bottom-Left`), `5s` dismiss option, and the WebAudio `440Hz` capture confirmation chime.
+
+Under `Heuristic Sensitivity & Defense`, three fail-closed protections are enforced prior to mounting any save/update prompt: `Strict Origin Verification` blocks prompts on punycode/homoglyph mismatches or invalid TLS chains, `Third-Party Iframe Protection` drops form submissions originating inside cross-origin `window.top !== window.self` frames, and `Prompt Suppression in Incognito` silences all capture listeners when `chrome.extension.inIncognitoContext` is true. The `Excluded Domains & LAN Networks` deck evaluates hostnames against exact/wildcard rules and IPv4 CIDR ranges (e.g., `10.0.0.0/8`), while the `Live Detection Event Log` streams a volatile in-memory audit ring of intercepted events.

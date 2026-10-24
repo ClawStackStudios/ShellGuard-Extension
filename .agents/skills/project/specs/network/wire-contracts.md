@@ -1,51 +1,5 @@
-# 🌐 Network Oracle: Wire Contracts & Cleartext LAN Carve-Out
+# Network Law: Zod Envelope Bus, Delta Sync & Transport Sovereignty
 
-> REST API envelope schemas, delta synchronization protocols, and homelab network policies.
+Every runtime message crossing extension contexts (`content <-> background <-> offscreen <-> popup/sidepanel`) is wrapped in `{ id, type, payload, timestamp, origin }` and validated synchronously via strict Zod schemas; any malformed envelope or unverified sender origin terminates the handler immediately without side effects. Synchronization with the self-hosted ShellGuard server (`/api/sync`) executes inside a background mutex that pushes local ciphertext mutation deltas and reconciles remote updates via highest-monotonic-revision-wins, archiving superseded revisions into `vault_pearls_history` and verifying every incoming record's HKDF AAD tag before committing to `chrome.storage.local`.
 
----
-
-## §1. Zod Message Envelope Contract
-
-All runtime message exchange across extension ports (content script <-> background <-> popup) must parse through this schema:
-
-```typescript
-import { z } from 'zod';
-
-export const MessageEnvelopeSchema = z.object({
-  id: z.string(),
-  type: z.enum([
-    'QUERY_MATCHES',
-    'REQUEST_JIT_FILL',
-    'VAULT_LOCK',
-    'VAULT_UNLOCK',
-    'SYNC_DELTA'
-  ]),
-  payload: z.unknown(),
-  timestamp: z.number()
-});
-```
-
----
-
-## §2. Cleartext LAN Carve-Out Policy
-
-- **Allowed Subnets:** RFC 1918 (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), `localhost`, and Tailscale CGNAT (`100.64.0.0/10`).
-- **Amber Warning Pill:** When connected to an HTTP LAN server, the UI must display:
-  `⚠️ HTTP LAN (Unencrypted Transport — Homelab Only)`
-- **WAN Prohibition:** Cleartext HTTP over public WAN domains is blocked unconditionally.
-
----
-
-## §3. Transport Sovereignty & Self-Signed HTTPS Consent
-
-Homelab operators frequently provision self-signed TLS certificates for internal services:
-- **The Checkbox Invariant:** The connection configuration UI exposes:
-  `[ ] Trust Self-Signed Certificates / Homelab HTTPS`
-- **Browser Socket Exception Workflow:**
-  Because Chromium MV3 Service Workers cannot bypass SSL verification flags at the socket layer, the extension provides an "Authorize in Browser" button:
-  1. Opens `https://<server>:port/api/health` in a new tab.
-  2. Guides the user to click "Advanced -> Proceed to site (unsafe)".
-  3. Chromium whitelists the certificate for the browser session.
-  4. Subsequent extension service worker `fetch()` calls succeed seamlessly.
-- **Amber UI Warning:** Operates with the mandatory amber warning pill whenever active:
-  `⚠️ Unverified Transport (Self-Signed / Homelab TLS)`
+Cleartext `http://` transport is permitted strictly on RFC 1918 (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), `localhost`, and Tailscale CGNAT (`100.64.0.0/10`) private addresses, which must render the amber `⚠️ HTTP LAN` warning pill across login, item detail, and sync views; public WAN `http://` endpoints fail closed prior to socket creation. When connecting to a homelab server with a self-signed HTTPS certificate and the operator enables *Trust Self-Signed Certificates*, the extension launches `https://<server>:port/api/health` in a foreground browser tab so the operator can grant the browser session TLS exception required by Chromium MV3 service workers, displaying `⚠️ Unverified Transport (Self-Signed / Homelab TLS)` while active.

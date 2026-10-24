@@ -1,0 +1,9 @@
+# 02.01 — Vault Dashboard: Active Tab Priority & All-Vault List (`screen_2_dashboard`, `screen_2_dashboard_bitwarden`)
+
+**Visual & Markup Oracles (Inspect First):**
+Invoke `view_file` on `docs/stitch/screen_2_dashboard.png`, `docs/stitch/screen_2_dashboard_bitwarden.png`, `docs/stitch/screen_2_dashboard.html`, and `docs/stitch/screen_2_dashboard_bitwarden.html`. Every visual control, header badge (`SYNCED`, `+ New`, popout `[↗]`, `LU` avatar, `[🔒]` lock), 2×2 filter matrix (`Pod ▾`, `Tag ▾`, `Type ▾`, `Domain ▾`), inline action cluster, and bottom navigation dock visible in the oracles is mandatory.
+
+**Subterranean Invariants:**
+Upon popup mount (`<16ms` render target), the dashboard queries `chrome.tabs.query({ active: true, currentWindow: true })` and evaluates decrypted in-memory vault URIs against the active tab origin using each item's configured match rule (`Base Domain`, `Host & Port`, `Exact`, `Starts With`, `Regex`, or `Never`), pinning matches to the top focal zone (`MATCHING FOR <DOMAIN>` / `AUTOFILL SUGGESTIONS`). Items residing in `Archive (Cold Storage)` or `Trash` are strictly excluded from active-tab matching and global search indexing unless explicitly filtered via the 2×2 matrix.
+
+Expanded matching cards enforce the **Eye-beside-Copy** spatial invariant (`[👁]` unmask toggle immediately left of `[📋]` copy) so unmasked secrets never overwrite the clipboard by misclick, while high-density list rows expose inline live TOTP countdown rings (`24s`), 1-tap `[Fill]` triggers, `[📋]` copy, and `[⋮]` overflow actions. Clicking `[Fill]` dispatches a one-time JIT credential envelope to the active tab's isolated content script and zeroizes the transient buffer in `<1ms`; clicking `[🔒]` in the header immediately flushes `ShellGuardSessionVault` and transitions to the zeroized lock screen.
