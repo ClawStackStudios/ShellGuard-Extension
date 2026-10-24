@@ -216,5 +216,8 @@ I inspected the complete suite of 28 screens created in Google Stitch and stored
    - `python3 scripts/audit_docs_drift.py` -> 100% SSoT alignment.
 
 ### Meta-Phase 1 Version Alignment & Phase 2 Handoff Protocol (`refactor/meta-phase-1-versioning-and-handoff`)
-I am aligning the release versions so Genesis Scaffold is `0.0.0.1` (1:1 with Stitch Screen 20a). The 11 sliding stages increment through `v0.0.0.1` to `v0.0.0.10`, landing on `v0.0.1.0` at Stage 10. Stage 10 marks the formal culmination of Meta-Phase 1 (Extension Core & Sovereign Parity) with an explicit architectural handoff into scoping and mapping Meta-Phase 2.
+I aligned the release versions so Genesis Scaffold is `0.0.0.1` (1:1 with Stitch Screen 20a). The 11 sliding stages increment through `v0.0.0.1` to `v0.0.0.10`, landing on `v0.0.1.0` at Stage 10. Stage 10 marks the formal culmination of Meta-Phase 1 (Extension Core & Sovereign Parity) with an explicit architectural handoff into scoping and mapping Meta-Phase 2. This was merged to `main` via PR #9.
+
+### Semantic Versioning Rule Codification (`docs/semantic-versioning-rule`)
+I authored `.agents/rules/semantic-versioning.md` establishing the 4-digit `MAJOR.MINOR.PATCH.REVISION` convention for ShellGuard-Extension and enshrining the **Hotfix Cascading Push Invariant**: any out-of-band hotfix patch introduced between planned stages claims the next sequential revision digit (e.g. `v0.0.0.9`), cascading all downstream planned stages forward by $+1$ in `ROADMAP.md` and `meta-prompt-antigravity.md`. I added Rule 7 to `AGENTS.md`.
 
