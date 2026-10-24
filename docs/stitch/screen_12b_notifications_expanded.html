@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Vault - Notifications &amp; Prompt Policy</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Script -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching the Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#273237",
+            "surface-container-low": "#131d22",
+            "on-tertiary-container": "#3e2400",
+            "primary-fixed": "#ffd9e4",
+            "primary-container": "#e4048a",
+            "error-container": "#93000a",
+            "surface-dim": "#0a1519",
+            "secondary": "#4cd7f6",
+            "on-secondary-container": "#00424e",
+            "outline": "#a98893",
+            "surface-container-lowest": "#061014",
+            "on-tertiary": "#472a00",
+            "on-secondary-fixed-variant": "#004e5c",
+            "secondary-container": "#03b5d3",
+            "surface-bright": "#303b40",
+            "on-primary-fixed": "#3e0021",
+            "surface-container": "#172126",
+            "on-primary-container": "#130007",
+            "tertiary-container": "#ca8100",
+            "primary-fixed-dim": "#ffb0cd",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary": "#ffb0cd",
+            "surface-container-high": "#212b30",
+            "on-secondary-fixed": "#001f26",
+            "inverse-surface": "#d9e4eb",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-primary-fixed-variant": "#8c0053",
+            "tertiary-fixed": "#ffddb8",
+            "surface": "#0a1519",
+            "on-surface": "#d9e4eb",
+            "on-tertiary-fixed": "#2a1700",
+            "inverse-primary": "#b7006e",
+            "on-primary": "#640039",
+            "surface-container-highest": "#2c363b",
+            "secondary-fixed-dim": "#4cd7f6",
+            "background": "#0a1519",
+            "tertiary": "#ffb95f",
+            "surface-tint": "#ffb0cd",
+            "surface-variant": "#2c363b",
+            "secondary-fixed": "#acedff",
+            "on-surface-variant": "#e1bdc8",
+            "error": "#ffb4ab",
+            "outline-variant": "#5a3f49",
+            "on-secondary": "#003640",
+            "on-error": "#690005",
+            "on-background": "#d9e4eb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Chitinous Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a1519;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #212b30;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4cd7f6;
+    }
+    .cyan-glow {
+      box-shadow: 0 0 16px -2px rgba(6, 182, 212, 0.28);
+    }
+    .magenta-glow {
+      box-shadow: 0 0 16px -2px rgba(228, 4, 138, 0.35);
+    }
+    .hex-ribbon {
+      background: linear-gradient(90deg, #e4048a 0%, #06b6d4 50%, #f59e0b 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#0F1419] text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary selection:text-on-secondary">
+<!-- ShellGuard Popout / Expanded Side-Panel Container (480px fixed width target) -->
+<div class="w-full max-w-[480px] min-h-screen bg-[#0F1419] flex flex-col border-x border-[#3D484E]/70 relative shadow-2xl">
+<!-- Hex Ribbon Entropy Telemetry Top Stroke -->
+<div class="hex-ribbon h-[2px] w-full shrink-0"></div>
+<!-- Top Navigation Anchor (Shared TopNavBar logic applied for Vault sub-view) -->
+<header class="sticky top-0 z-50 bg-[#0F1419]/95 backdrop-blur-md border-b border-[#3D484E] px-space-lg py-space-sm flex items-center justify-between transition-colors">
+<!-- Left side: Back Nav & Header Titles -->
+<div class="flex items-center space-x-space-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all duration-150 flex items-center justify-center active:scale-[0.96]" title="Return to Core Vault">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center space-x-2">
+<h1 class="font-headline-sm text-headline-sm font-bold text-white tracking-tight leading-tight">Notifications &amp; Prompt Policy</h1>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="font-label-sm text-label-sm text-[#06B6D4] tracking-wider uppercase">EXPANDED OPERATOR VIEW</span>
+<span class="text-[#3D484E] font-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant/80">ENCLAVE v4.2</span>
+</div>
+</div>
+</div>
+<!-- Right side: Status Badges -->
+<div class="flex items-center space-x-1.5">
+<div class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 font-label-sm text-[10px] space-x-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>ZERO-LEAK</span>
+</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded-full bg-cyan-950/40 border border-[#06B6D4]/50 text-[#06B6D4] font-label-sm text-[10px] cyan-glow">
+<span>POPOUT: ACTIVE</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Body Content Canvas -->
+<main class="flex-1 overflow-y-auto px-4 py-4 space-y-5">
+<!-- SECTION 1: SAVE TO VAULT CAPTURE TRIGGERS -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">Save to Vault Capture Triggers</span>
+</div>
+<span class="font-label-sm text-[10px] text-cyan-400 bg-cyan-950/50 border border-cyan-800/60 px-2 py-0.5 rounded">6 TRIGGERS CONFIGURED</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Trigger 1: WebAuthn & FIDO2 Passkeys -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-cyan-950/50 border border-cyan-500/30 text-[#06B6D4] mt-0.5">
+<span class="material-symbols-outlined text-lg">fingerprint</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-headline-sm text-[13px] font-semibold text-white">WebAuthn &amp; FIDO2 Passkeys</span>
+<span class="font-label-sm text-[9px] uppercase px-1.5 py-0.2 rounded bg-cyan-900/40 text-[#4cd7f6] border border-[#06B6D4]/30">Hardware</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Register client-side resident passkeys directly into local vault enclave</p>
+</div>
+</div>
+<!-- Toggle ON (Cyan) -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Trigger 2: Submitted Login Credentials -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-surface-container-high border border-[#3D484E] text-slate-300 mt-0.5">
+<span class="material-symbols-outlined text-lg">key</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Submitted Login Credentials</span>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Detect login forms on form submit and offer 1-tap vault save</p>
+</div>
+</div>
+<!-- Toggle ON -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Trigger 3: Password Rotation & Updates -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-surface-container-high border border-[#3D484E] text-slate-300 mt-0.5">
+<span class="material-symbols-outlined text-lg">sync</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Password Rotation &amp; Updates</span>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Compare submitted passwords with vault records and prompt to update changed credentials</p>
+</div>
+</div>
+<!-- Toggle ON -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Trigger 4: Agentic Access Keys (lb-) -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-[#e4048a]/15 border border-[#e4048a]/40 text-[#ffb0cd] mt-0.5">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Agentic Access Keys</span>
+<span class="font-label-sm text-[9px] uppercase px-1.5 py-0.2 rounded bg-[#e4048a]/20 text-[#ffb0cd] border border-[#e4048a]/50 font-bold tracking-tight">lb-</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Detect newly generated API keys, Anthropic/OpenAI/Ollama tokens, or agentic secrets in developer web consoles</p>
+</div>
+</div>
+<!-- Toggle ON (Cyan) -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Trigger 5: SSH Public/Private Keys -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-surface-container-high border border-[#3D484E] text-slate-300 mt-0.5">
+<span class="material-symbols-outlined text-lg">vpn_key</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-headline-sm text-[13px] font-semibold text-white">SSH Public/Private Keys</span>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Capture pasted SSH keypairs in web terminal sessions and cloud provider consoles</p>
+</div>
+</div>
+<!-- Toggle ON -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Trigger 6: Payment Cards & Identifiers -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="flex items-start space-x-3">
+<div class="p-2 rounded bg-surface-container-high border border-[#3D484E] text-slate-400 mt-0.5">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-headline-sm text-[13px] font-semibold text-slate-300">Payment Cards &amp; Identifiers</span>
+<p class="font-body-sm text-body-sm text-slate-500 leading-snug">Prompt to save new virtual cards and billing identities during checkout</p>
+</div>
+</div>
+<!-- Toggle OFF (Slate) -->
+<button aria-checked="false" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#3D484E] bg-[#171C21] transition-colors focus:outline-none mt-1" role="switch">
+<span class="translate-x-0.5 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#5A6872] shadow transition duration-200"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: DEFAULT INGESTION TARGET POD -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">Default Ingestion Target Pod</span>
+<span class="font-label-sm text-[10px] text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 px-2 py-0.5 rounded">ISOLATION POD</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-4 space-y-2.5">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-[13px] font-medium text-white">Target Pod for New Captures</label>
+<span class="font-label-sm text-[10px] text-cyan-400 bg-cyan-950/50 px-1.5 py-0.5 rounded border border-cyan-800/40">POD 04 (LAN)</span>
+</div>
+<!-- Dropdown / Select bar -->
+<div class="relative">
+<button class="w-full bg-[#0F1419] border border-[#3D484E] hover:border-[#06B6D4]/70 rounded-lg px-3 py-2.5 text-sm text-slate-200 flex items-center justify-between transition-colors focus:outline-none focus:border-[#06B6D4]">
+<div class="flex items-center space-x-2">
+<span class="text-tertiary">📁</span>
+<span class="font-body-md text-white font-medium">Infrastructure Pod (Default)</span>
+</div>
+<div class="flex items-center space-x-1.5 text-slate-400">
+<span class="font-label-sm text-[11px] text-[#4cd7f6]">ISOLATED ENCLAVE</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</div>
+</button>
+</div>
+<p class="font-label-sm text-[11px] text-slate-400 leading-normal flex items-center space-x-1">
+<span class="material-symbols-outlined text-[13px] text-cyan-400">info</span>
+<span>Auto-categorizes captured credentials and API keys into designated encrypted pod container.</span>
+</p>
+</div>
+</section>
+<!-- SECTION 3: IN-PAGE CLOSED SHADOW DOM OVERLAY SETTINGS -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">In-Page Closed Shadow DOM Overlay</span>
+<span class="font-label-sm text-[10px] text-cyan-400 bg-cyan-950/40 border border-cyan-800/60 px-2 py-0.5 rounded">v4.2 CLOSED DOM</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-4 space-y-4">
+<!-- Delivery Style Selector -->
+<div class="space-y-1.5">
+<label class="font-headline-sm text-xs font-semibold text-slate-300">Prompt Presentation Architecture</label>
+<div class="grid grid-cols-1 gap-1.5">
+<div class="p-2.5 rounded-lg border border-[#06B6D4] bg-cyan-950/40 text-cyan-300 flex items-center justify-between cursor-pointer cyan-glow">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-base text-[#06B6D4]">layers</span>
+<span class="font-body-md text-xs font-semibold text-white">Closed Shadow DOM Floating Pill</span>
+</div>
+<span class="font-label-sm text-[10px] px-1.5 py-0.5 bg-[#06B6D4]/20 rounded text-cyan-300 uppercase">Recommended</span>
+</div>
+<div class="grid grid-cols-2 gap-1.5">
+<div class="p-2 rounded-lg border border-[#3D484E] bg-[#0F1419] text-slate-400 hover:text-slate-200 hover:border-slate-500 flex items-center space-x-2 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">notifications_off</span>
+<span class="font-body-sm text-xs">Silent Icon Badge</span>
+</div>
+<div class="p-2 rounded-lg border border-[#3D484E] bg-[#0F1419] text-slate-400 hover:text-slate-200 hover:border-slate-500 flex items-center space-x-2 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm">dock</span>
+<span class="font-body-sm text-xs">Full Banner</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Screen Anchor Position -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="font-headline-sm text-xs font-semibold text-slate-300">Screen Anchor Position</label>
+<span class="font-label-sm text-[10px] text-slate-400">24px viewport offset (Auto-clamp)</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5">
+<button class="py-2 px-1 text-center font-label-sm text-xs rounded-lg border border-[#06B6D4] bg-cyan-950/50 text-[#06B6D4] font-semibold cyan-glow transition-all">
+                Bottom-Right
+              </button>
+<button class="py-2 px-1 text-center font-label-sm text-xs rounded-lg border border-[#3D484E] bg-[#0F1419] text-slate-400 hover:text-slate-200 transition-colors">
+                Top-Right
+              </button>
+<button class="py-2 px-1 text-center font-label-sm text-xs rounded-lg border border-[#3D484E] bg-[#0F1419] text-slate-400 hover:text-slate-200 transition-colors">
+                Bottom-Left
+              </button>
+</div>
+</div>
+<!-- Auto-Dismiss Duration -->
+<div class="space-y-1.5">
+<label class="font-headline-sm text-xs font-semibold text-slate-300">Prompt Auto-Dismiss Duration</label>
+<div class="flex items-center space-x-1.5 overflow-x-auto pb-1">
+<button class="px-2.5 py-1 rounded bg-[#0F1419] border border-[#3D484E] font-label-sm text-xs text-slate-400 hover:text-slate-200">5s</button>
+<button class="px-2.5 py-1 rounded bg-[#0F1419] border border-[#3D484E] font-label-sm text-xs text-slate-400 hover:text-slate-200">10s</button>
+<button class="px-3 py-1 rounded bg-cyan-950/60 border border-[#06B6D4] font-label-sm text-xs text-cyan-300 font-bold cyan-glow">15s</button>
+<button class="px-2.5 py-1 rounded bg-[#0F1419] border border-[#3D484E] font-label-sm text-xs text-slate-400 hover:text-slate-200">30s</button>
+<button class="px-2.5 py-1 rounded bg-[#0F1419] border border-[#3D484E] font-label-sm text-xs text-slate-400 hover:text-slate-200 whitespace-nowrap">Never (Manual)</button>
+</div>
+</div>
+<!-- Audio Feedback -->
+<div class="pt-2 border-t border-[#2A343D] flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#10B981] text-lg">volume_up</span>
+<div>
+<span class="font-body-md text-xs font-medium text-white block">Subtle Audio Chime on Capture</span>
+<span class="font-body-sm text-[11px] text-slate-400 block">440Hz high-frequency discrete ping</span>
+</div>
+</div>
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-emerald-500 bg-emerald-500 transition-colors focus:outline-none" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 4: HEURISTIC DETECTION SENSITIVITY & ANTI-HARVESTING -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">Heuristic Sensitivity &amp; Defense</span>
+<span class="font-label-sm text-[10px] text-amber-400 bg-amber-950/40 border border-amber-800/60 px-2 py-0.5 rounded">FAIL-CLOSED RULES</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Strict Origin Verification -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Strict Origin Verification (Anti-Phishing)</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Only prompt on validated FQDN and exact TLS certificates to eliminate deceptive punycode domains</p>
+</div>
+<!-- Emerald Switch -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-emerald-500 bg-emerald-500 transition-colors focus:outline-none mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Third-Party Iframe Protection -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Third-Party Iframe Protection</span>
+<span class="font-label-sm text-[9px] uppercase px-1.5 py-0.2 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/40">SHIELDED</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Block prompts inside unverified cross-origin iframes to prevent clickjacking and harvesting overlays</p>
+</div>
+<!-- Emerald Switch -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-emerald-500 bg-emerald-500 transition-colors focus:outline-none mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+<!-- Prompt Suppression in Incognito / Private Tabs -->
+<div class="p-3.5 flex items-start justify-between space-x-3 hover:bg-[#1E252C]/60 transition-colors">
+<div class="space-y-0.5">
+<span class="font-headline-sm text-[13px] font-semibold text-white">Prompt Suppression in Incognito / Private Tabs</span>
+<p class="font-body-sm text-body-sm text-slate-400 leading-snug">Enforce total silence during private browsing sessions without storing volatile state</p>
+</div>
+<!-- Cyan Switch -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border border-[#06B6D4] bg-[#06B6D4] transition-colors focus:outline-none cyan-glow mt-1" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-[#0F1419] shadow transition duration-200"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 5: EXCLUDED DOMAINS & LAN NETWORKS -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">Excluded Domains &amp; LAN Networks</span>
+<span class="font-label-sm text-[10px] text-cyan-400 bg-cyan-950/40 border border-cyan-800/60 px-2 py-0.5 rounded">4 ACTIVE RULES</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-4 space-y-3">
+<!-- Add Rule Row -->
+<div class="flex items-center space-x-2">
+<div class="relative flex-1">
+<input class="w-full bg-[#0F1419] border border-[#3D484E] focus:border-[#06B6D4] focus:ring-0 rounded-lg px-3 py-2 text-xs font-label-md text-slate-300 placeholder-slate-600 transition-colors" placeholder="e.g. *.dev.local or 192.168.1.0/24" type="text"/>
+</div>
+<button class="shrink-0 bg-cyan-950/50 hover:bg-cyan-900/60 border border-[#06B6D4] text-[#06B6D4] font-label-sm text-xs px-3 py-2 rounded-lg flex items-center space-x-1 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add Rule</span>
+</button>
+</div>
+<!-- Active Exclusion Chips Grid/Wrap -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<div class="inline-flex items-center space-x-1.5 bg-[#0F1419] border border-[#3D484E] rounded-lg px-2.5 py-1">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+<span class="font-label-sm text-[11px] text-slate-300">localhost:3000</span>
+<button class="text-slate-500 hover:text-[#ffb4ab] transition-colors ml-1">✕</button>
+</div>
+<div class="inline-flex items-center space-x-1.5 bg-[#0F1419] border border-[#3D484E] rounded-lg px-2.5 py-1">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+<span class="font-label-sm text-[11px] text-slate-300">127.0.0.1:8080</span>
+<button class="text-slate-500 hover:text-[#ffb4ab] transition-colors ml-1">✕</button>
+</div>
+<div class="inline-flex items-center space-x-1.5 bg-[#0F1419] border border-[#3D484E] rounded-lg px-2.5 py-1">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+<span class="font-label-sm text-[11px] text-slate-300">router.internal.lan</span>
+<button class="text-slate-500 hover:text-[#ffb4ab] transition-colors ml-1">✕</button>
+</div>
+<div class="inline-flex items-center space-x-1.5 bg-[#0F1419] border border-[#3D484E] rounded-lg px-2.5 py-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500/80"></span>
+<span class="font-label-sm text-[11px] text-slate-300">10.0.0.0/8 (RFC 1918)</span>
+<button class="text-slate-500 hover:text-[#ffb4ab] transition-colors ml-1">✕</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: LIVE DETECTION EVENT LOG & AUDIT TICKER -->
+<section class="space-y-2 pb-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-widest uppercase text-slate-400">Live Detection Event Log</span>
+</div>
+<span class="font-label-sm text-[10px] text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 px-2 py-0.5 rounded">LIVE AUDIT STREAM</span>
+</div>
+<div class="bg-[#0F1419] border border-[#3D484E] rounded-xl p-3 font-label-sm text-[11px] space-y-2 overflow-x-auto leading-relaxed shadow-inner">
+<!-- Log Row 1 -->
+<div class="flex items-start space-x-2 text-emerald-400 border-b border-[#212b30]/60 pb-1.5">
+<span class="text-slate-500 shrink-0">20:14:02</span>
+<span class="px-1 bg-emerald-950/60 rounded text-[9px] uppercase border border-emerald-500/30 shrink-0">DETECTED_PASSKEY</span>
+<span class="text-slate-200">github.com</span>
+<span class="text-slate-500 ml-auto">Saved to [Personal Pod]</span>
+</div>
+<!-- Log Row 2 -->
+<div class="flex items-start space-x-2 text-cyan-400 border-b border-[#212b30]/60 pb-1.5">
+<span class="text-slate-500 shrink-0">19:48:15</span>
+<span class="px-1 bg-cyan-950/60 rounded text-[9px] uppercase border border-cyan-500/30 shrink-0">PASSWORD_ROTATION</span>
+<span class="text-slate-200">checkmk.lan</span>
+<span class="text-slate-500 ml-auto">Updated in [Infra Pod]</span>
+</div>
+<!-- Log Row 3 -->
+<div class="flex items-start space-x-2 text-[#ffb0cd] border-b border-[#212b30]/60 pb-1.5">
+<span class="text-slate-500 shrink-0">17:22:30</span>
+<span class="px-1 bg-[#e4048a]/20 rounded text-[9px] uppercase border border-[#e4048a]/40 shrink-0">CAPTURED_LB_KEY</span>
+<span class="text-slate-200">console.aws...</span>
+<span class="text-slate-500 ml-auto">Saved to [Dev Agents]</span>
+</div>
+<!-- Log Row 4 -->
+<div class="flex items-start space-x-2 text-slate-500">
+<span class="text-slate-600 shrink-0">15:01:12</span>
+<span class="px-1 bg-slate-900 rounded text-[9px] uppercase border border-slate-700 shrink-0">SUPPRESSED_ORIGIN</span>
+<span class="text-slate-400">localhost:3000</span>
+<span class="text-slate-600 ml-auto">Rule: Excluded</span>
+</div>
+</div>
+</section>
+</main>
+<!-- STICKY TELEMETRY FOOTER -->
+<footer class="sticky bottom-0 z-40 bg-[#0F1419]/95 backdrop-blur-md border-t border-[#3D484E] px-4 py-2.5 flex items-center justify-between font-label-sm text-[10px] text-slate-400">
+<div class="flex items-center space-x-1.5 text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+<span class="tracking-wide font-medium">POLICY_ENFORCEMENT: HARDENED</span>
+</div>
+<div class="text-slate-500 tracking-wider">
+        AES-256-GCM ZERO-KNOWLEDGE
+      </div>
+<div class="text-[#06B6D4] font-medium">
+        SHELLGUARD V2.4.1
+      </div>
+</footer>
+</div>
+</body></html>

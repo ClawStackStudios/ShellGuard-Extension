@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Extension - Vault Operations Hub (Edge-to-Edge Mobile)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-highest": "#2c363b",
+            "on-surface": "#d9e4eb",
+            "on-secondary-fixed-variant": "#004e5c",
+            "tertiary-fixed-dim": "#ffb95f",
+            "background": "#0a1519",
+            "tertiary-fixed": "#ffddb8",
+            "outline": "#a98893",
+            "surface-container": "#172126",
+            "primary-container": "#e4048a",
+            "on-primary": "#640039",
+            "on-secondary": "#003640",
+            "surface-bright": "#303b40",
+            "secondary-fixed": "#acedff",
+            "outline-variant": "#5a3f49",
+            "on-secondary-fixed": "#001f26",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary-fixed-variant": "#8c0053",
+            "primary-fixed": "#ffd9e4",
+            "on-surface-variant": "#e1bdc8",
+            "secondary-container": "#03b5d3",
+            "tertiary-container": "#ca8100",
+            "surface-dim": "#0a1519",
+            "tertiary": "#ffb95f",
+            "secondary": "#4cd7f6",
+            "primary-fixed-dim": "#ffb0cd",
+            "inverse-primary": "#b7006e",
+            "inverse-on-surface": "#273237",
+            "surface-container-high": "#212b30",
+            "on-error-container": "#ffdad6",
+            "on-tertiary": "#472a00",
+            "on-primary-container": "#130007",
+            "primary": "#ffb0cd",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-error": "#690005",
+            "surface": "#0a1519",
+            "on-tertiary-container": "#3e2400",
+            "secondary-fixed-dim": "#4cd7f6",
+            "error-container": "#93000a",
+            "on-background": "#d9e4eb",
+            "inverse-surface": "#d9e4eb",
+            "surface-tint": "#ffb0cd",
+            "surface-container-lowest": "#061014",
+            "on-primary-fixed": "#3e0021",
+            "error": "#ffb4ab",
+            "surface-container-low": "#131d22",
+            "surface-variant": "#2c363b",
+            "on-secondary-container": "#00424e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem"
+          },
+          fontFamily: {
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "label-lg": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "body-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.01em", fontWeight: "400" }],
+            "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-sm": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.06em", fontWeight: "600" }],
+            "label-lg": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.02em", fontWeight: "500" }],
+            "body-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.005em", fontWeight: "400" }],
+            "headline-md": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-lg": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0em", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    /* Custom scrollbar for dense extension popup view */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F1419;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A343D;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3D484E;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased flex items-center justify-center min-h-screen p-0 m-0">
+<!-- Fixed Chromium Extension Popup Viewport (384px x 600px) -->
+<div class="relative w-[384px] h-[600px] bg-[#0F1419] border border-[#3D484E] rounded-none shadow-2xl flex flex-col overflow-hidden select-none">
+<!-- TOP APP BAR (Sticky header with Back Navigation and AES Cipher Indicator) -->
+<header class="sticky top-0 z-30 bg-[#0F1419]/95 backdrop-blur border-b border-[#3D484E] px-3 py-2.5 flex items-center justify-between"><div class="flex items-center gap-2">
+<button class="p-1 rounded text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all active:scale-[0.98] flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-[16px] text-white tracking-tight font-bold">Vault Operations</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 font-label-sm text-[10px] font-mono text-[#10B981] bg-[#10B981]/15 border border-[#10B981]/40 px-2 py-0.5 rounded-full shadow-[0_0_12px_-2px_rgba(16,185,129,0.25)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]"></span>
+<span>SYNCED</span>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors flex items-center justify-center p-0.5">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div></header>
+<!-- SCROLLABLE CANVAS BODY -->
+<main class="flex-1 overflow-y-auto px-3 py-2.5 space-y-3 pb-8"><!-- SECTION 1: COMPARTMENTS & STORAGE LIFECYCLE -->
+<section>
+<div class="px-1 mb-1 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">COMPARTMENTS &amp; STORAGE LIFECYCLE</span>
+<span class="font-mono text-[#06B6D4] text-[10px] font-semibold tracking-wider">POD_TIER 04</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1: Pods & Compartments -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="bg-[#0F1419] border border-[#06B6D4]/30 rounded-lg p-2 flex items-center justify-center text-[#06B6D4] shrink-0">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-white font-medium leading-none">Pods &amp; Compartments</p>
+<p class="font-body-sm text-[11px] text-slate-400 font-mono mt-1">4 sovereign pods (Infra, Personal, Dev, Team)</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="font-mono text-[#06B6D4] bg-[#06B6D4]/15 border border-[#06B6D4]/30 px-2 py-0.5 rounded text-[11px]">4 pods</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-[#06B6D4] group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</div>
+</div>
+<!-- Row 2: Archive (Cold Storage) -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="bg-[#0F1419] border border-[#3D484E] rounded-lg p-2 flex items-center justify-center text-slate-300 shrink-0">
+<span class="material-symbols-outlined text-[18px]">archive</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-white font-medium leading-none">Archive (Cold Storage)</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Excluded from autofill heuristics &amp; global search</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="font-mono text-slate-400 bg-[#0F1419] border border-[#3D484E] px-2 py-0.5 rounded text-[11px]">12 items</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-white group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</div>
+</div>
+<!-- Row 3: Trash & Retention -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="bg-[#0F1419] border border-red-500/30 rounded-lg p-2 flex items-center justify-center text-red-400 shrink-0">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-white font-medium leading-none">Trash &amp; Memory Shredder</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Auto-purged after 30 days • 3 items pending</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="font-mono text-red-400 bg-red-950/40 border border-red-800/40 px-2 py-0.5 rounded text-[11px]">3</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-red-400 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: DATA INGESTION & BACKUP ENVELOPES -->
+<section>
+<div class="px-1 mb-1 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">DATA INGESTION &amp; BACKUP ENVELOPES</span>
+<span class="font-mono text-[#E4048A] text-[10px] font-semibold tracking-wider">AES-256</span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl divide-y divide-[#2A343D] overflow-hidden">
+<!-- Row 1: Import Credentials -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="bg-[#0F1419] border border-[#06B6D4]/30 rounded-lg p-2 flex items-center justify-center text-[#06B6D4] shrink-0">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-white font-medium leading-none">Import Credentials</p>
+<p class="font-body-sm text-[11px] text-slate-400 mt-1">Bitwarden, 1Password, KeePassXC, CSV, JSON</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-[#06B6D4] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">north_east</span>
+</div>
+<!-- Row 2: Export Vault Envelope -->
+<div class="p-2.5 flex items-center justify-between hover:bg-[#1E252C]/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-2.5 flex-1 pr-2">
+<div class="bg-[#0F1419] border border-[#3D484E] rounded-lg p-2 flex items-center justify-center text-slate-300 shrink-0">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-white font-medium leading-none">Export Vault Envelope</p>
+<p class="font-body-sm text-[11px] text-slate-400 font-mono mt-1">Encrypted AES-256-GCM backup with HKDF binding</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-white group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- SECTION 3: REAL-TIME POD SYNC & GATEWAY TELEMETRY -->
+<section>
+<div class="px-1 mb-1 flex items-center justify-between">
+<span class="font-label-sm text-[10px] uppercase tracking-wider font-bold text-slate-400">REAL-TIME POD SYNC &amp; GATEWAY TELEMETRY</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]"></span>
+</div>
+<div class="bg-[#171C21] border border-[#3D484E] rounded-xl p-3 space-y-2.5">
+<!-- Endpoint Header Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#06B6D4] text-[18px]">dns</span>
+<span class="font-body-md text-[12px] text-white font-medium">ClawStack Gateway</span>
+</div>
+<div class="font-label-sm text-[10px] font-mono text-[#F59E0B] bg-[#F59E0B]/10 border border-[#F59E0B]/40 px-2 py-0.5 rounded-full">
+⚠️ HTTP LAN (192.168.1.50:8080)
+</div>
+</div>
+<!-- Telemetry Line -->
+<div class="flex items-center justify-between text-xs pt-1 border-t border-[#2A343D]/60">
+<span class="font-label-sm text-[11px] text-slate-400 font-mono">🕒 Last: 2026-10-21 22:04:37</span>
+<span class="font-label-sm text-[11px] text-[#10B981] font-mono font-medium">• Deltas: 0 pending</span>
+</div>
+<!-- Prominent Action Button -->
+<button class="border border-[#06B6D4] text-[#06B6D4] bg-[#06B6D4]/10 hover:bg-[#06B6D4]/20 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.98] w-full cursor-pointer shadow-[0_0_12px_rgba(6,182,212,0.15)]">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Sync Vault Now</span>
+</button>
+</div>
+</section></main>
+<!-- ENTROPY HEX RIBBON TELEMETRY (Persistent 2px bottom visual anchor) -->
+<div class="bg-[#0A1519] border-t border-[#2A343D] px-3 py-1.5 flex items-center justify-between font-label-sm text-[10px] font-mono text-slate-400 select-none shrink-0"><div class="flex items-center gap-1.5 text-slate-400"><span class="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]"></span><span>VAULT_OPS : ZERO_KNOWLEDGE ACTIVE</span></div>
+<span class="text-slate-400 font-mono">SHELLGUARD V2.4.1</span></div><div class="h-[2px] w-full bg-gradient-to-r from-[#E4048A] via-[#06B6D4] to-[#10B981] opacity-75"></div>
+</div>
+</body></html>

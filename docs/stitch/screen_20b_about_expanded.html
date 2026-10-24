@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShellGuard Extension - About &amp; Enclave Verification (Expanded View)</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk, JetBrains Mono, Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#ca8100",
+            "secondary-fixed-dim": "#4cd7f6",
+            "background": "#0a1519",
+            "surface-container-lowest": "#061014",
+            "on-surface": "#d9e4eb",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#653e00",
+            "secondary-fixed": "#acedff",
+            "inverse-surface": "#d9e4eb",
+            "primary-container": "#e4048a",
+            "surface-container-low": "#131d22",
+            "on-tertiary-container": "#3e2400",
+            "outline-variant": "#5a3f49",
+            "tertiary-fixed": "#ffddb8",
+            "on-tertiary-fixed": "#2a1700",
+            "on-secondary-fixed": "#001f26",
+            "on-secondary-container": "#00424e",
+            "surface-container-high": "#212b30",
+            "surface": "#0a1519",
+            "primary-fixed": "#ffd9e4",
+            "on-primary-fixed": "#3e0021",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-secondary": "#003640",
+            "inverse-primary": "#b7006e",
+            "surface-variant": "#2c363b",
+            "secondary-container": "#03b5d3",
+            "on-tertiary": "#472a00",
+            "surface-tint": "#ffb0cd",
+            "on-background": "#d9e4eb",
+            "primary-fixed-dim": "#ffb0cd",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-primary": "#640039",
+            "on-error": "#690005",
+            "outline": "#a98893",
+            "error": "#ffb4ab",
+            "primary": "#ffb0cd",
+            "surface-dim": "#0a1519",
+            "surface-container-highest": "#2c363b",
+            "surface-bright": "#303b40",
+            "inverse-on-surface": "#273237",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#130007",
+            "tertiary": "#ffb95f",
+            "surface-container": "#172126",
+            "on-surface-variant": "#e1bdc8",
+            "on-primary-fixed-variant": "#8c0053",
+            "secondary": "#4cd7f6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "label-sm": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 1.125rem;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Custom subtle scrollbar for side panel */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061014;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #212b30;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #03b5d3;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary selection:text-on-secondary">
+<!-- Desktop Browser Emulation Container / Expanded Side Panel Viewport -->
+<main class="w-full max-w-[540px] min-h-screen bg-surface-container-lowest border-x border-outline-variant/30 flex flex-col justify-between shadow-2xl relative">
+<!-- TOP STICKY HEADER CLUSTER -->
+<header class="sticky top-0 z-30 bg-surface-container-lowest/95 backdrop-blur-md px-margin pt-4 pb-3 border-b border-surface-container-high"><div class="flex items-center justify-between">
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-secondary-fixed transition-colors group" href="#">
+<span class="material-symbols-outlined transition-transform group-hover:-translate-x-0.5">arrow_back</span>
+<span>&lt; Settings</span>
+</a>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm bg-secondary-container/15 border border-secondary-container/40 text-secondary px-2 py-0.5 rounded text-[11px]">
+EXPANDED VIEW
+</span>
+<span class="font-label-sm text-label-sm bg-emerald-950/30 border border-emerald-500/40 text-[#10B981] px-2 py-0.5 rounded text-[11px] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
+• ZERO-TRUST
+</span>
+</div>
+</div>
+<div class="mt-3">
+<h1 class="font-headline-lg text-headline-lg font-bold text-white tracking-tight text-[20px]">
+About &amp; Enclave Verification
+</h1>
+<p class="font-label-sm text-label-sm text-slate-400 mt-1 leading-relaxed">
+Sovereign zero-knowledge password manager architecture, provenance, and diagnostic specs
+p</p>
+</div>
+<div class="w-full h-[2px] bg-gradient-to-r from-secondary via-primary-container to-tertiary mt-3 opacity-80"></div></header>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<div class="flex-1 px-margin py-space-md space-y-space-lg overflow-y-auto"><!-- HERO IDENTITY DECK -->
+<div class="bg-[#121820] border border-[#2A3644] rounded-xl p-5 text-center relative overflow-hidden shadow-sm">
+<div class="h-0.5 w-full bg-gradient-to-r from-[#06B6D4] via-[#3B82F6] to-[#E4048A] absolute top-0 left-0"></div>
+<div class="flex justify-center items-center mt-1 mb-2">
+<div class="relative flex items-center justify-center">
+<div class="w-14 h-14 rounded-2xl bg-[#E4048A]/10 border border-[#E4048A]/40 flex items-center justify-center shadow-[0_0_24px_rgba(228,4,138,0.3)] animate-pulse">
+<span class="material-symbols-outlined text-3xl text-[#E4048A]">shield</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#06B6D4]/20 border border-[#06B6D4] flex items-center justify-center shadow-[0_0_10px_#06B6D4]">
+<span class="material-symbols-outlined text-[14px] text-[#06B6D4]">lock</span>
+</div>
+</div>
+</div>
+<h2 class="font-headline-lg text-2xl font-bold text-white tracking-tight mt-2">ShellGuard Extension</h2>
+<div class="mt-2">
+<span class="font-label-sm text-xs text-cyan-400 bg-cyan-950/50 border border-cyan-800/60 px-3 py-1 rounded-full inline-block font-mono tracking-wide">
+v0.0.0.1 • GENESIS RELEASE
+</span>
+</div>
+<p class="italic font-mono text-sm text-slate-300 mt-2.5">
+"Your reef. Your keys. Your vault. In your browser."
+</p>
+</div>
+<!-- PRIMARY ACTION: PROMINENT GITHUB REPOSITORY CARD -->
+<div class="bg-[#161F2C] border border-[#06B6D4] rounded-xl p-4 flex items-center justify-between cursor-pointer shadow-[0_0_16px_rgba(6,182,212,0.2)] hover:border-cyan-300 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-cyan-950/80 border border-cyan-500/50 flex items-center justify-center text-cyan-400 shrink-0 shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<div class="space-y-0.5 text-left">
+<div class="font-semibold text-white text-[15px] leading-tight">GitHub Source Repository</div>
+<div class="font-label-sm text-[12px] text-cyan-400 font-mono">https://github.com/ClawStackStudios/ShellGuard-Extension</div>
+<div class="mt-1">
+<span class="text-[10px] font-mono text-amber-300 bg-amber-950/40 border border-amber-600/40 px-2 py-0.5 rounded-full inline-block">⭐ Public Sovereign Repo</span>
+</div>
+</div>
+</div>
+<button class="shrink-0 font-label-md text-xs font-semibold text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-400/40 px-3 py-2 rounded-lg transition-colors flex items-center gap-1" type="button">
+[ Open Repository ↗ ]
+</button>
+</div>
+<!-- SECTION 1: OFFICIAL DOCUMENTATION & ECOSYSTEM -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between px-0.5 mb-2">
+<h3 class="font-label-md text-xs text-secondary uppercase tracking-wider font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">menu_book</span>
+OFFICIAL DOCUMENTATION &amp; ECOSYSTEM
+</h3>
+</div>
+<div class="bg-[#121820] border border-[#2A3644] rounded-xl p-4 space-y-3.5 divide-y divide-[#2A3644]/60 shadow-sm">
+<div class="flex items-start justify-between gap-3 pt-0">
+<div class="space-y-0.5">
+<div class="font-body-md text-body-md font-medium text-white">Official Documentation &amp; Guides</div>
+<div class="font-label-sm text-xs text-cyan-400/90 font-mono">https://clawstackstudios.github.io/ShellGuard/</div>
+</div>
+<button class="text-cyan-400 font-label-md text-xs font-semibold hover:underline shrink-0 pt-0.5" type="button">
+[ Read Docs ↗ ]
+</button>
+</div>
+<div class="flex items-start justify-between gap-3 pt-3.5">
+<div class="space-y-0.5">
+<div class="font-body-md text-body-md font-medium text-white">Self-Hosted Server Portal</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-relaxed">
+Direct Web/Mobile homelab vault parity via RFC 1918 / Tailscale LAN
+</p>
+</div>
+<button class="text-slate-300 font-label-md text-xs hover:text-cyan-400 shrink-0 pt-0.5 transition-colors" type="button">
+Launch ↗
+</button>
+</div>
+<div class="flex items-start justify-between gap-3 pt-3.5">
+<div class="space-y-0.5">
+<div class="font-body-md text-body-md font-medium text-white">Chrome Web Store Listing</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-relaxed">
+Verify manifest signature, permissions audit, and rate the extension
+</p>
+</div>
+<button class="text-slate-300 font-label-md text-xs hover:text-cyan-400 shrink-0 pt-0.5 transition-colors" type="button">
+View Store ↗
+</button>
+</div>
+<div class="flex items-start justify-between gap-3 pt-3.5">
+<div class="space-y-0.5">
+<div class="font-body-md text-body-md font-medium text-white">Responsible Disclosure &amp; Security Advisories</div>
+<p class="font-body-sm text-body-sm text-slate-400 leading-relaxed">
+Cryptographic bug bounties &amp; vulnerability reporting policy
+</p>
+</div>
+<button class="text-slate-300 font-label-md text-xs hover:text-cyan-400 shrink-0 pt-0.5 transition-colors" type="button">
+Security Policy ↗
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: CRYPTOGRAPHIC ENCLAVE SPECIFICATION -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between px-0.5 mb-2">
+<h3 class="font-label-md text-xs text-secondary uppercase tracking-wider font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">vpn_key</span>
+CRYPTOGRAPHIC ENCLAVE SPECIFICATION
+</h3>
+</div>
+<div class="bg-[#121820] border border-[#2A3644] rounded-xl p-4 space-y-3 shadow-sm">
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-[#0F1419] border border-[#2A3644] rounded-lg p-2.5">
+<div class="font-label-sm text-[11px] uppercase text-cyan-400 font-semibold tracking-wider">Key Derivation</div>
+<div class="font-label-sm text-xs text-slate-300 mt-1 font-mono">WebCrypto HKDF-SHA256 (32 bytes)</div>
+</div>
+<div class="bg-[#0F1419] border border-[#2A3644] rounded-lg p-2.5">
+<div class="font-label-sm text-[11px] uppercase text-cyan-400 font-semibold tracking-wider">Cipher Envelope</div>
+<div class="font-label-sm text-xs text-slate-300 mt-1 font-mono">AES-GCM-256 with AAD Record Binding</div>
+</div>
+<div class="bg-[#0F1419] border border-[#2A3644] rounded-lg p-2.5">
+<div class="font-label-sm text-[11px] uppercase text-cyan-400 font-semibold tracking-wider">DOM Security</div>
+<div class="font-label-sm text-xs text-slate-300 mt-1 font-mono">Closed Shadow DOM (attachShadow mode: closed)</div>
+</div>
+<div class="bg-[#0F1419] border border-[#2A3644] rounded-lg p-2.5">
+<div class="font-label-sm text-[11px] uppercase text-cyan-400 font-semibold tracking-wider">Memory Policy</div>
+<div class="font-label-sm text-xs text-slate-300 mt-1 font-mono">Volatile Session Zeroization (Rule 4)</div>
+</div>
+</div>
+<div class="bg-[#0A0D12] border border-[#2A3644] rounded-lg px-3 py-2 flex items-center justify-between text-xs font-mono text-slate-400">
+<span>Build Commit: 04d2cd7 • Manifest: Chromium MV3</span>
+<span class="text-cyan-400/90">License: MIT Sovereign</span>
+</div>
+</div>
+</section>
+<!-- SECURITY PERSISTENCE CALLOUT -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-lg p-3 flex items-center justify-center gap-2 shadow-inner text-center">
+<span class="material-symbols-outlined text-secondary text-base">lock</span>
+<p class="font-label-sm text-xs text-slate-400 font-mono">
+Zero third-party telemetry, trackers, or cloud reliance. Sovereign client execution.
+</p>
+</div></div>
+<!-- PINNED FOOTER TELEMETRY STATUS BAR -->
+<footer class="border-t border-surface-container-high py-2.5 px-margin bg-surface-container-lowest/90 backdrop-blur-md flex justify-between items-center text-on-surface/50"><div class="flex items-center gap-2 font-label-sm text-label-sm text-[#10B981]">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-ping"></span>
+<span class="font-semibold tracking-wider">• ENCLAVE : SECURE</span>
+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/40 font-mono">
+SHELLGUARD v0.0.0.1 • CLAWSTACK STUDIOS
+</div></footer>
+</main>
+</body></html>

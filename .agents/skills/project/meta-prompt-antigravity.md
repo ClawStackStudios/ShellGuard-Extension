@@ -12,13 +12,13 @@
 | **Stage 01** | `v0.0.1.1 (Build 2)` | Cryptographic Bedrock (HKDF, AAD & Session Vault) | `stages/stage-01-crypto-bedrock/` | ⚪ Queued |
 | **Stage 02** | `v0.0.1.2 (Build 3)` | Ephemeral Service Worker & Offscreen Router | `stages/stage-02-mv3-runtime/` | ⚪ Queued |
 | **Stage 03** | `v0.0.1.3 (Build 4)` | Content Script Observer & Co-Presence Gate | `stages/stage-03-autofill-heuristics/` | ⚪ Queued |
-| **Stage 04** | `v0.0.1.4 (Build 5)` | Closed Shadow DOM Badge & In-Page Overlay | `stages/stage-04-shadow-dom-carapace/` | ⚪ Queued |
-| **Stage 05** | `v0.0.1.5 (Build 6)` | Popup Vault Browser & Reef Modernist UI | `stages/stage-05-popup-vault-browser/` | ⚪ Queued |
-| **Stage 06** | `v0.0.1.6 (Build 7)` | Micro-TOTP Engine & SVG Pulse Ring | `stages/stage-06-micro-totp-engine/` | ⚪ Queued |
-| **Stage 07** | `v0.0.1.7 (Build 8)` | Credential Generator Suite & Password History | `stages/stage-07-generator-suite/` | ⚪ Queued |
-| **Stage 08** | `v0.0.1.8 (Build 9)` | Server Delta Sync & HTTP LAN Carve-Out | `stages/stage-08-server-sync-engine/` | ⚪ Queued |
-| **Stage 09** | `v0.0.1.9 (Build 10)` | Agentic Delegation Port (`lb-` LobsterKeys) | `stages/stage-09-agentic-delegation/` | ⚪ Queued |
-| **Stage 10** | `v0.0.2.0 (Build 11)` | Chrome Web Store Packaging & Verification Summit | `stages/stage-10-web-store-release/` | ⚪ Queued |
+| **Stage 04** | `v0.0.1.4 (Build 5)` | In-Page Closed Shadow DOM Overlay, Anti-Collision & Prompts (Screens 7, 12, 13) | `stages/stage-04-shadow-dom-carapace/` | ⚪ Queued |
+| **Stage 05** | `v0.0.1.5 (Build 6)` | Popup Vault Browser, Dashboard, Inline Actions & PIN Pad (Screens 1, 2B, 2C, 6, 8) | `stages/stage-05-popup-vault-browser/` | ⚪ Queued |
+| **Stage 06** | `v0.0.1.6 (Build 7)` | Micro-TOTP Engine & Animated SVG Pulse Ring (Screen 3) | `stages/stage-06-micro-totp-engine/` | ⚪ Queued |
+| **Stage 07** | `v0.0.1.7 (Build 8)` | Credential Generator Suite & Volatile Session History (Screens 4, 5) | `stages/stage-07-generator-suite/` | ⚪ Queued |
+| **Stage 08** | `v0.0.1.8 (Build 9)` | Server Delta Sync, Settings Suite, Import/Export & Trash Shredder (Screens 9, 10, 11, 14A, 16, 17, 18) | `stages/stage-08-server-sync-engine/` | ⚪ Queued |
+| **Stage 09** | `v0.0.1.9 (Build 10)` | Agentic Delegation Port (`lb-`) & Sovereign Pods Manager (Screen 15) | `stages/stage-09-agentic-delegation/` | ⚪ Queued |
+| **Stage 10** | `v0.0.2.0 (Build 11)` | Appearance Themes, About Enclave Verification & Web Store Summit (Screens 19A, 19B, 20A, 20B) | `stages/stage-10-web-store-release/` | ⚪ Queued |
 
 ---
 
