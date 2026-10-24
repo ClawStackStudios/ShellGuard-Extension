@@ -36,6 +36,10 @@ Zero-knowledge Chrome extension (MV3) for the self-hosted ShellGuard ecosystem. 
    - Rule: Commits must follow Conventional Commits with `User:` (intent/spec) and `AI:` (implementation/tests) trailers.
    - Violation: Commits lacking dual-attribution trailers or raw force pushes (`git push --force`).
    - Reason: Guarantees auditability between human architectural intent and agent execution.
+7. **Monotonic Cascading Versioning & Zero Drift**
+   - Rule: Releases strictly advance monotonically using 4-digit convention (`X.Y.Z.N`). Out-of-band hotfixes take the next sequential revision digit and cascade all planned downstream roadmap stage versions forward by $+1$.
+   - Violation: Skipping version digits, reusing version numbers, or failing to push downstream roadmap versions after an out-of-band hotfix.
+   - Reason: Preserves mathematical integrity of releases and prevents Chrome Web Store deployment rejection.
 - **Carve-out (Transport Sovereignty & Homelab TLS):** Cleartext HTTP permitted strictly on RFC 1918 / Tailscale LAN endpoints with mandatory amber UI warning pill. WAN HTTP is forbidden. Self-signed HTTPS certificates supported via explicit user consent toggle ("Trust self-signed certificates") paired with browser origin exception whitelisting.
 
 ## 3. Project Patterns
