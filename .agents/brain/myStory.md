@@ -286,3 +286,13 @@ Lucas identified a critical UX gap upon installing the extension in a browser: t
 3. Created all 9 updated stage prompts under `.agents/skills/project/stages/` with explicit references to the 21 permanent module specifications.
 4. Updated `ROADMAP.md` and `meta-prompt-antigravity.md`, advancing the Active Leading Edge to `Stage 02: Login Gateway & Session State Machine`.
 5. Verified 100% SSoT alignment via `python3 scripts/audit_docs_drift.py`, `npm run lint`, and `npm run typecheck`.
+6. Merged PR #16 (`ce95c1b`) to seal the re-ordered roadmap on `main`.
+
+### Stage 02 Delegation to Google Jules (`v0.0.0.3` • Build 3)
+I executed the `/prep-jules-work` 4-Gate preparation pipeline for Stage 02 (Login Gateway & Session State Machine):
+1. Authored `20-stage-02-domain-map.md` establishing in-scope boundaries, server auth contracts (`POST /api/auth/token`), RFC 1918 transport classification, HKDF derivation into `ShellGuardSessionVault`, and memory zeroization.
+2. Authored `21-stage-02-jules-launch-brief.md` defining security redlines, sub-phase task pairing, and PR reporting contracts.
+3. Authored `22-stage-02-jules-socratic-prompt.md` featuring 5 probability-collapse dilemmas (V8 interning vs memory zeroization, LAN HTTP fallback, self-signed TLS escape hatch, JSON vs raw ClawKey parsing, and non-extractable session state).
+4. Created `.jules/knowledge/KNOWLEDGE.md`, `.jules/tasks/task-02.md`, and planted inline `// TODO(jules):` anchor in `entrypoints/popup/App.tsx`; merged into `main` via PR #17 (`ce3258b`).
+5. Dispatched task to Google Jules CLI (Session ID `16108275043681958379` at `https://jules.google.com/session/16108275043681958379`).
+
