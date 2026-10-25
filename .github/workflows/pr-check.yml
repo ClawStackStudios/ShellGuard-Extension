@@ -1,0 +1,90 @@
+name: Pull Request Check 🧪
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to manually test'
+        required: false
+        default: ''
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  pre-flight:
+    name: Sub-Second SSoT, Lint & Typecheck Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code 🛡️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js 22 ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Setup Python 3 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies 📦
+        run: npm ci
+
+      - name: SSoT Documentation & Skill Drift Audit 📋
+        run: python3 scripts/audit_docs_drift.py
+
+      - name: Generate WXT Types ⚙️
+        run: npx wxt prepare
+
+      - name: TypeScript Typecheck 🔍
+        run: npm run typecheck
+
+      - name: ESLint Static Code Analysis 🧹
+        run: npm run lint
+
+  test-and-package:
+    name: Test Matrix & MV3 Extension Packaging 🚀
+    needs: pre-flight
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code 🛡️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js 22 ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies 📦
+        run: npm ci
+
+      - name: Run Unit Test Suite 🧪
+        run: npm run test
+
+      - name: Build MV3 Production Extension 🏗️
+        run: npm run build
+
+      - name: Package Extension Distribution Zip 📦
+        run: npm run zip
+
+      - name: Upload PR Build Artifact 📤
+        uses: actions/upload-artifact@v4
+        with:
+          name: shellguard-pr-extension
+          path: .output/*.zip
+          retention-days: 7
