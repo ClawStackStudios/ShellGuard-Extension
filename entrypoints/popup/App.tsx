@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Shield, KeyRound, Settings, Search, Copy, Eye, EyeOff, Zap, ExternalLink } from 'lucide-react';
 
 export default function App(): React.JSX.Element {
+  // TODO(jules): Stage 02 (Task B) — Check ShellGuardSessionVault on mount. If logged out, render <LoginGateway onSuccess={...} /> matching docs/stitch/screen_1_login.html. If unlocked, render dashboard.
   const [activeTab, setActiveTab] = useState<'vault' | 'generator' | 'settings'>('vault');
   const [isPasswordRevealed, setIsPasswordRevealed] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
