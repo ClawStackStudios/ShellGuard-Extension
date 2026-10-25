@@ -1,7 +1,7 @@
 {
   "name": "shellguard-extension",
   "displayName": "ShellGuard — Sovereign Zero-Knowledge Vault",
-  "version": "0.0.0.2",
+  "version": "0.0.0.3",
   "private": true,
   "type": "module",
   "description": "Zero-knowledge Chromium extension (MV3) for client-decrypted autofill, micro-TOTP generation, and agentic vault delegation.",

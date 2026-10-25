@@ -1,17 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, KeyRound, Settings, Search, Copy, Eye, EyeOff, Zap, ExternalLink } from 'lucide-react';
+import { getSessionKey } from '../../src/crypto/sessionVault';
+import { LoginGateway } from './components/LoginGateway';
 
 export default function App(): React.JSX.Element {
-  // TODO(jules): Stage 02 (Task B) — Check ShellGuardSessionVault on mount. If logged out, render <LoginGateway onSuccess={...} /> matching docs/stitch/screen_1_login.html. If unlocked, render dashboard.
   const [activeTab, setActiveTab] = useState<'vault' | 'generator' | 'settings'>('vault');
   const [isPasswordRevealed, setIsPasswordRevealed] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const key = await getSessionKey('vault_pearls');
+        setIsAuthenticated(!!key);
+      } catch {
+        setIsAuthenticated(false);
+      }
+    }
+    checkAuth();
+  }, []);
 
   const handleCopy = (text: string, fieldName: string) => {
     navigator.clipboard.writeText(text);
     setCopiedField(fieldName);
     setTimeout(() => setCopiedField(null), 800);
   };
+
+  if (isAuthenticated === null) {
+    return (
+      <div className="w-[390px] h-[600px] bg-[#0F1419] flex items-center justify-center">
+        <span className="w-8 h-8 rounded-full bg-[#06B6D4] animate-pulse"></span>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <LoginGateway onSuccess={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className="w-[384px] h-[560px] bg-carapace-floor text-slate-100 flex flex-col font-sans text-sm selection:bg-claw selection:text-white antialiased">
