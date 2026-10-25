@@ -140,6 +140,16 @@ def audit_active_stage():
     print(f"[+] Sliding release timeline verified: leading edge is '{leading_stage}' ({len(stages)}/11 stages cross-checked against modules/ & specs/).")
     return True
 
+def audit_release_document(version):
+    release_doc = ROOT / f"RELEASE-v{version}.md"
+    if not release_doc.exists():
+        sys.exit(f"[-] RELEASE-v{version}.md missing from repository root (SSoT release notes invariant).")
+    content = release_doc.read_text(encoding="utf-8")
+    if f"v{version}" not in content:
+        sys.exit(f"[-] RELEASE-v{version}.md missing version reference for v{version}.")
+    print(f"[+] SSoT release document verified: RELEASE-v{version}.md exists and references v{version}.")
+    return True
+
 def main():
     print("=" * 72)
     print("  🐚 ShellGuard-Extension — Sub-Second SSoT & Skill Drift Audit")
@@ -152,6 +162,7 @@ def main():
     audit_agents_references()
     audit_modular_skill()
     audit_active_stage()
+    audit_release_document(ver)
     
     print("=" * 72)
     print("  ✅ All SSoT documentation, visual oracles, and stage gates aligned!")

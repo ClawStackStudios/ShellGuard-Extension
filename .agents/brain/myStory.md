@@ -219,5 +219,52 @@ I inspected the complete suite of 28 screens created in Google Stitch and stored
 I aligned the release versions so Genesis Scaffold is `0.0.0.1` (1:1 with Stitch Screen 20a). The 11 sliding stages increment through `v0.0.0.1` to `v0.0.0.10`, landing on `v0.0.1.0` at Stage 10. Stage 10 marks the formal culmination of Meta-Phase 1 (Extension Core & Sovereign Parity) with an explicit architectural handoff into scoping and mapping Meta-Phase 2. This was merged to `main` via PR #9.
 
 ### Semantic Versioning Rule Codification (`docs/semantic-versioning-rule`)
-I authored `.agents/rules/semantic-versioning.md` establishing the 4-digit `MAJOR.MINOR.PATCH.REVISION` convention for ShellGuard-Extension and enshrining the **Hotfix Cascading Push Invariant**: any out-of-band hotfix patch introduced between planned stages claims the next sequential revision digit (e.g. `v0.0.0.9`), cascading all downstream planned stages forward by $+1$ in `ROADMAP.md` and `meta-prompt-antigravity.md`. I added Rule 7 to `AGENTS.md`.
+I authored `.agents/rules/semantic-versioning.md` establishing the 4-digit `MAJOR.MINOR.PATCH.REVISION` convention for ShellGuard-Extension and enshrining the **Hotfix Cascading Push Invariant**: any out-of-band hotfix patch introduced between planned stages claims the next sequential revision digit (e.g. `v0.0.0.9`), cascading all downstream planned stages forward by $+1$ in `ROADMAP.md` and `meta-prompt-antigravity.md`. I added Rule 7 to `AGENTS.md`. Merged to `main` via PR #10.
 
+### Stage 01 Delegation to Google Jules (`v0.0.0.2` • Build 2)
+I prepped Stage 01 (Cryptographic Bedrock & Session Quarantine) for asynchronous background execution by Google Jules CLI (`jules-cli`). I authored `15-stage-01-prepped-work-outline.md` defining the 10 domain key namespaces, WebCrypto HKDF-SHA256, AES-GCM-256 with AAD binding, native IndexedDB `ShellGuardSessionVault`, `@noble` LAN fallback, and memory zeroizer. I crafted `16-stage-01-jules-socratic-prompt.md` with 5 Socratic architectural dilemmas and the `// TODO(uncertainty):` epistemic escape hatch.
+I verified the git working tree on `main` at `fc3486e`. I aligned with Lucas on the ShellGuard server connection contracts, Bearer token handshake, and the Bitwarden-model offline cache invariant (Locking keeps encrypted cache for offline unlock; Logging Out purges `chrome.storage.local`).
+I launched Google Jules session `13620177955616341306` (`https://jules.google.com/session/13620177955616341306`) targeting `ClawStackStudios/ShellGuard-Extension`.
+
+### Stage 01 PR Review & Socratic Remediation (`git-review-pr`)
+Jules completed the implementation and opened Pull Request #11 (`feat-crypto-bedrock-stage-01-13620177955616341306` at commit `bef3c8a`).
+I activated `/config/.gemini/config/skills/git-review-pr/SKILL.md` to perform an evidence-backed review of the PR.
+I inspected all 13 changed files (+699 lines):
+- Verified WebCrypto HKDF derivation with `extractable: false` across all 10 namespaces.
+- Verified AES-GCM-256 seal/open with strict AAD binding and 1-bit tamper rejection.
+- Verified native IndexedDB `ShellGuardSessionVault` with structured clone.
+- Observed Jules's epistemic uncertainty comment on MV3 service worker IndexedDB persistence; ratified it against Chromium 116+ specs.
+- Identified two `[SHOULD-FIX]` items: `package.json` version left at `0.0.0.1` instead of advancing to `0.0.0.2` (Build 2) per Rule 7; and missing bidirectional cross-decryption test between WebCrypto and `@noble` fallback.
+I authored artifact `pr_review_11_2026_10_24_1930.md` with verdict `MERGE-AFTER-FIXES`.
+Per Lucas's instruction (Option 1), I posted a formal code review to PR #11 (`review ID: 5639764311`) containing 3 line-anchored Socratic questions on `package.json:21` (versioning), `tests/crypto/fallback.test.ts:25` (cross-compatibility assertions), and `src/crypto/zeroizer.ts:5` (ergonomic aliases).
+Jules processed the review, implemented the fixes, and opened PR #12 (`feat/crypto-bedrock-stage-01-13620177955616341306` at commit `4944ae2`):
+- Bumped version to `v0.0.0.2` (Build 2) across `package.json`, `wxt.config.ts`, and `tests/genesis.test.ts`.
+- Added bidirectional cross-decryption tests (`tests/crypto/fallback.test.ts:43-58`) proving WebCrypto-sealed envelopes open in `@noble` and `@noble`-sealed envelopes open in WebCrypto.
+- Exported `zeroizeBytes` and `zeroizeBuffer` aliases in `src/crypto/zeroizer.ts`.
+- Cloud CI passed 100% across both jobs (16 tests green, 0 lint warnings).
+I authored `pr_review_12_2026_10_24_2120.md` with verdict `MERGE`.
+With Lucas's authorization, I squash-merged PR #12 into `main` (`924fe6b`), closed superseded PR #11, deleted remote branches, and pulled `main` locally.
+I ran `npm install` locally, verified `eslint`, `tsc`, and `audit_docs_drift.py` with 0 warnings/errors.
+I updated `ROADMAP.md` and `.agents/skills/project/meta-prompt-antigravity.md` marking Stage 01 complete and setting the leading active stage to Stage 02 (MV3 Runtime & Offscreen Enclave Router).
+
+### Stage 00 & 01 Autobiography & Root Handoff Protocol (`docs/phase-1-autobiography-and-handoff`)
+I generated `17-meta-phase-1-stages-00-01-autobiography.md` documenting the chronological progression of Meta-Phase 1 across Stage 00 (Genesis Scaffold) and Stage 01 (Cryptographic Bedrock & Session Quarantine), walking backward through the architectural decisions, pull requests, and cryptographic validations.
+I authored `HANDOFF.md` in the repository root as the canonical launchpad for Stage 02 (MV3 Runtime & Offscreen Enclave Router). Merged into `main` via PR #14 (`3be1d07`).
+
+### GitHub Workflows Parity with ShellGuard Server (`feat/release-workflow-parity`)
+Lucas requested auditing the GitHub Actions workflows of the primary `ShellGuard` server repository (`ClawStackStudios/ShellGuard`) and bringing `ShellGuard-Extension` into 1:1 operational parity.
+1. I inspected `ShellGuard/.github/workflows/` (`release.yml`, `ci.yml`, `pr-check.yml`) and `ShellGuard-Mobile/.github/workflows/`.
+2. I authored `18-release-workflow-parity-and-gap-analysis.md` outlining the 6 operational gaps:
+   - Automated commit flag triggering (`--release[ =]+v?[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+` on `main`).
+   - SSoT release documentation invariant (`RELEASE-v<version>.md` required in repo root).
+   - Strict 4-digit monotonic SemVer tag creation and propagation.
+   - Dual-asset release packaging (`.output/*.zip` + `sha256sums.txt`).
+   - Repository mirroring synchronization job (`mirror`).
+   - Clean separation of PR gates (`pr-check.yml`) from branch push CI (`ci.yml`).
+3. On branch `feat/release-workflow-parity`:
+   - Created `.github/workflows/release.yml` with dual trigger (commit flag regex + manual `workflow_dispatch`), SSoT validation, WXT build + zip packaging, SHA-256 checksum generation, `softprops/action-gh-release@v2` publishing, and repository mirroring.
+   - Created `.github/workflows/pr-check.yml` targeting PRs into `main`.
+   - Updated `.github/workflows/ci.yml` targeting direct pushes to `main` and feature branches (excluding tags `v*`).
+   - Authored root SSoT release notes `RELEASE-v0.0.0.2.md` documenting Genesis (Stage 00) and Crypto Bedrock (Stage 01).
+   - Enhanced `scripts/audit_docs_drift.py` with `audit_release_document(ver)` to assert `RELEASE-v{ver}.md` presence in root.
+   - Verified local pre-flight checks: `lint` (0 warnings), `typecheck` (0 errors), and `audit_docs_drift.py` (all checks green).
