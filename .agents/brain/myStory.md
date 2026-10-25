@@ -268,3 +268,21 @@ Lucas requested auditing the GitHub Actions workflows of the primary `ShellGuard
    - Authored root SSoT release notes `RELEASE-v0.0.0.2.md` documenting Genesis (Stage 00) and Crypto Bedrock (Stage 01).
    - Enhanced `scripts/audit_docs_drift.py` with `audit_release_document(ver)` to assert `RELEASE-v{ver}.md` presence in root.
    - Verified local pre-flight checks: `lint` (0 warnings), `typecheck` (0 errors), and `audit_docs_drift.py` (all checks green).
+4. Merged PR #15 to `main` (`59a3ebe`) with `--release v0.0.0.2`, automatically triggering `release.yml`, creating tag `v0.0.0.2`, and publishing the inaugural release with `shellguard-extension-0.0.0.2-chrome.zip` and `sha256sums.txt`.
+
+### Front-Door-First Roadmap Reorganization (`refactor/reorder-front-door-stages`)
+Lucas identified a critical UX gap upon installing the extension in a browser: the extension defaulted to a static mock dashboard with hardcoded items and lacked a Login Gateway. The original roadmap had scheduled UI views for Stage 05 while prioritizing headless service workers and injectors.
+1. I authored `19-reordered-front-door-modular-stages.md` establishing a screen-by-screen progression starting at the front door.
+2. Re-sequenced the 11 sliding stages:
+   - Stage 02 (`v0.0.0.3`): Login Gateway (`01-login-gateway`, Screen 1) & Session State Machine.
+   - Stage 03 (`v0.0.0.4`): Vault Dashboard (`02-vault-dashboard/01-active-tab-and-list`, Screen 2) & Basic Sync.
+   - Stage 04 (`v0.0.0.5`): Settings Hub Base Menu (`06-settings/00-settings-hub`, Screen 9).
+   - Stage 05 (`v0.0.0.6`): Granular Settings Sections Suite (Screens 10, 11, 14–18).
+   - Stage 06 (`v0.0.0.7`): Dashboard Polish, Attachments, Detail View & Lock Screen (Screens 2C, 3, 6, 8).
+   - Stage 07 (`v0.0.0.8`): Micro-TOTP Engine & Animated SVG Pulse Ring.
+   - Stage 08 (`v0.0.0.9`): Credential Generator Suite & Volatile History (Screens 4, 5).
+   - Stage 09 (`v0.0.0.10`): In-Page Autofill & Closed Shadow DOM Overlays (Screens 7, 12, 13).
+   - Stage 10 (`v0.0.1.0`): MV3 Background Router, Watchdogs, Appearance Engine & Web Store Release.
+3. Created all 9 updated stage prompts under `.agents/skills/project/stages/` with explicit references to the 21 permanent module specifications.
+4. Updated `ROADMAP.md` and `meta-prompt-antigravity.md`, advancing the Active Leading Edge to `Stage 02: Login Gateway & Session State Machine`.
+5. Verified 100% SSoT alignment via `python3 scripts/audit_docs_drift.py`, `npm run lint`, and `npm run typecheck`.

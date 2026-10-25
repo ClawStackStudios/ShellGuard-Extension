@@ -14,8 +14,8 @@
 ```text
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║  CURRENT RELEASE: v0.0.0.2 (Build 2) Cryptographic Bedrock & Session Quarantine  ║
-║  ACTIVE STAGE:    Stage 02 — MV3 Runtime & Offscreen Enclave Router              ║
-║  LOCATION:        .agents/skills/project/stages/stage-02-mv3-runtime/prompt.md   ║
+║  ACTIVE STAGE:    Stage 02 — Login Gateway & Session State Machine               ║
+║  LOCATION:        .agents/skills/project/stages/stage-02-login-gateway/prompt.md ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -38,58 +38,58 @@ Each stage delivers exactly two tasks: **Task A (Core Logic/Engine)** and **Task
 - *Target Release:* `v0.0.0.2` (Build 2) | *Gate:* Tamper rejection unit tests & WebCrypto vector suite (16/16 tests green).
 
 
-### ⚪ Stage 02 — MV3 Runtime & Offscreen Enclave Router
-- **Bound Oracles:** `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`
-- [ ] **Task A [Service Worker Router]:** Event-driven lifecycle manager enforcing synchronous Zod message envelope validation (`{ id, type, payload, timestamp, origin }`), hotkey routing, `chrome.alarms` watchdogs (inactivity lock, 30s clipboard wipe, 30d trash sweep), and badge counters.
-- [ ] **Task B [Offscreen Enclave]:** Singleton offscreen document hosting all WebCrypto derivations, AES-GCM-256 operations, QR canvas decoding, and volatile generator history ring buffers.
-- *Target Release:* `v0.0.0.3` (Build 3) | *Gate:* Cross-context message envelope validation tests.
+### ⚪ Stage 02 — Login Gateway & Session State Machine
+- **Bound Oracles:** `modules/01-login-gateway/spec.md`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`
+- [ ] **Task A [Session State Machine & Auth Handshake]:** Tri-state vault session machine (`LOGGED_OUT`, `AUTHENTICATING`, `UNLOCKED`, `LOCKED`), split Protocol / Host / Port (`https://` | `host` | `:port`) endpoint bar with amber LAN HTTP pill, server `/api/salt` query and Bearer token retrieval, HKDF PRK derivation into `ShellGuardSessionVault`.
+- [ ] **Task B [Screen 1 Carapace Presentation]:** Pixel-perfect implementation of `Screen 1` (`docs/stitch/screen_1_login.html`), segmented mode toggle (`Upload Identity File` vs `Paste ClawKey`), amber LAN pill, and telemetry footer badge (`🔒 HKDF-SHA256 • AES-GCM-256 • Axiom 1 Active`).
+- *Target Release:* `v0.0.0.3` (Build 3) | *Gate:* Visual component test suite, login handshake mock & pre-flight audits.
 
-### ⚪ Stage 03 — Content Script Observers & Pristine Injector
-- **Bound Oracles:** `specs/autofill/autofill-mechanics.md`, `modules/06-settings/02-autofill-and-shadow-dom/spec.md`
-- [ ] **Task A [DOM Observer & Co-Presence Gate]:** SPA `MutationObserver` enforcing the username/password **Co-Presence Gate**, 6-mode URI matcher (`Base Domain`, `Host & Port`, `Exact`, `Starts With`, `Regex`, `Never`), cross-origin iframe rejection, and page-load fail-closed protection.
-- [ ] **Task B [Anti-Pollution Injector]:** Pristine prototype value setter (`HTMLInputElement.prototype.value.set`) dispatching bubbling `input` and `change` events with `<1ms` transient secret zeroization.
-- *Target Release:* `v0.0.0.4` (Build 4) | *Gate:* DOM isolation & synthetic event tests.
+### ⚪ Stage 03 — Vault Dashboard & Basic Sync
+- **Bound Oracles:** `modules/02-vault-dashboard/01-active-tab-and-list/spec.md`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md`
+- [ ] **Task A [Basic Delta Sync & Local Vault Storage]:** Delta sync `/api/sync` on login and tab focus, client-side AES-GCM-256 envelope decryption with AAD check, and encrypted envelope caching in `chrome.storage.local`.
+- [ ] **Task B [Bitwarden Dashboard Carapace]:** Bitwarden-pattern Vault Dashboard (`Screens 2 & 2B`): pinned Carapace Header, search bar with live item count, active-tab matching section (`Matching Logins for <domain>`), credential cards with Favicon, Title, Username, Eye-beside-Copy secret row, and compact `Fill` CTA.
+- *Target Release:* `v0.0.0.4` (Build 4) | *Gate:* Sync reconciliation & active-tab matching unit tests.
 
-### ⚪ Stage 04 — Closed Shadow DOM Carapace, Anti-Collision Glyphs & Prompts
-- **Bound Modules:** `modules/03-inpage-autofill/01-shadow-dropdown-overlay/`, `modules/03-inpage-autofill/02-glyph-states-and-inset/`, `modules/06-settings/03-notifications-and-prompts/`
-- [ ] **Task A [Anti-Collision Coordinate Engine]:** `ResizeObserver` dynamic inset engine shifting the 4-state carapace glyph left by `12px + siblingWidth + 8px` (up to `68px` • `Screen 13`) when native password-reveal eyes or clear buttons are present.
-- [ ] **Task B [Closed Shadow Overlays & Capture Bar]:** Closed Shadow DOM (`attachShadow({ mode: 'closed' })`) dropdown (`Screen 7` & `Screen 13` State 01/02 with `AUTO-CASCADE 2FA` `[Fill All]` and `Never for this site`) and floating capture bar (`Screens 12/12A/12B` with 6 capture triggers, target Pod routing, and CIDR exclusions).
-- *Target Release:* `v0.0.0.5` (Build 5) | *Gate:* Shadow DOM encapsulation, anti-collision offset & CSS reset verification.
+### ⚪ Stage 04 — Settings Hub (Base Carapace Navigation)
+- **Bound Oracles:** `modules/06-settings/00-settings-hub/spec.md`, `specs/ui/design-tokens.md`
+- [ ] **Task A [Session Lifecycle & Lock/Logout Controller]:** Quick Lock (`destroySessionVault()`), Full Logout (purging session keys and `chrome.storage.local` encrypted cache), and server `/api/health` live connection check.
+- [ ] **Task B [Screen 9 Settings Carapace]:** Base settings carapace menu (`Screen 9`): connected server URL, active identity badge (`hu-` sovereign or `lb-` agentic), 6 navigation target cards (resting state), Lobster Red `Lock Vault Now` button, and `Log Out Entirely` danger link.
+- *Target Release:* `v0.0.0.5` (Build 5) | *Gate:* Session zeroization verification & navigation routing tests.
 
-### ⚪ Stage 05 — Core Popup SPA: Login, Dashboard, Editor & Lock Pad
-- **Bound Modules:** `modules/01-login-gateway/`, `modules/02-vault-dashboard/{01,02,04}`, `modules/05-lock-enclave/01-pin-and-biometric-pad/`
-- [ ] **Task A [Vault State & Search Index]:** In-memory decrypted vault state supporting `<16ms` active-tab URI matching, 2×2 matrix filtering (`Pod`, `Tag`, `Type`, `Domain`), and `Archive (Cold Storage)` / `Trash` exclusion.
-- [ ] **Task B [Core Popup Views]:** Login Gateway (`Screen 1` with `.json` Identity File upload, `hu-`/`lb-` ClawKey input, split host/port bar, and RFC 1918 LAN / Self-Signed TLS handling), Resting Dashboard (`Screens 2 & 2B`), 3-Dots Quick Actions Flyout (`Screen 2C`), Add/Edit Form (`Screen 6` with Eye-beside-Action and entropy bar), and 6-digit PIN / WebAuthn Keypad (`Screen 8`).
-- *Target Release:* `v0.0.0.6` (Build 6) | *Gate:* Visual component test suite, Eye-beside-Copy invariant & lint.
+### ⚪ Stage 05 — Granular Settings Sections Suite
+- **Bound Modules:** `modules/06-settings/{01,02,03,04,05,06,07,08}/spec.md`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`
+- [ ] **Task A [Settings State Persistence & Handlers]:** Auto-lock duration timers, PIN code hash storage, scoped Pod access policies (`LB-RW`, `LB-EXEC`, `HUMAN ONLY`), client-RAM multi-format importer (`.json`, `.csv`, `.1pux`, `.kdbx`), HKDF encrypted exporter, and 30-day trash shredder.
+- [ ] **Task B [Sub-Screen Carapace Suite]:** Account Security (`Screen 10`), Autofill Settings (`Screen 11`), Vault Operations Hub (`Screen 14/14A`), Sovereign Pods Manager (`Screen 15`), Import Envelopes (`Screen 16`), Export Vault (`Screen 17`), and Archive/Trash Shredder (`Screen 18`).
+- *Target Release:* `v0.0.0.6` (Build 6) | *Gate:* Import/export signature check, auto-lock timer & pod policy tests.
 
-### ⚪ Stage 06 — Micro-TOTP Engine & Animated SVG Pulse Ring
-- **Bound Module:** `modules/02-vault-dashboard/03-view-item-and-totp/`
-- [ ] **Task A [RFC 6238 TOTP Engine]:** Pure-TS TOTP generator supporting Base32/otpauth URIs, HMAC-SHA1/256/512, 6/8 digits, and custom epochs.
-- [ ] **Task B [Item Detail & SVG Pulse Ring]:** Credential Detail View (`Screen 3`) with `Autofill into Page` CTA, Eye-beside-Copy password row, `⚠️ HTTP LAN` warning pill, split `839 204` readout, and `requestAnimationFrame` SVG countdown ring (`#06B6D4` $\to$ `#F97316` $\to$ `#F59E0B`/`#E4048A`).
-- *Target Release:* `v0.0.0.7` (Build 7) | *Gate:* RFC 6238 published test vector compliance.
+### ⚪ Stage 06 — Dashboard Polish, Attachments, Detail View & Lock Screen
+- **Bound Modules:** `modules/02-vault-dashboard/{02,04}/spec.md`, `modules/05-lock-enclave/01-pin-and-biometric-pad/spec.md`, `specs/crypto/encryption-layers.md`
+- [ ] **Task A [Item CRUD, Attachments & Lock Enclave Engine]:** Full item add/edit/soft-delete synced to `/api/vault/items`, custom fields support (Text, Hidden, Checkbox, Linked), AES-GCM-256 encrypted attachments, and session lock enforcement.
+- [ ] **Task B [Carapace Polish & Lock Screen]:** 3-Dots Quick Actions Menu flyout (`Screen 2C`), Credential Detail View (`Screen 3`), Add/Edit Item modal (`Screen 6`), and Lock Enclave 6-digit PIN Keypad & WebAuthn Biometric unlock screen (`Screen 8`).
+- *Target Release:* `v0.0.0.7` (Build 7) | *Gate:* CRUD mutation tests & lock screen security validation.
 
-### ⚪ Stage 07 — Credential Generator Suite & Volatile History
-- **Bound Modules:** `modules/04-generator-suite/01-generator-deck/`, `modules/04-generator-suite/02-volatile-history/`
-- [ ] **Task A [Rejection-Sampled CSPRNG Builder]:** Unbiased `crypto.getRandomValues()` password, EFF Diceware passphrase, and username generator enforcing minimum character quotas and exact combinatorial entropy math.
-- [ ] **Task B [Generator Deck & History UI]:** Generator Deck (`Screen 4` with mode switcher, syntax-colored output, 4-segment entropy bar, `⚡ Insert into Active Tab`, slider, `12..64` chips, 2×2 matrix) and Volatile History Drawer (`Screen 5` capped at 50 items strictly in session RAM, zeroized on lock).
-- *Target Release:* `v0.0.0.8` (Build 8) | *Gate:* Entropy distribution tests & Rule 4 zeroization check.
+### ⚪ Stage 07 — Micro-TOTP Engine & Animated SVG Pulse Ring
+- **Bound Module:** `modules/02-vault-dashboard/03-view-item-and-totp/spec.md`, `specs/crypto/key-hierarchy.md`
+- [ ] **Task A [RFC 6238 TOTP Engine]:** Pure-TS TOTP generator supporting Base32/otpauth URIs, HMAC-SHA1/256/512, 6/8 digits, 30s/60s intervals in offscreen enclave, verified against RFC 6238 test vectors.
+- [ ] **Task B [SVG Pulse Ring & Split Code Readout]:** Monospace 3x3 split code display (`123 456`) with instant copy, smooth `requestAnimationFrame` SVG countdown ring with color shifting (`#06B6D4` $\to$ `#F97316` $\to$ `#E4048A`), and 30s clipboard auto-scrubber.
+- *Target Release:* `v0.0.0.8` (Build 8) | *Gate:* RFC 6238 test vector compliance & clipboard timer audit.
 
-### ⚪ Stage 08 — Server Delta Sync, Settings Suite, Envelopes & Shredder
-- **Bound Modules:** `modules/06-settings/{00,01,02,04,06,07,08}`, `specs/network/wire-contracts.md`
-- [ ] **Task A [Mutex Delta Sync & Envelope I/O]:** Mutex-serialized `/api/sync` delta reconciliation, client-RAM multi-format importer (`.json`, `.csv`, `.1pux`, `.kdbx` with dry-run AAD signature audit), Master-Password-challenged HKDF exporter, and 30-day trash auto-purge with RAM shredder.
-- [ ] **Task B [Settings & Vault Operations Carapace]:** Settings Hub (`Screen 9`), Account Security (`Screen 10`), Autofill Settings (`Screen 11`), Vault Operations Hub (`Screens 14/14A`), Import (`Screen 16`), Export (`Screen 17`), and Archive/Trash Shredder (`Screen 18`).
-- *Target Release:* `v0.0.0.9` (Build 9) | *Gate:* Delta sync reconciliation, import/export signature check & LAN fallback tests.
+### ⚪ Stage 08 — Credential Generator Suite & Volatile History
+- **Bound Modules:** `modules/04-generator-suite/{01,02}/spec.md`
+- [ ] **Task A [Rejection-Sampled CSPRNG Builder]:** Unbiased CSPRNG generation for passwords, EFF Diceware passphrases, and usernames/aliases, enforcing minimum character quotas and exact combinatorial entropy math.
+- [ ] **Task B [Generator Deck & History UI]:** Generator Deck (`Screen 4` with mode switcher, syntax-colored output, 4-segment entropy bar, `⚡ Insert into Active Tab`, slider, `12..64` chips) and Volatile History Drawer (`Screen 5` capped at 50 items strictly in session RAM, zeroized on lock).
+- *Target Release:* `v0.0.0.9` (Build 9) | *Gate:* Entropy distribution tests & Rule 4 zeroization check.
 
-### ⚪ Stage 09 — Agentic Delegation Port (`lb-`) & Sovereign Pods Manager
-- **Bound Module:** `modules/06-settings/05-pods-and-compartments/`
-- [ ] **Task A [Scoped LobsterKey Port]:** Autonomous agent message port and AAD compartment guard enforcing per-pod `lb-` scopes (`LB-RW`, `LB-EXEC`, `HUMAN ONLY`, `LOCKED`) with encrypted audit stream logging.
-- [ ] **Task B [Pods & Compartments Manager]:** Sovereign Pods Manager (`Screen 15`) with `+ New Pod` creation, live pod filtering, item counter pills, and `hu-`-signed compartment permission badges.
-- *Target Release:* `v0.0.0.10` (Build 10) | *Gate:* Permission boundary & cross-pod AAD tamper rejection tests.
+### ⚪ Stage 09 — In-Page Autofill, Anti-Collision Inset & Closed Shadow DOM Overlays
+- **Bound Modules:** `modules/03-inpage-autofill/{01,02}/spec.md`, `specs/autofill/autofill-mechanics.md`
+- [ ] **Task A [DOM Observer & Anti-Pollution Injection]:** Page `MutationObserver` enforcing username/password co-presence gate, 6-mode URI matching, iframe validation, pristine prototype value setter (`HTMLInputElement.prototype.value.set`), and $<1\text{ms}$ transient secret zeroization.
+- [ ] **Task B [Closed Shadow DOM Overlays & Anti-Collision Engine]:** Closed Shadow DOM (`attachShadow({ mode: 'closed' })`) in-page dropdown (`Screen 7`), dynamic `ResizeObserver` anti-collision glyph inset engine (`Screen 13`), and floating credential capture notification bar (`Screens 12/12A/12B`).
+- *Target Release:* `v0.0.0.10` (Build 10) | *Gate:* Shadow DOM encapsulation, anti-collision offset & synthetic event tests.
 
-### ⚪ Stage 10 — Appearance Engine, Enclave Audit & Web Store Summit (Meta-Phase 1 Culmination)
-- **Bound Modules:** `modules/06-settings/09-appearance-and-themes/`, `modules/06-settings/10-about-and-enclave-audit/`
-- [ ] **Task A [Appearance & Zero-Leakage Favicon Engine]:** Pinned (`19A`) and Expanded (`19B`) Appearance views supporting 4 sovereign themes, dynamic accents, viewport width presets (`340/384/480px`), density modes, typography scaling (`100/110/120%`), high-contrast outlines, and local `chrome-extension://<id>/_favicon/` resolution.
-- [ ] **Task B [Enclave Audit & Release Bundle]:** Pinned (`20A`) and Expanded (`20B`) About & Enclave Verification views with live `Enclave Diagnostics & Health` self-test and 2×2 crypto spec grid, plus production `wxt zip` packaging and 100% green Cloud CI gate.
+### ⚪ Stage 10 — MV3 Router, Watchdogs, Appearance Engine & Web Store Release (Meta-Phase 1 Culmination)
+- **Bound Modules:** `modules/06-settings/{09,10}/spec.md`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`
+- [ ] **Task A [MV3 Background Router, Alarms & Offscreen Enclave]:** Service worker event bus with Zod message envelope validation, `chrome.alarms` watchdogs (inactivity lock, 30s clipboard purge, 30d trash sweep), `Ctrl+Shift+L` global shortcut autofill, match-count badge updaters, and singleton offscreen document.
+- [ ] **Task B [Appearance, Diagnostics & Web Store Summit]:** 4 sovereign theme presets (`Abyssal Dark`, `Trench Slate`, `Hydro Coral`, `Bioluminescent Cyan`), local favicon resolution, Enclave Diagnostic self-test suite (`Screens 20A/B`), production package (`wxt zip`), SHA-256 checksums, and **Meta-Phase 2 Handoff**.
 - *Target Release:* `v0.0.1.0` (Build 11) • **Meta-Phase 1 Culmination** | *Gate:* Zero-waste release workflow, SSoT doc drift audit & Cloud CI.
 
 ---

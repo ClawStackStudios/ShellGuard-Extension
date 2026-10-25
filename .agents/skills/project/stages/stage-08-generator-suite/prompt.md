@@ -1,4 +1,4 @@
-# Stage 07 — Credential Generator Suite & Volatile History (`v0.0.0.8` • Build 8)
+# Stage 08 — Credential Generator Suite & Volatile History (`v0.0.0.9` • Build 9)
 
 **Target Oracles:**
 - `.agents/skills/project/modules/04-generator-suite/01-generator-deck/spec.md` (`screen_4_generator.png`)
