@@ -33,6 +33,7 @@ describe('Transport Sovereignty Rules', () => {
     expect(() => validateTransport('http:', '10.0.0.1')).not.toThrow();
     expect(() => validateTransport('http:', 'localhost')).not.toThrow();
     expect(() => validateTransport('http:', '100.100.100.100')).not.toThrow();
+    expect(() => validateTransport('http:', '192.168.1.100/vault')).not.toThrow();
   });
 
   it('blocks http on public WAN hosts', () => {

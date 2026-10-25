@@ -9,8 +9,23 @@ export async function apiClient<T>(
 ): Promise<T> {
   const strippedProtocol = protocol.replace(/:\/\/$/, '').replace(/:$/, '');
   const normalizedProtocol = `${strippedProtocol}:`;
+
+  // Cleanly join host, port, and path ensuring no double slashes except after protocol
+  const baseHost = host.replace(/\/+$/, '');
   const normalizedPort = port.startsWith(':') ? port : port ? `:${port}` : '';
-  const url = `${normalizedProtocol}//${host}${normalizedPort}${path}`;
+  const basePath = path.startsWith('/') ? path : `/${path}`;
+
+  // Since host could contain paths (e.g. homelab.local/shellguard), we append port to host part before path
+  let domainPart = baseHost;
+  let pathPart = '';
+
+  const slashIndex = baseHost.indexOf('/');
+  if (slashIndex !== -1) {
+      domainPart = baseHost.substring(0, slashIndex);
+      pathPart = baseHost.substring(slashIndex);
+  }
+
+  const url = `${normalizedProtocol}//${domainPart}${normalizedPort}${pathPart}${basePath}`;
 
   validateTransport(normalizedProtocol, host);
 

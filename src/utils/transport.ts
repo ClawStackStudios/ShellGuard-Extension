@@ -24,8 +24,9 @@ export function isPermittedCleartextHost(host: string): boolean {
 }
 
 export function validateTransport(protocol: string, host: string): void {
+  const domainPart = host.split('/')[0]; // Extract domain/IP from potential subpath
   if (protocol.toLowerCase() === 'http:') {
-    if (!isPermittedCleartextHost(host)) {
+    if (!isPermittedCleartextHost(domainPart)) {
       throw new Error(`WAN HTTP Blocked: Public WAN cleartext HTTP is strictly forbidden.`);
     }
   }

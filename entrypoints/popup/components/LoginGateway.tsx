@@ -15,10 +15,15 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
   const [isLan, setIsLan] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [allowSelfSigned, setAllowSelfSigned] = useState(() => localStorage.getItem('sg_allow_self_signed') === 'true');
 
   useEffect(() => {
     setIsLan(isPermittedCleartextHost(host));
   }, [host]);
+
+  useEffect(() => {
+    localStorage.setItem('sg_allow_self_signed', String(allowSelfSigned));
+  }, [allowSelfSigned]);
 
   // Persist host and port info when it changes
   useEffect(() => {
@@ -68,7 +73,22 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
       setRawKey(''); // Clear rawKey from memory on success
       onSuccess();
     } catch (err: unknown) {
-      if (err instanceof Error) {
+      if (allowSelfSigned && protocol.startsWith('https') && err instanceof TypeError && err.message.toLowerCase().includes('failed to fetch')) {
+        // Offer an affordance to trust self-signed certs
+        setError('Connection failed. If using a self-signed certificate, you must approve it first.');
+
+        const normalizedPort = port ? `:${port}` : '';
+        const url = `https://${host.split('/')[0]}${normalizedPort}/api/health`;
+
+        const proceedUrl = confirm(`Do you want to open ${url} in a new tab to approve the self-signed certificate?`);
+        if (proceedUrl) {
+          if (chrome?.tabs?.create) {
+             chrome.tabs.create({ url });
+          } else {
+             window.open(url, '_blank');
+          }
+        }
+      } else if (err instanceof Error) {
         setError(err.message);
       } else {
         setError('Login failed.');
@@ -95,29 +115,51 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
         </div>
 
         {/* Server Connection Segmented Input Bar */}
-        <div className="flex items-center w-full bg-[#0F1419] border border-[#3D484E] rounded-lg p-1 text-[0.6875rem] font-sans">
-          <button
-            type="button"
-            onClick={handleProtocolClick}
-            className={`flex items-center gap-1 px-2 py-0.5 rounded-[4px] font-semibold tracking-wider select-none ${protocol === 'https://' ? 'bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4]' : 'bg-[#F59E0B]/15 border border-[#F59E0B]/40 text-[#F59E0B]'}`}
-          >
-            <span className="material-symbols-outlined text-[12px]">{protocol === 'https://' ? 'lock' : 'lock_open'}</span>
-            <span>{protocol}</span>
-          </button>
-          <input
-            className="bg-transparent border-0 text-[#DEE3EA] font-sans text-[0.6875rem] px-2 py-0.5 focus:ring-0 focus:outline-none flex-grow min-w-0 tracking-tight"
-            type="text"
-            value={host}
-            onChange={(e) => setHost(e.target.value)}
-          />
-          <span className="text-[#879298] px-1.5 py-0.5 font-sans text-[0.6875rem] border-l border-[#3D484E]/80 select-none flex items-center">
-            : <input
-                type="text"
-                value={port}
-                onChange={(e) => setPort(e.target.value)}
-                className="bg-transparent border-0 text-[#879298] w-8 focus:ring-0 focus:outline-none ml-1"
-              />
-          </span>
+        <div className="flex flex-col gap-1.5 w-full">
+          <div className="flex items-center w-full bg-[#0F1419] border border-[#3D484E] rounded-lg p-1 text-[0.6875rem] font-sans">
+            <button
+              type="button"
+              onClick={handleProtocolClick}
+              className={`flex items-center gap-1 px-2 py-0.5 rounded-[4px] font-semibold tracking-wider select-none ${protocol === 'https://' ? 'bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4]' : 'bg-[#F59E0B]/15 border border-[#F59E0B]/40 text-[#F59E0B]'}`}
+            >
+              <span className="material-symbols-outlined text-[12px]">{protocol === 'https://' ? 'lock' : 'lock_open'}</span>
+              <span>{protocol}</span>
+            </button>
+            <input
+              className="bg-transparent border-0 text-[#DEE3EA] font-sans text-[0.6875rem] px-2 py-0.5 focus:ring-0 focus:outline-none flex-grow min-w-0 tracking-tight"
+              type="text"
+              value={host}
+              onChange={(e) => setHost(e.target.value)}
+            />
+            <span className="text-[#879298] px-1.5 py-0.5 font-sans text-[0.6875rem] border-l border-[#3D484E]/80 select-none flex items-center">
+              : <input
+                  type="text"
+                  value={port}
+                  onChange={(e) => setPort(e.target.value)}
+                  className="bg-transparent border-0 text-[#879298] w-8 focus:ring-0 focus:outline-none ml-1"
+                />
+            </span>
+          </div>
+
+          {/* Self-Signed Cert Toggle */}
+          <div className="flex items-center px-1">
+            <label className="flex items-center gap-2 cursor-pointer group">
+              <div className="relative flex items-center justify-center w-4 h-4 bg-[#0F1419] border border-[#3D484E] rounded group-hover:border-[#06B6D4] transition-colors">
+                <input
+                  type="checkbox"
+                  checked={allowSelfSigned}
+                  onChange={(e) => setAllowSelfSigned(e.target.checked)}
+                  className="absolute opacity-0 cursor-pointer w-full h-full"
+                />
+                {allowSelfSigned && (
+                  <span className="material-symbols-outlined text-[#06B6D4] text-[14px]">check</span>
+                )}
+              </div>
+              <span className="font-sans text-[0.6875rem] text-[#879298] group-hover:text-[#DEE3EA] transition-colors select-none">
+                Allow ShellGuard Self Signed Cert
+              </span>
+            </label>
+          </div>
         </div>
 
         {/* Brand Header */}
