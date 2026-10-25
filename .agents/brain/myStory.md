@@ -296,3 +296,15 @@ I executed the `/prep-jules-work` 4-Gate preparation pipeline for Stage 02 (Logi
 4. Created `.jules/knowledge/KNOWLEDGE.md`, `.jules/tasks/task-02.md`, and planted inline `// TODO(jules):` anchor in `entrypoints/popup/App.tsx`; merged into `main` via PR #17 (`ce3258b`).
 5. Dispatched task to Google Jules CLI (Session ID `16108275043681958379` at `https://jules.google.com/session/16108275043681958379`).
 
+### Stage 02 Review Loop & Self-Signed Cert Integration (`pull/19`)
+Jules completed Stage 02 and opened PR #19 (`stage-02-login-gateway-16108275043681958379` at commit `f6af457`).
+1. I conducted the initial code review (`pr_review_19_2026_10_25_1550.md`):
+   - Verified transport classifier, Zod envelopes, HKDF derivation, and visual parity with Stitch `screen_1_login.html`.
+   - Probed adjacent seams: missing MV3 `host_permissions` in `wxt.config.ts`, lack of endpoint persistence across popup mounts, lingering raw key strings in memory, and absence of a manual Lock button on the resting dashboard.
+   - Jules immediately responded and pushed commit `c5ac386` addressing all three items.
+2. Incorporating incoming ShellGuard server capability:
+   - The ShellGuard server is introducing first-class support for self-signed certificates and reverse proxy setups.
+   - In Chromium MV3 extensions, `fetch()` calls to self-signed origins fail with `TypeError: Failed to fetch` without prompting the user. Chromium requires an explicit origin exception, which operators grant by opening the endpoint in a browser tab and accepting the cert once.
+   - Instructed Jules on PR #19 to add an `Allow ShellGuard Self Signed Cert` checkbox in `LoginGateway.tsx` (persisted as `sg_allow_self_signed` in `localStorage`), offer a one-click tab trigger (`chrome.tabs.create` to `/api/health`) for certificate whitelisting when enabled, and ensure URL parsing in `authService.ts` cleanly preserves reverse proxy base paths.
+
+
