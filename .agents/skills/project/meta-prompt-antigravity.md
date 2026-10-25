@@ -10,22 +10,22 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Stage 00** | `v0.0.0.1 (Build 1)` | `stages/stage-00-genesis/` | `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`, `ARCHITECTURE.md` | 🟢 Complete |
 | **Stage 01** | `v0.0.0.2 (Build 2)` | `stages/stage-01-crypto-bedrock/` | `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md` | 🟢 Complete |
-| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-mv3-runtime/` | `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 **ACTIVE LEADING EDGE** |
-| **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-autofill-heuristics/` | `specs/autofill/autofill-mechanics.md`, `modules/06-settings/02-autofill-and-shadow-dom/` | ⚪ Queued |
-| **Stage 04** | `v0.0.0.5 (Build 5)` | `stages/stage-04-shadow-dom-carapace/` | `modules/03-inpage-autofill/01-shadow-dropdown-overlay/`, `modules/03-inpage-autofill/02-glyph-states-and-inset/`, `modules/06-settings/03-notifications-and-prompts/` | ⚪ Queued |
-| **Stage 05** | `v0.0.0.6 (Build 6)` | `stages/stage-05-popup-vault-browser/` | `modules/01-login-gateway/`, `modules/02-vault-dashboard/{01,02,04}`, `modules/05-lock-enclave/01-pin-and-biometric-pad/` | ⚪ Queued |
-| **Stage 06** | `v0.0.0.7 (Build 7)` | `stages/stage-06-micro-totp-engine/` | `modules/02-vault-dashboard/03-view-item-and-totp/` | ⚪ Queued |
-| **Stage 07** | `v0.0.0.8 (Build 8)` | `stages/stage-07-generator-suite/` | `modules/04-generator-suite/01-generator-deck/`, `modules/04-generator-suite/02-volatile-history/` | ⚪ Queued |
-| **Stage 08** | `v0.0.0.9 (Build 9)` | `stages/stage-08-server-sync-engine/` | `modules/06-settings/{00,01,02,04,06,07,08}`, `specs/network/wire-contracts.md` | ⚪ Queued |
-| **Stage 09** | `v0.0.0.10 (Build 10)` | `stages/stage-09-agentic-delegation/` | `modules/06-settings/05-pods-and-compartments/` | ⚪ Queued |
-| **Stage 10** | `v0.0.1.0 (Build 11)` | `stages/stage-10-web-store-release/` | `modules/06-settings/09-appearance-and-themes/`, `modules/06-settings/10-about-and-enclave-audit/` | ⚪ **META-PHASE 1 CULMINATION** |
+| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-login-gateway/` | `modules/01-login-gateway/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 **ACTIVE LEADING EDGE** |
+| **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-vault-dashboard/` | `modules/02-vault-dashboard/01-active-tab-and-list/`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
+| **Stage 04** | `v0.0.0.5 (Build 5)` | `stages/stage-04-settings-hub-base/` | `modules/06-settings/00-settings-hub/`, `specs/ui/design-tokens.md` | ⚪ Queued |
+| **Stage 05** | `v0.0.0.6 (Build 6)` | `stages/stage-05-settings-sections-suite/` | `modules/06-settings/{01,02,03,04,05,06,07,08}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
+| **Stage 06** | `v0.0.0.7 (Build 7)` | `stages/stage-06-dashboard-polish-and-lock/` | `modules/02-vault-dashboard/{02,04}/`, `modules/05-lock-enclave/01-pin-and-biometric-pad/`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
+| **Stage 07** | `v0.0.0.8 (Build 8)` | `stages/stage-07-micro-totp-engine/` | `modules/02-vault-dashboard/03-view-item-and-totp/`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
+| **Stage 08** | `v0.0.0.9 (Build 9)` | `stages/stage-08-generator-suite/` | `modules/04-generator-suite/{01,02}/` | ⚪ Queued |
+| **Stage 09** | `v0.0.0.10 (Build 10)` | `stages/stage-09-inpage-shadow-autofill/` | `modules/03-inpage-autofill/{01,02}/`, `specs/autofill/autofill-mechanics.md` | ⚪ Queued |
+| **Stage 10** | `v0.0.1.0 (Build 11)` | `stages/stage-10-mv3-router-and-release/` | `modules/06-settings/{09,10}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ **META-PHASE 1 CULMINATION** |
 
 ---
 
 ## 2. Active Stage Pointer
 
-- **Current Active Stage:** `Stage 02: MV3 Runtime & Offscreen Enclave Router`
-- **Location:** `.agents/skills/project/stages/stage-02-mv3-runtime/prompt.md`
+- **Current Active Stage:** `Stage 02: Login Gateway & Session State Machine`
+- **Location:** `.agents/skills/project/stages/stage-02-login-gateway/prompt.md`
 
 
 ---
