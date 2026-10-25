@@ -26,6 +26,10 @@ export default defineConfig({
       'favicon',
       'contextMenus',
     ],
+    host_permissions: [
+      'http://*/*',
+      'https://*/*',
+    ],
     commands: {
       'autofill-credential': {
         suggested_key: {

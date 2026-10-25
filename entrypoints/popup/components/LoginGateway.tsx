@@ -7,9 +7,9 @@ interface LoginGatewayProps {
 }
 
 export function LoginGateway({ onSuccess }: LoginGatewayProps) {
-  const [protocol, setProtocol] = useState('https://');
-  const [host, setHost] = useState('vault.example.com');
-  const [port, setPort] = useState('8080');
+  const [protocol, setProtocol] = useState(() => localStorage.getItem('sg_protocol') || 'https://');
+  const [host, setHost] = useState(() => localStorage.getItem('sg_host') || 'vault.example.com');
+  const [port, setPort] = useState(() => localStorage.getItem('sg_port') || '8080');
   const [mode, setMode] = useState<'upload' | 'paste'>('upload');
   const [rawKey, setRawKey] = useState('');
   const [isLan, setIsLan] = useState(false);
@@ -19,6 +19,13 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
   useEffect(() => {
     setIsLan(isPermittedCleartextHost(host));
   }, [host]);
+
+  // Persist host and port info when it changes
+  useEffect(() => {
+    localStorage.setItem('sg_protocol', protocol);
+    localStorage.setItem('sg_host', host);
+    localStorage.setItem('sg_port', port);
+  }, [protocol, host, port]);
 
   const handleProtocolClick = () => {
     setProtocol((prev) => (prev === 'https://' ? 'http://' : 'https://'));
@@ -58,6 +65,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
       // TODO(uncertainty): In real scenarios, the identity file might contain a user UUID as well.
       // We pass undefined for uuid now and let the server match solely on keyHash or we would extract it from the file.
       await login(protocol, host, port, rawKey);
+      setRawKey(''); // Clear rawKey from memory on success
       onSuccess();
     } catch (err: unknown) {
       if (err instanceof Error) {

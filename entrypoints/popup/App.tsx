@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, KeyRound, Settings, Search, Copy, Eye, EyeOff, Zap, ExternalLink } from 'lucide-react';
-import { getSessionKey } from '../../src/crypto/sessionVault';
+import { getSessionKey, destroySessionVault } from '../../src/crypto/sessionVault';
 import { LoginGateway } from './components/LoginGateway';
 
 export default function App(): React.JSX.Element {
@@ -59,6 +59,16 @@ export default function App(): React.JSX.Element {
         </div>
 
         <div className="flex items-center space-x-2">
+          <button
+            title="Lock Vault"
+            onClick={async () => {
+              await destroySessionVault();
+              setIsAuthenticated(false);
+            }}
+            className="p-1.5 rounded-row text-slate-400 hover:text-white hover:bg-carapace-focus transition-colors"
+          >
+            <Shield className="w-3.5 h-3.5" />
+          </button>
           <button
             title="Pop out into window"
             className="p-1.5 rounded-row text-slate-400 hover:text-white hover:bg-carapace-focus transition-colors"
