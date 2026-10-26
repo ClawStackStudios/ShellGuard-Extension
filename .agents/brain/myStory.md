@@ -302,9 +302,15 @@ Jules completed Stage 02 and opened PR #19 (`stage-02-login-gateway-161082750436
    - Verified transport classifier, Zod envelopes, HKDF derivation, and visual parity with Stitch `screen_1_login.html`.
    - Probed adjacent seams: missing MV3 `host_permissions` in `wxt.config.ts`, lack of endpoint persistence across popup mounts, lingering raw key strings in memory, and absence of a manual Lock button on the resting dashboard.
    - Jules immediately responded and pushed commit `c5ac386` addressing all three items.
-2. Incorporating incoming ShellGuard server capability:
-   - The ShellGuard server is introducing first-class support for self-signed certificates and reverse proxy setups.
-   - In Chromium MV3 extensions, `fetch()` calls to self-signed origins fail with `TypeError: Failed to fetch` without prompting the user. Chromium requires an explicit origin exception, which operators grant by opening the endpoint in a browser tab and accepting the cert once.
-   - Instructed Jules on PR #19 to add an `Allow ShellGuard Self Signed Cert` checkbox in `LoginGateway.tsx` (persisted as `sg_allow_self_signed` in `localStorage`), offer a one-click tab trigger (`chrome.tabs.create` to `/api/health`) for certificate whitelisting when enabled, and ensure URL parsing in `authService.ts` cleanly preserves reverse proxy base paths.
+3. Jules pushed commit `6c4efb9` adding the persistent `Allow ShellGuard Self Signed Cert` toggle, subpath separation in `apiClient.ts`, and unit test coverage in `tests/network/apiClient.test.ts`.
+4. I identified a violation of the Reef Modernist zero-native-dialogs rule: Jules used `confirm()` to prompt before opening the certificate approval URL, which in Chromium extension popups can cause premature popup dismissal.
+5. Cross-referenced conversation `564b5c09-808a-43af-9361-3a0a9ecd689c` to align with the primary ShellGuard server's Phase 27 SuperLobster TLS Control Plane architecture (`TLS_ENABLED=true/false`, EC P-256 self-signed certs, `GET /api/public/tls-manifest`, and proxy subpath support).
+6. Authored `23-stage-02-release-v0.0.0.3-execution-plan.md` and pushed commit `0ccbfc5` to PR #19:
+   - Sanitized `LoginGateway.tsx`: replaced synchronous `confirm()` with a stateful in-carapace *"Approve Certificate in Browser"* CTA button inside the error banner.
+   - Updated `modules/01-login-gateway/spec.md` and `specs/network/wire-contracts.md` in the `/project` skill.
+   - Updated `RELEASE-v0.0.0.3.md` and `ROADMAP.md` advancing the leading active edge to Stage 03 (`v0.0.0.4`).
+7. Squash-merged PR #19 into `main` (`17b794e`) with `--release v0.0.0.3`.
+8. The GitHub Actions Release Pipeline executed successfully: created git tag `v0.0.0.3`, published GitHub Release `v0.0.0.3`, and uploaded `shellguard-extension-0.0.0.3-chrome.zip` + `sha256sums.txt`.
+
 
 
