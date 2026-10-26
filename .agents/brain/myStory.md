@@ -312,5 +312,17 @@ Jules completed Stage 02 and opened PR #19 (`stage-02-login-gateway-161082750436
 7. Squash-merged PR #19 into `main` (`17b794e`) with `--release v0.0.0.3`.
 8. The GitHub Actions Release Pipeline executed successfully: created git tag `v0.0.0.3`, published GitHub Release `v0.0.0.3`, and uploaded `shellguard-extension-0.0.0.3-chrome.zip` + `sha256sums.txt`.
 
+### Stage 02b-HF: Lucide Vector Icon Migration & Typography Hardening (`v0.0.0.4` • Build 4)
+Lucas tested the `v0.0.0.3` release build in the browser and observed visual breakdowns across the live Login Gateway:
+1. Google Material Symbols ligature strings (`arrow_back`, `lock`, `shield` overflowing as `hield`, `upload_file`, `vpn_key`, `cloud_upload`, `key`) rendered as raw text due to missing font assets in the offline MV3 environment.
+2. The file dropzone leaked the browser's native `"No file chosen"` file input button through the styled drop surface.
+3. The hero squircle emblem was misaligned.
 
-
+I executed the out-of-band hotfix:
+1. Purged all `material-symbols-outlined` spans in `entrypoints/popup/components/LoginGateway.tsx` in favor of `lucide-react` inline SVGs (`ArrowLeft`, `Lock`, `LockOpen`, `Check`, `Shield`, `Upload`, `KeyRound`, `ShieldCheck`, `UploadCloud`, `ExternalLink`, `ShieldAlert`, `Key`), eliminating web font dependencies and CSP/network FOUT.
+2. Re-architected the file dropzone using an accessible `<label>` wrapper with an `sr-only` native `<input type="file" />`, completely eliminating native browser button bleed-through.
+3. Re-centered the hero emblem inside a 64x64 squircle with Claw Cyan bioluminescent glow.
+4. Codified the Offline Vector Iconography Invariant in `modules/01-login-gateway/spec.md`.
+5. Created `stage-02b-hotfix-lucide-icons` prompt and executed the Cascading Push (+1) per Rule 7 and `.agents/rules/semantic-versioning.md`, bumping this hotfix release to `v0.0.0.4 (Build 4)` and shifting Stages 03 through 10 to `v0.0.0.5` through `v0.0.1.0 (Build 12)`.
+6. Generated `RELEASE-v0.0.0.4.md`, updated `ROADMAP.md` and `meta-prompt-antigravity.md`.
+7. Verified full local pre-flight gate: `npm run lint` (0 errors), `npm run typecheck` (0 errors), `npm test` (25/25 passed across 9 test suites), and `python3 scripts/audit_docs_drift.py` (100% aligned).

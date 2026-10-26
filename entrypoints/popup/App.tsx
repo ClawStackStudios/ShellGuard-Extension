@@ -50,11 +50,11 @@ export default function App(): React.JSX.Element {
           <div>
             <div className="flex items-center space-x-1.5">
               <span className="font-heading font-semibold text-sm tracking-tight text-white">ShellGuard</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-badge bg-reef-emerald/15 text-reef-emerald border border-reef-emerald/30">
+              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-badge bg-reef-emerald/15 text-reef-emerald border border-reef-emerald/30">
                 • CLIENT ENCLAVE
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-mono leading-none">v0.0.0.1 (Build 1)</p>
+            <p className="text-[11px] text-slate-400 font-mono leading-none">v0.0.0.4 (Build 4)</p>
           </div>
         </div>
 
