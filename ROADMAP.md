@@ -13,9 +13,9 @@
 
 ```text
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║  CURRENT RELEASE: v0.0.0.2 (Build 2) Cryptographic Bedrock & Session Quarantine  ║
-║  ACTIVE STAGE:    Stage 02 — Login Gateway & Session State Machine               ║
-║  LOCATION:        .agents/skills/project/stages/stage-02-login-gateway/prompt.md ║
+║  CURRENT RELEASE: v0.0.0.3 (Build 3) Login Gateway & Session State Machine       ║
+║  ACTIVE STAGE:    Stage 03 — Vault Dashboard & Basic Sync                        ║
+║  LOCATION:        .agents/skills/project/stages/stage-03-vault-dashboard/prompt.md║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -38,10 +38,10 @@ Each stage delivers exactly two tasks: **Task A (Core Logic/Engine)** and **Task
 - *Target Release:* `v0.0.0.2` (Build 2) | *Gate:* Tamper rejection unit tests & WebCrypto vector suite (16/16 tests green).
 
 
-### ⚪ Stage 02 — Login Gateway & Session State Machine
+### 🟢 Stage 02 — Login Gateway & Session State Machine
 - **Bound Oracles:** `modules/01-login-gateway/spec.md`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md`
-- [ ] **Task A [Session State Machine & Auth Handshake]:** Tri-state vault session machine (`LOGGED_OUT`, `AUTHENTICATING`, `UNLOCKED`, `LOCKED`), split Protocol / Host / Port (`https://` | `host` | `:port`) endpoint bar with amber LAN HTTP pill, server `/api/salt` query and Bearer token retrieval, HKDF PRK derivation into `ShellGuardSessionVault`.
-- [ ] **Task B [Screen 1 Carapace Presentation]:** Pixel-perfect implementation of `Screen 1` (`docs/stitch/screen_1_login.html`), segmented mode toggle (`Upload Identity File` vs `Paste ClawKey`), amber LAN pill, and telemetry footer badge (`🔒 HKDF-SHA256 • AES-GCM-256 • Axiom 1 Active`).
+- [x] **Task A [Session State Machine & Auth Handshake]:** Tri-state vault session machine (`LOGGED_OUT`, `AUTHENTICATING`, `UNLOCKED`, `LOCKED`), split Protocol / Host / Port (`https://` | `host` | `:port`) endpoint bar with amber LAN HTTP pill, server `/api/salt` query and Bearer token retrieval, HKDF PRK derivation into `ShellGuardSessionVault`, persistent self-signed TLS toggle (`sg_allow_self_signed`), and reverse proxy subpath routing in `apiClient.ts`.
+- [x] **Task B [Screen 1 Carapace Presentation]:** Pixel-perfect implementation of `Screen 1` (`docs/stitch/screen_1_login.html`), segmented mode toggle (`Upload Identity File` vs `Paste ClawKey`), amber LAN pill, telemetry footer badge (`🔒 HKDF-SHA256 • AES-GCM-256 • Axiom 1 Active`), and in-carapace browser certificate approval CTA with zero native dialogs.
 - *Target Release:* `v0.0.0.3` (Build 3) | *Gate:* Visual component test suite, login handshake mock & pre-flight audits.
 
 ### ⚪ Stage 03 — Vault Dashboard & Basic Sync

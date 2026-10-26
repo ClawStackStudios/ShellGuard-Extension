@@ -10,8 +10,8 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Stage 00** | `v0.0.0.1 (Build 1)` | `stages/stage-00-genesis/` | `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`, `ARCHITECTURE.md` | 🟢 Complete |
 | **Stage 01** | `v0.0.0.2 (Build 2)` | `stages/stage-01-crypto-bedrock/` | `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md` | 🟢 Complete |
-| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-login-gateway/` | `modules/01-login-gateway/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 **ACTIVE LEADING EDGE** |
-| **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-vault-dashboard/` | `modules/02-vault-dashboard/01-active-tab-and-list/`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
+| **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-login-gateway/` | `modules/01-login-gateway/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 Complete |
+| **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-vault-dashboard/` | `modules/02-vault-dashboard/01-active-tab-and-list/`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md` | 🟢 **ACTIVE LEADING EDGE** |
 | **Stage 04** | `v0.0.0.5 (Build 5)` | `stages/stage-04-settings-hub-base/` | `modules/06-settings/00-settings-hub/`, `specs/ui/design-tokens.md` | ⚪ Queued |
 | **Stage 05** | `v0.0.0.6 (Build 6)` | `stages/stage-05-settings-sections-suite/` | `modules/06-settings/{01,02,03,04,05,06,07,08}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
 | **Stage 06** | `v0.0.0.7 (Build 7)` | `stages/stage-06-dashboard-polish-and-lock/` | `modules/02-vault-dashboard/{02,04}/`, `modules/05-lock-enclave/01-pin-and-biometric-pad/`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
@@ -24,8 +24,8 @@
 
 ## 2. Active Stage Pointer
 
-- **Current Active Stage:** `Stage 02: Login Gateway & Session State Machine`
-- **Location:** `.agents/skills/project/stages/stage-02-login-gateway/prompt.md`
+- **Current Active Stage:** `Stage 03: Vault Dashboard & Basic Sync`
+- **Location:** `.agents/skills/project/stages/stage-03-vault-dashboard/prompt.md`
 
 
 ---
