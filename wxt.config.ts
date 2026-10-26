@@ -14,7 +14,7 @@ export default defineConfig({
     name: 'ShellGuard — Sovereign Zero-Knowledge Vault',
     short_name: 'ShellGuard',
     description: 'Client-decrypted autofill, micro-TOTP generation, and agentic vault access without third-party cloud trust.',
-    version: '0.0.0.3',
+    version: '0.0.0.4',
     permissions: [
       'storage',
       'unlimitedStorage',

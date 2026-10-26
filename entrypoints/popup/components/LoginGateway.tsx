@@ -1,4 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import {
+  ArrowLeft,
+  Lock,
+  LockOpen,
+  Check,
+  Shield,
+  Upload,
+  KeyRound,
+  ShieldCheck,
+  UploadCloud,
+  ExternalLink,
+  ShieldAlert,
+  Key
+} from 'lucide-react';
 import { isPermittedCleartextHost } from '../../../src/utils/transport';
 import { login } from '../../../src/services/authService';
 
@@ -97,7 +111,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
         {/* Top Bar */}
         <div className="flex items-center justify-between w-full">
           <button className="flex items-center gap-1.5 text-[#879298] hover:text-[#DEE3EA] active:scale-[0.98] transition-all duration-150 group" type="button">
-            <span className="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
             <span className="font-sans text-[0.875rem] font-medium tracking-wider">Back to Home</span>
           </button>
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0F1419] border border-[#3D484E]">
@@ -112,9 +126,9 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
             <button
               type="button"
               onClick={handleProtocolClick}
-              className={`flex items-center gap-1 px-2 py-0.5 rounded-[4px] font-semibold tracking-wider select-none ${protocol === 'https://' ? 'bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4]' : 'bg-[#F59E0B]/15 border border-[#F59E0B]/40 text-[#F59E0B]'}`}
+              className={`flex items-center gap-1.5 px-2 py-0.5 rounded-[4px] font-semibold tracking-wider select-none ${protocol === 'https://' ? 'bg-[#06B6D4]/15 border border-[#06B6D4]/40 text-[#06B6D4]' : 'bg-[#F59E0B]/15 border border-[#F59E0B]/40 text-[#F59E0B]'}`}
             >
-              <span className="material-symbols-outlined text-[12px]">{protocol === 'https://' ? 'lock' : 'lock_open'}</span>
+              {protocol === 'https://' ? <Lock className="w-3 h-3" /> : <LockOpen className="w-3 h-3" />}
               <span>{protocol}</span>
             </button>
             <input
@@ -141,10 +155,10 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
                   type="checkbox"
                   checked={allowSelfSigned}
                   onChange={(e) => setAllowSelfSigned(e.target.checked)}
-                  className="absolute opacity-0 cursor-pointer w-full h-full"
+                  className="sr-only"
                 />
                 {allowSelfSigned && (
-                  <span className="material-symbols-outlined text-[#06B6D4] text-[14px]">check</span>
+                  <Check className="w-3 h-3 text-[#06B6D4]" />
                 )}
               </div>
               <span className="font-sans text-[0.6875rem] text-[#879298] group-hover:text-[#DEE3EA] transition-colors select-none">
@@ -159,7 +173,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
           <div className="relative w-16 h-16 rounded-[14px] p-[1.5px] bg-gradient-to-br from-[#E4048A] via-[#8c0053] to-[#06B6D4] mb-3 group">
             <div className="w-full h-full bg-[#0F1419] rounded-[13px] flex items-center justify-center relative overflow-hidden shadow-inner">
               <div className="absolute inset-0 bg-gradient-to-t from-[#E4048A]/20 to-[#06B6D4]/10 opacity-70"></div>
-              <span className="material-symbols-outlined text-[34px] text-transparent bg-clip-text bg-gradient-to-b from-[#DEE3EA] via-[#06B6D4] to-[#E4048A] relative z-10">shield</span>
+              <Shield className="w-8 h-8 text-[#06B6D4] drop-shadow-[0_0_8px_rgba(6,182,212,0.6)] relative z-10" />
             </div>
             <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E4048A] opacity-75"></span>
@@ -181,7 +195,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
             onClick={() => setMode('upload')}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-sans text-[0.875rem] font-semibold tracking-wide shadow-md active:scale-[0.98] transition-all ${mode === 'upload' ? 'bg-[#E4048A] text-white' : 'text-[#879298] hover:text-[#DEE3EA] hover:bg-[#172126]'}`}
           >
-            <span className="material-symbols-outlined text-[17px]">upload_file</span>
+            <Upload className="w-4 h-4" />
             <span>Upload File</span>
           </button>
           <button
@@ -189,7 +203,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
             onClick={() => setMode('paste')}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-sans text-[0.875rem] font-medium tracking-wide active:scale-[0.98] transition-all ${mode === 'paste' ? 'bg-[#E4048A] text-white' : 'text-[#879298] hover:text-[#DEE3EA] hover:bg-[#172126]'}`}
           >
-            <span className="material-symbols-outlined text-[17px]">vpn_key</span>
+            <KeyRound className="w-4 h-4" />
             <span>Paste ClawKey©™</span>
           </button>
         </div>
@@ -200,14 +214,19 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
               <div className="flex justify-between items-center px-0.5">
                 <label className="font-sans text-[0.6875rem] uppercase tracking-wider text-[#879298] font-semibold">Your Identity File</label>
                 <span className="font-sans text-[0.6875rem] text-[#06B6D4] flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[13px]">verified_user</span>
+                  <ShieldCheck className="w-3.5 h-3.5" />
                   Local Decrypt
                 </span>
               </div>
-              <div className="relative flex flex-col items-center justify-center p-5 bg-[#0F1419] border-2 border-dashed border-[#3D484E] hover:border-[#06B6D4] hover:bg-[#0F1419]/80 rounded-xl cursor-pointer group transition-all duration-200">
-                <input accept=".json" onChange={handleFileChange} className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20" type="file"/>
+              <label className="relative flex flex-col items-center justify-center p-5 bg-[#0F1419] border-2 border-dashed border-[#3D484E] hover:border-[#06B6D4] hover:bg-[#0F1419]/80 rounded-xl cursor-pointer group transition-all duration-200">
+                <input
+                  accept=".json"
+                  onChange={handleFileChange}
+                  className="sr-only"
+                  type="file"
+                />
                 <div className="w-12 h-12 rounded-full bg-[#172126] border border-[#3D484E] flex items-center justify-center mb-2.5 group-hover:scale-105 group-hover:border-[#06B6D4] group-hover:text-[#06B6D4] text-[#879298] transition-all">
-                  <span className="material-symbols-outlined text-[26px]">cloud_upload</span>
+                  <UploadCloud className="w-6 h-6" />
                 </div>
                 <p className="font-sans text-[0.875rem] font-semibold text-[#DEE3EA] text-center group-hover:text-white transition-colors">
                   {rawKey ? 'Identity selected. Click to change.' : 'Click to upload your identity file'}
@@ -215,7 +234,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
                 <span className="font-sans text-[0.6875rem] text-[#879298] mt-1 bg-[#171C21] px-2 py-0.5 rounded border border-[#3D484E]/60 tracking-wider">
                   .json files only
                 </span>
-              </div>
+              </label>
             </div>
           ) : (
              <div className="flex flex-col gap-1.5">
@@ -245,7 +264,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
                   }}
                   className="mt-1 w-full py-1.5 px-3 rounded-lg bg-[#E4048A] hover:bg-[#ff159f] text-white font-sans text-xs font-semibold tracking-wide flex items-center justify-center gap-1.5 transition-all shadow active:scale-[0.98]"
                 >
-                  <span className="material-symbols-outlined text-[15px]">open_in_new</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
                   <span>Approve Certificate in Browser</span>
                 </button>
               )}
@@ -256,7 +275,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
           {protocol === 'http://' && isLan && (
             <div className="bg-[rgba(245,158,11,0.08)] border border-[#F59E0B] rounded-xl p-3 flex items-start gap-3 shadow-[0_0_12px_-3px_rgba(245,158,11,0.2)]">
               <div className="p-1 rounded bg-[#F59E0B]/20 text-[#F59E0B] flex-shrink-0 mt-0.5">
-                <span className="material-symbols-outlined text-[18px]">lock_reset</span>
+                <ShieldAlert className="w-4 h-4" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <h4 className="font-sans text-[0.875rem] font-bold text-[#F59E0B] tracking-tight">⚠️ HTTP LAN Transport</h4>
@@ -273,7 +292,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
             disabled={isLoading}
             className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#E4048A] to-[#BE185D] hover:from-[#ff159f] hover:to-[#db2777] text-white font-sans text-[0.875rem] font-bold tracking-wide flex items-center justify-center gap-2 glow-crimson active:scale-[0.98] transition-all border border-white/20 disabled:opacity-50"
           >
-            <span className="material-symbols-outlined text-[20px]">key</span>
+            <Key className="w-4 h-4" />
             <span>{isLoading ? 'Logging in...' : 'Login with Identity'}</span>
           </button>
         </form>

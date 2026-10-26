@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import packageJson from '../package.json';
 
 describe('Stage 00 Genesis Scaffold Invariants', () => {
-  it('asserts valid package identity and version v0.0.0.3', () => {
+  it('asserts valid package identity and version v0.0.0.4', () => {
     expect(packageJson.name).toBe('shellguard-extension');
-    expect(packageJson.version).toBe('0.0.0.3');
+    expect(packageJson.version).toBe('0.0.0.4');
     expect(packageJson.type).toBe('module');
   });
 

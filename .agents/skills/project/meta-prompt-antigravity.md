@@ -11,21 +11,22 @@
 | **Stage 00** | `v0.0.0.1 (Build 1)` | `stages/stage-00-genesis/` | `specs/ui/design-tokens.md`, `specs/verification/test-oracles.md`, `ARCHITECTURE.md` | 🟢 Complete |
 | **Stage 01** | `v0.0.0.2 (Build 2)` | `stages/stage-01-crypto-bedrock/` | `specs/crypto/key-hierarchy.md`, `specs/crypto/encryption-layers.md` | 🟢 Complete |
 | **Stage 02** | `v0.0.0.3 (Build 3)` | `stages/stage-02-login-gateway/` | `modules/01-login-gateway/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | 🟢 Complete |
-| **Stage 03** | `v0.0.0.4 (Build 4)` | `stages/stage-03-vault-dashboard/` | `modules/02-vault-dashboard/01-active-tab-and-list/`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md` | 🟢 **ACTIVE LEADING EDGE** |
-| **Stage 04** | `v0.0.0.5 (Build 5)` | `stages/stage-04-settings-hub-base/` | `modules/06-settings/00-settings-hub/`, `specs/ui/design-tokens.md` | ⚪ Queued |
-| **Stage 05** | `v0.0.0.6 (Build 6)` | `stages/stage-05-settings-sections-suite/` | `modules/06-settings/{01,02,03,04,05,06,07,08}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
-| **Stage 06** | `v0.0.0.7 (Build 7)` | `stages/stage-06-dashboard-polish-and-lock/` | `modules/02-vault-dashboard/{02,04}/`, `modules/05-lock-enclave/01-pin-and-biometric-pad/`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
-| **Stage 07** | `v0.0.0.8 (Build 8)` | `stages/stage-07-micro-totp-engine/` | `modules/02-vault-dashboard/03-view-item-and-totp/`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
-| **Stage 08** | `v0.0.0.9 (Build 9)` | `stages/stage-08-generator-suite/` | `modules/04-generator-suite/{01,02}/` | ⚪ Queued |
-| **Stage 09** | `v0.0.0.10 (Build 10)` | `stages/stage-09-inpage-shadow-autofill/` | `modules/03-inpage-autofill/{01,02}/`, `specs/autofill/autofill-mechanics.md` | ⚪ Queued |
-| **Stage 10** | `v0.0.1.0 (Build 11)` | `stages/stage-10-mv3-router-and-release/` | `modules/06-settings/{09,10}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ **META-PHASE 1 CULMINATION** |
+| **Stage 02b-HF** | `v0.0.0.4 (Build 4)` | `stages/stage-02b-hotfix-lucide-icons/` | `modules/01-login-gateway/`, `specs/ui/design-tokens.md`, `specs/network/wire-contracts.md` | 🟢 **ACTIVE LEADING EDGE** |
+| **Stage 03** | `v0.0.0.5 (Build 5)` | `stages/stage-03-vault-dashboard/` | `modules/02-vault-dashboard/01-active-tab-and-list/`, `specs/network/wire-contracts.md`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
+| **Stage 04** | `v0.0.0.6 (Build 6)` | `stages/stage-04-settings-hub-base/` | `modules/06-settings/00-settings-hub/`, `specs/ui/design-tokens.md` | ⚪ Queued |
+| **Stage 05** | `v0.0.0.7 (Build 7)` | `stages/stage-05-settings-sections-suite/` | `modules/06-settings/{01,02,03,04,05,06,07,08}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
+| **Stage 06** | `v0.0.0.8 (Build 8)` | `stages/stage-06-dashboard-polish-and-lock/` | `modules/02-vault-dashboard/{02,04}/`, `modules/05-lock-enclave/01-pin-and-biometric-pad/`, `specs/crypto/encryption-layers.md` | ⚪ Queued |
+| **Stage 07** | `v0.0.0.9 (Build 9)` | `stages/stage-07-micro-totp-engine/` | `modules/02-vault-dashboard/03-view-item-and-totp/`, `specs/crypto/key-hierarchy.md` | ⚪ Queued |
+| **Stage 08** | `v0.0.0.10 (Build 10)` | `stages/stage-08-generator-suite/` | `modules/04-generator-suite/{01,02}/` | ⚪ Queued |
+| **Stage 09** | `v0.0.0.11 (Build 11)` | `stages/stage-09-inpage-shadow-autofill/` | `modules/03-inpage-autofill/{01,02}/`, `specs/autofill/autofill-mechanics.md` | ⚪ Queued |
+| **Stage 10** | `v0.0.1.0 (Build 12)` | `stages/stage-10-mv3-router-and-release/` | `modules/06-settings/{09,10}/`, `specs/network/wire-contracts.md`, `specs/crypto/key-hierarchy.md` | ⚪ **META-PHASE 1 CULMINATION** |
 
 ---
 
 ## 2. Active Stage Pointer
 
-- **Current Active Stage:** `Stage 03: Vault Dashboard & Basic Sync`
-- **Location:** `.agents/skills/project/stages/stage-03-vault-dashboard/prompt.md`
+- **Current Active Stage:** `Stage 02b-HF: Lucide Vector Icon Migration & Typography Hardening`
+- **Location:** `.agents/skills/project/stages/stage-02b-hotfix-lucide-icons/prompt.md`
 
 
 ---
