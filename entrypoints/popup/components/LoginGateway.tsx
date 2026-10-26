@@ -16,6 +16,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [allowSelfSigned, setAllowSelfSigned] = useState(() => localStorage.getItem('sg_allow_self_signed') === 'true');
+  const [certApprovalUrl, setCertApprovalUrl] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLan(isPermittedCleartextHost(host));
@@ -60,6 +61,7 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setCertApprovalUrl(null);
     setIsLoading(true);
 
     try {
@@ -74,20 +76,10 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
       onSuccess();
     } catch (err: unknown) {
       if (allowSelfSigned && protocol.startsWith('https') && err instanceof TypeError && err.message.toLowerCase().includes('failed to fetch')) {
-        // Offer an affordance to trust self-signed certs
-        setError('Connection failed. If using a self-signed certificate, you must approve it first.');
-
+        setError('Connection failed. If using a self-signed certificate, approve it in your browser.');
         const normalizedPort = port ? `:${port}` : '';
         const url = `https://${host.split('/')[0]}${normalizedPort}/api/health`;
-
-        const proceedUrl = confirm(`Do you want to open ${url} in a new tab to approve the self-signed certificate?`);
-        if (proceedUrl) {
-          if (chrome?.tabs?.create) {
-             chrome.tabs.create({ url });
-          } else {
-             window.open(url, '_blank');
-          }
-        }
+        setCertApprovalUrl(url);
       } else if (err instanceof Error) {
         setError(err.message);
       } else {
@@ -239,8 +231,24 @@ export function LoginGateway({ onSuccess }: LoginGatewayProps) {
           )}
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500 rounded-xl p-3 text-red-500 text-sm">
-              {error}
+            <div className="bg-red-500/10 border border-red-500 rounded-xl p-3 text-red-500 text-sm flex flex-col gap-2">
+              <span>{error}</span>
+              {certApprovalUrl && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (chrome?.tabs?.create) {
+                      chrome.tabs.create({ url: certApprovalUrl });
+                    } else {
+                      window.open(certApprovalUrl, '_blank');
+                    }
+                  }}
+                  className="mt-1 w-full py-1.5 px-3 rounded-lg bg-[#E4048A] hover:bg-[#ff159f] text-white font-sans text-xs font-semibold tracking-wide flex items-center justify-center gap-1.5 transition-all shadow active:scale-[0.98]"
+                >
+                  <span className="material-symbols-outlined text-[15px]">open_in_new</span>
+                  <span>Approve Certificate in Browser</span>
+                </button>
+              )}
             </div>
           )}
 
